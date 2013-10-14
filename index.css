@@ -1,0 +1,32 @@
+body {
+	margin: 0px;
+	padding: 0px;
+}
+#header {
+	height: 8em;
+	width: auto;
+	background-color: #3F3A36;
+}
+#content {
+	height: 60%;
+	background-color: #EDEDED;
+}
+.welcome {
+	font-family: "Helvetica Neue", sans-serif;
+	font-weight: 100;
+	font-size: 10em;
+	position: absolute;
+  	top: 20%;
+  	left: 50%;
+  	margin-left: -150px;
+  	color: #7EB12C;
+}
+#foot-message {
+	font-family: "Helvetica Neue", sans-serif;
+	font-weight: 100;
+	font-size: 2em;
+	color: #999999;
+	position: absolute;
+	left: 50%;
+	margin-left: -185px;
+}
