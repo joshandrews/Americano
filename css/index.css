@@ -1,0 +1,7 @@
+body{width:100%;*zoom:1}body:before,body:after{content:"";display:table}
+body:after{clear:both}
+body{margin:0;padding:0}
+#header{height:8em;width:auto;background-color:#3f3a36}
+#content{height:60%;background-color:#ededed}
+.welcome{font-family:"Helvetica Neue",sans-serif;font-weight:100;font-size:10em;position:absolute;top:20%;left:50%;margin-left:-150px;color:#7eb12c}
+#foot-message{font-family:"Helvetica Neue",sans-serif;font-weight:100;font-size:2em;color:#999;position:absolute;left:50%;margin-left:-185px}
