@@ -5,19 +5,84 @@
 @columns: 16;
 
 @total-width: 100%;
+@background-dark: #2F2A26;
+@background-light: #EDEDED;
+
+@media screen and (max-width:639px) {
+	#header {
+		margin: 0px auto;
+		.name {
+			position: block;
+		}
+		.nav {
+			display: none;
+		}
+	}
+}
+@media screen and (min-width:640px) and (max-width:959px) {}
+@media screen and (min-width:960px) and (max-width:1279px) {}
+@media screen and (min-width:1280px) and (max-width:1599px) {}
+@media screen and (min-width:1600px) {}
+@media screen and (min-width:1920px) {}
+
+.ffbasic() {
+	font-family: "Helvetica Neue", sans-serif;
+	font-weight: 100;
+	font-size: 25px;
+	font-style: normal;
+}
+
+/* Boilerplate */
+#header {
+	height: 8em;
+	width: auto;
+	background-color: @background-dark;
+	.name {
+		margin: 50px 0px 0px 80px;
+		padding: 0px;
+		float: left;
+		.ffbasic();
+		a{
+			color: #FFFFFF;
+			text-decoration: none; 
+		}
+	}
+
+	.nav {
+		margin: 50px 50px 0px 0px;
+		padding: 0px;
+		float: right;
+		li {
+		    list-style-type: none;
+		    display: inline;
+		    margin-left: 70px;
+		    text-decoration:line-through;
+			.ffbasic();
+			a {
+				color: #FFFFFF;
+			}
+		}
+	}
+}
+
+.button {
+	text-decoration: none;
+}
+
+.button:hover {
+	text-decoration: none;
+}
+
+/* End Boilerplate */
 
 body {
 	margin: 0px;
 	padding: 0px;
 }
-#header {
-	height: 8em;
-	width: auto;
-	background-color: #3F3A36;
-}
+
 #content {
 	height: 60%;
-	background-color: #EDEDED;
+	background-color: @background-light;
 }
 .welcome {
 	font-family: "Helvetica Neue", sans-serif;
@@ -29,12 +94,14 @@ body {
   	margin-left: -150px;
   	color: #7EB12C;
 }
+#foot {
+	text-align: center;
+	width: auto;
+	margin:0 auto;
+}
 #foot-message {
 	font-family: "Helvetica Neue", sans-serif;
 	font-weight: 100;
-	font-size: 2em;
+	font-size: 10px;
 	color: #999999;
-	position: absolute;
-	left: 50%;
-	margin-left: -185px;
 }

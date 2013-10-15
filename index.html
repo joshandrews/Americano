@@ -1,10 +1,23 @@
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<link rel="stylesheet" type="text/css" href="css/nlform.css" />
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+		<script src="scripts/nlform.js"></script>
 	</head>
 	<body>
 		<div id="header">
+			<h3 class="name">
+				<a href="/" class="button">Josh Andrews</a>
+			</h3>
+			<ul class="nav">
+				<li class=" button">
+					<a href="#" class="button">Blog</a>
+				</li>
+				<li class="about button">
+					<a href="#" class="button">About</a>
+				</li>
+			</li>
 		</div>
 		<div id="content">
 			<h1 class="welcome">
@@ -12,9 +25,23 @@
 			</h1>
 		</div>
 		<div id="foot">
-			<h3 id="foot-message">
-				future home of josh andrews!
-			</h3>
+			<div id="foot-message">
+				<form id="nl-form" class="nl-form">
+					Future
+					<select>
+						<option value="1" selected>home</option>
+						<option value="2">online presence</option>
+						<option value="3">blurb?</option>
+						<option value="4">chill spot</option>
+						<option value="2">digs</option>
+					</select>
+					of Josh Andrews
+					<div class="nl-overlay"></div>
+				</form>
+				<script>
+					var nlform = new NLForm( document.getElementById( 'nl-form' ) );
+				</script>
+			</div>
 		</div>
 	</body>
 </html>
