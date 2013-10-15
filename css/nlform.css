@@ -274,6 +274,6 @@ input:focus::-ms-input-placeholder {
 
 @media screen and (max-width:639px) {
 	.nl-form {
-		font-size: 2.5em;
+		font-size: 2em;
 	}
 }

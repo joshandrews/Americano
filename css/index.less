@@ -8,23 +8,6 @@
 @background-dark: #2F2A26;
 @background-light: #EDEDED;
 
-@media screen and (max-width:639px) {
-	#header {
-		margin: 0px auto;
-		.name {
-			position: block;
-		}
-		.nav {
-			display: none;
-		}
-	}
-}
-@media screen and (min-width:640px) and (max-width:959px) {}
-@media screen and (min-width:960px) and (max-width:1279px) {}
-@media screen and (min-width:1280px) and (max-width:1599px) {}
-@media screen and (min-width:1600px) {}
-@media screen and (min-width:1920px) {}
-
 .ffbasic() {
 	font-family: "Helvetica Neue", sans-serif;
 	font-weight: 100;
@@ -81,18 +64,18 @@ body {
 }
 
 #content {
-	height: 60%;
+	height: 50%;
 	background-color: @background-light;
+	margin: 0 auto;
+	text-align: center;
 }
 .welcome {
 	font-family: "Helvetica Neue", sans-serif;
 	font-weight: 100;
 	font-size: 10em;
-	position: absolute;
-  	top: 20%;
-  	left: 50%;
-  	margin-left: -150px;
   	color: #7EB12C;
+  	margin: 0px;
+  	padding-top: .5em;
 }
 #foot {
 	text-align: center;
@@ -105,3 +88,27 @@ body {
 	font-size: 10px;
 	color: #999999;
 }
+@media only screen and (min-width:320px) and (max-width:639px) {
+	#header {
+		text-align: center;
+		margin:0 auto;
+		.name {
+			float: none;
+			margin: 0px 0px 0px 0px;
+			padding-top: 40px;
+			font-size: 2.2em;
+		}
+		.nav {
+			display: none;
+		}
+	}
+	.welcome {
+		padding-top: 1em;
+		font-size: 4em;
+	}
+}
+@media screen and (min-width:640px) and (max-width:959px) {}
+@media screen and (min-width:960px) and (max-width:1279px) {}
+@media screen and (min-width:1280px) and (max-width:1599px) {}
+@media screen and (min-width:1600px) {}
+@media screen and (min-width:1920px) {}
