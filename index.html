@@ -1,9 +1,10 @@
 <html>
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
 		<link rel="stylesheet" type="text/css" href="css/nlform.css" />
 		<link rel="stylesheet" type="text/css" href="css/sidebar.css" />
+		<link rel="stylesheet" type="text/css" href="css/linkeffect.css" />
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 		<script src="scripts/nlform.js"></script>
 		<script src="scripts/classie.js"></script>
@@ -12,7 +13,9 @@
 	<body>
 		<div id="st-container" class="st-container">
 			<nav class="st-menu st-effect-10" id="menu-10">
-				<h2 class="icon icon-stack">:)</h2>
+				<div class="icon icon-stack">
+					<img src="images/coffee.svg"/>
+				</div>
 				<ul>
 					<li><a class="icon icon-data" href="#">Blog</a></li>
 					<li><a class="icon icon-location" href="#">About</a></li>
@@ -24,14 +27,18 @@
 						<div id="st-trigger-effects" class="column">
 							<button class="nav-btn" data-effect="st-effect-10"></button>
 						</div>
-						<h3 class="name">
-							<a href="/" class="button">Josh Andrews</a>
-						</h3>
-						<ul class="nav">
-							<li class=" button">
+						<div class="name">
+							
+							<a href="/" class="button">
+								<img src="images/coffee.svg"/>
+								Josh Andrews
+							</a>
+						</div>
+						<ul class="nav cl-effect-1">
+							<li class="button">
 								<a href="#" class="button">Blog</a>
 							</li>
-							<li class="about button">
+							<li class="button">
 								<a href="#" class="button">About</a>
 							</li>
 						</li>

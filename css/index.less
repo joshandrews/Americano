@@ -1,4 +1,5 @@
 @import 'grid.less';
+@import url(http://fonts.googleapis.com/css?family=Dosis);
 
 @column-width: 60;
 @gutter-width: 20;
@@ -7,9 +8,10 @@
 @total-width: 100%;
 @background-dark: #2F2A26;
 @background-light: #EDEDED;
+@text-color: #444444;
 
 .ffbasic() {
-	font-family: "Helvetica Neue", sans-serif;
+	font-family: "Dosis", "Helvetica Neue", sans-serif;
 	font-weight: 100;
 	font-size: 25px;
 	font-style: normal;
@@ -19,14 +21,20 @@
 #header {
 	height: 8em;
 	width: auto;
-	background-color: @background-dark;
+	background-color: #ffffff;
+	border-bottom: 1px dotted #999999;
 	.name {
-		margin: 50px 0px 0px 80px;
-		padding: 0px;
+		img {
+			float: left;
+			size: 1em;
+			margin: .4em .8em;
+		}
+		margin: 50px 0px 0px 50px;
+		padding-left: 30px;
 		float: left;
 		.ffbasic();
 		a{
-			color: #FFFFFF;
+			color: @text-color;
 			text-decoration: none; 
 		}
 	}
@@ -39,10 +47,10 @@
 		    list-style-type: none;
 		    display: inline;
 		    margin-left: 70px;
-		    text-decoration:line-through;
 			.ffbasic();
 			a {
-				color: #FFFFFF;
+				text-decoration:line-through;
+				color: @text-color;
 			}
 		}
 	}
@@ -100,47 +108,31 @@ body {
 	font-family: "Helvetica Neue", sans-serif;
 	font-weight: 100;
 	font-size: 10px;
-	color: #999999;
+	color: @text-color;
 }
-@media only screen and (min-width : 320px) and (max-width : 568px){
+@media only screen and (min-width:320px) and (max-width:639px) {
 	.nav-btn {
 		display: block;
 		position: absolute;
-		margin: 4em 0 0 1.5em;
+		margin: 1.3em 0 0 1.5em;
 	}
 	#header {
 		text-align: center;
 		margin:0 auto;
+		height: 4em;
 		.name {
 			float: none;
 			margin: 0px 0px 0px 0px;
-			padding: 40px 0 0 20px;
-			font-size: 2.2em;
-		}
-		.nav {
-			display: none;
-		}
-	}
-	.welcome {
-		padding-top: 1em;
-		font-size: 4em;
-	}
-}
+			padding: .7em 0 0 0;
+			font-size: 1.5em;
+			text-transform: uppercase;
+			img {
+				display: none;
+			}
 
-@media only screen and (min-width:569px) and (max-width:639px) {
-	.nav-btn {
-		display: block;
-		position: absolute;
-		margin: 4em 0 0 1.5em;
-	}
-	#header {
-		text-align: center;
-		margin:0 auto;
-		.name {
-			float: none;
-			margin: 0px 0px 0px 0px;
-			padding-top: 40px;
-			font-size: 2.2em;
+			a {
+				color: #444444;
+			}
 		}
 		.nav {
 			display: none;

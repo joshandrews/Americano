@@ -1,8 +1,16 @@
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="24px" viewBox="0 0 30 24" enable-background="new 0 0 30 24" xml:space="preserve">
-<circle fill="#FFFFFF" cx="2.5" cy="2.5" r="2.5"/>
-<circle fill="#FFFFFF" cx="2.5" cy="12" r="2.5"/>
-<circle fill="#FFFFFF" cx="2.5" cy="21.5" r="2.5"/>
-<rect x="7.2" fill="#FFFFFF" width="19.8" height="5"/>
-<rect x="7.2" y="9.5" fill="#FFFFFF" width="22.8" height="5"/>
-<rect x="7.2" y="19" fill="#FFFFFF" width="16.8" height="5"/>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="30px" height="24px" viewBox="0 0 30 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <title>nav-icon</title>
+    <description>Created with Sketch (http://www.bohemiancoding.com/sketch)</description>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="nav-icon" sketch:type="MSLayerGroup" fill="#444444">
+            <circle d="M2.5,5 C3.88071194,5 5,3.88071194 5,2.5 C5,1.11928806 3.88071194,0 2.5,0 C1.11928806,0 0,1.11928806 0,2.5 C0,3.88071194 1.11928806,5 2.5,5 Z M2.5,5" id="Oval" sketch:type="MSShapeGroup" cx="2.5" cy="2.5" r="2.5"></circle>
+            <circle d="M2.5,14.5 C3.88071194,14.5 5,13.3807119 5,12 C5,10.6192881 3.88071194,9.5 2.5,9.5 C1.11928806,9.5 0,10.6192881 0,12 C0,13.3807119 1.11928806,14.5 2.5,14.5 Z M2.5,14.5" id="Oval" sketch:type="MSShapeGroup" cx="2.5" cy="12" r="2.5"></circle>
+            <circle d="M2.5,24 C3.88071194,24 5,22.8807119 5,21.5 C5,20.1192881 3.88071194,19 2.5,19 C1.11928806,19 0,20.1192881 0,21.5 C0,22.8807119 1.11928806,24 2.5,24 Z M2.5,24" id="Oval" sketch:type="MSShapeGroup" cx="2.5" cy="21.5" r="2.5"></circle>
+            <rect d="M7.2,0 L7.2,5 L27,5 L27,0 L7.2,0 Z M7.2,0" id="Rectangle" sketch:type="MSShapeGroup" x="7.2" y="0" width="19.8" height="5"></rect>
+            <rect d="M7.2,9.5 L7.2,14.5 L30,14.5 L30,9.5 L7.2,9.5 Z M7.2,9.5" id="Rectangle" sketch:type="MSShapeGroup" x="7.2" y="9.5" width="22.8" height="5"></rect>
+            <rect d="M7.2,19 L7.2,24 L24,24 L24,19 L7.2,19 Z M7.2,19" id="Rectangle" sketch:type="MSShapeGroup" x="7.2" y="19" width="16.8" height="5"></rect>
+        </g>
+    </g>
 </svg>
