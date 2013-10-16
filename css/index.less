@@ -61,6 +61,7 @@
 body {
 	margin: 0px;
 	padding: 0px;
+	background: @background-dark;
 }
 
 #content {
@@ -77,6 +78,19 @@ body {
   	margin: 0px;
   	padding-top: .5em;
 }
+.nav-btn {
+	background: #333333 url("../images/nav-icon.svg") left center no-repeat;
+	height: 3em;
+	width: 3em;
+	border:0;
+	background-color:transparent;
+	display: none;
+}
+
+.nav-btn:focus {
+    outline: 0;
+}
+
 #foot {
 	text-align: center;
 	width: auto;
@@ -88,7 +102,37 @@ body {
 	font-size: 10px;
 	color: #999999;
 }
-@media only screen and (min-width:320px) and (max-width:639px) {
+@media only screen and (min-width : 320px) and (max-width : 568px){
+	.nav-btn {
+		display: block;
+		position: absolute;
+		margin: 4em 0 0 1.5em;
+	}
+	#header {
+		text-align: center;
+		margin:0 auto;
+		.name {
+			float: none;
+			margin: 0px 0px 0px 0px;
+			padding: 40px 0 0 20px;
+			font-size: 2.2em;
+		}
+		.nav {
+			display: none;
+		}
+	}
+	.welcome {
+		padding-top: 1em;
+		font-size: 4em;
+	}
+}
+
+@media only screen and (min-width:569px) and (max-width:639px) {
+	.nav-btn {
+		display: block;
+		position: absolute;
+		margin: 4em 0 0 1.5em;
+	}
 	#header {
 		text-align: center;
 		margin:0 auto;

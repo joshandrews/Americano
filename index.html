@@ -3,46 +3,66 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="css/index.css">
 		<link rel="stylesheet" type="text/css" href="css/nlform.css" />
+		<link rel="stylesheet" type="text/css" href="css/sidebar.css" />
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 		<script src="scripts/nlform.js"></script>
+		<script src="scripts/classie.js"></script>
+		<script src="scripts/modernizr.custom.js"></script>
 	</head>
 	<body>
-		<div id="header">
-			<h3 class="name">
-				<a href="/" class="button">Josh Andrews</a>
-			</h3>
-			<ul class="nav">
-				<li class=" button">
-					<a href="#" class="button">Blog</a>
-				</li>
-				<li class="about button">
-					<a href="#" class="button">About</a>
-				</li>
-			</li>
-		</div>
-		<div id="content">
-			<h1 class="welcome">
-				welcome
-			</h1>
-		</div>
-		<div id="foot">
-			<div id="foot-message">
-				<form id="nl-form" class="nl-form">
-					Future
-					<select>
-						<option value="1" selected>home</option>
-						<option value="2">online presence</option>
-						<option value="3">blurb?</option>
-						<option value="4">chill spot</option>
-						<option value="2">digs</option>
-					</select>
-					of Josh Andrews
-					<div class="nl-overlay"></div>
-				</form>
-				<script>
-					var nlform = new NLForm( document.getElementById( 'nl-form' ) );
-				</script>
+		<div id="st-container" class="st-container">
+			<nav class="st-menu st-effect-10" id="menu-10">
+				<h2 class="icon icon-stack">:)</h2>
+				<ul>
+					<li><a class="icon icon-data" href="#">Blog</a></li>
+					<li><a class="icon icon-location" href="#">About</a></li>
+				</ul>
+			</nav>
+			<div class="st-pusher">
+				<div class="st-content">
+					<div id="header">
+						<div id="st-trigger-effects" class="column">
+							<button class="nav-btn" data-effect="st-effect-10"></button>
+						</div>
+						<h3 class="name">
+							<a href="/" class="button">Josh Andrews</a>
+						</h3>
+						<ul class="nav">
+							<li class=" button">
+								<a href="#" class="button">Blog</a>
+							</li>
+							<li class="about button">
+								<a href="#" class="button">About</a>
+							</li>
+						</li>
+					</div>
+					<div id="content">
+						<h1 class="welcome">
+							welcome
+						</h1>
+					</div>
+					<div id="foot">
+						<div id="foot-message">
+							<form id="nl-form" class="nl-form">
+								Future
+								<select>
+									<option value="1" selected>home</option>
+									<option value="2">online presence</option>
+									<option value="3">blurb?</option>
+									<option value="4">chill spot</option>
+									<option value="2">digs</option>
+								</select>
+								of Josh Andrews
+								<div class="nl-overlay"></div>
+							</form>
+							<script>
+								var nlform = new NLForm( document.getElementById( 'nl-form' ) );
+							</script>
+						</div>
+					</div>
+				</div>
 			</div>
+			<script src="scripts/sidebarEffects.js"></script>
 		</div>
 	</body>
 </html>
