@@ -1,14 +1,12 @@
 Website of Josh Andrews
 
-Current Version: 0.1
-	- Responsive Home "Filler Page"
-	- Links
-	- Welcome Message
-	- Fun Description Chooser
-
-Next Version: 0.2
+Current Version: 0.2
 	- Running web.py
 	- Blog framework
+
+Next Version: 0.3
+	- WYSIWYG Editor
+	- Authentification
 
 Release Version: 1.0
 	- Polished blogging framework
