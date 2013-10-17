@@ -1,0 +1,75 @@
+#header {
+	background: none;
+	height: 4em;
+	.name {
+		margin: 0px;
+		padding: .7em 0 0 0;
+		font-size: 1.5em;
+		text-transform: uppercase;
+	}
+	.nav {
+		margin: 0px;
+		padding: .7em .3em 0 0;
+		text-transform: uppercase;
+		font-size: 1.5em
+	}
+}
+
+#hero {
+	background: #0e184f;
+	width: 100%;
+	position: relative; 
+	#title {
+		font-family: "Helvetica Neue", Sans-Serif;
+		font-weight: 100;
+		font-size: 7em;
+		position: absolute;
+		color: #FFFFFF;
+		width: 100%;
+		text-align: center;
+		bottom: .8em;
+	}
+	.hero-img {
+		display: block;
+		max-width: 100%;
+		height: auto;
+		opacity: 0.4;
+	}
+}
+
+#blog-content {
+	width: 80%;
+	font-size: 20px;
+	font-color: #444444;
+	font-style: "Helvetica Neue";
+	font-weight: 200;
+	padding-top: 20px;
+	margin: 0 auto;
+	line-height: 1.5em;
+}
+.st-pusher {
+	overflow: scroll;
+}
+
+@media only screen and (min-width:320px) and (max-width:639px) {
+	#hero {
+		#title {
+			font-size: 4em;
+			bottom: .3em;
+		}
+	}
+	#blog-content {
+		width: 90%;
+	}
+}
+@media only screen and (min-width : 640px) and (max-width : 1024px) {
+	#hero {
+		#title {
+			font-size: 6em;
+			bottom: .5em;
+		}
+	}
+	#blog-content {
+		width: 85%;
+	}
+}

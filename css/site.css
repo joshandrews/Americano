@@ -1,0 +1,14 @@
+@import url(http://fonts.googleapis.com/css?family=Dosis:200,400);
+body{width:100%;*zoom:1}body:before,body:after{content:"";display:table}
+body:after{clear:both}
+body{margin:0;padding:0;background:#fff}
+#header{height:8em;width:auto;background-color:#fff;border-bottom:1px dotted #999}#header .name{margin:50px 0 0 50px;padding-left:30px;float:left;font-family:"Dosis","Helvetica Neue",sans-serif;font-weight:400;font-size:25px;font-style:normal}#header .name img{float:left;size:1em;margin:.4em .8em}
+#header .name a{color:#444;text-decoration:none}
+#header .nav{margin:50px 50px 0 0;padding:0;float:right}#header .nav li{list-style-type:none;display:inline;margin-left:70px;font-family:"Dosis","Helvetica Neue",sans-serif;font-weight:400;font-size:25px;font-style:normal}#header .nav li a{color:#444}
+.nav-btn{background:#333 url("../images/nav-icon.svg") left center no-repeat;height:3em;width:3em;border:0;background-color:transparent;display:none}
+.nav-btn:focus{outline:0}
+.button{text-decoration:none}
+.button:hover{text-decoration:none}
+#foot{text-align:center;width:auto;margin:0 auto}
+#foot-message{font-family:"Helvetica Neue",sans-serif;font-weight:100;font-size:10px;color:#444}
+@media only screen and (min-width:320px) and (max-width:639px){.nav-btn{display:block;position:absolute;margin:1.3em 0 0 1.5em} #header{text-align:center;margin:0 auto;height:4em}#header .name{float:none;margin:0 0 0 0;padding:.7em 0 0 0;font-size:1.5em;text-transform:uppercase}#header .name img{display:none} #header .nav{display:none}}@media only screen and (min-width:640px) and (max-width:1024px){#header{height:4em}#header .name{margin:0;padding:.7em 0 0 0;font-size:1.5em;text-transform:uppercase} #header .nav{margin:0;padding:.7em .3em 0 0;text-transform:uppercase;font-size:1.5em}}
