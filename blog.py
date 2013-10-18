@@ -1,97 +1,28 @@
-""" Basic blog using webpy 0.3 """
-import web
-import model
+import web, datetime
 
-### Url mappings
+db = web.database(dbn='mysql', db='blog', user='admin', pw='andre')
 
-urls = (
-    '/', 'Index',
-    '/blog', 'Blog',
-    '/blog/(\d+)', 'View',
-    '/blog/new', 'New',
-    '/blog/delete/(\d+)', 'Delete',
-    '/blog/edit/(\d+)', 'Edit',
-)
+def get_posts():
+    return db.select('entries', order='id DESC')
 
+def get_published_posts():
+    return db.select('entries', where='published=1', order='id DESC')
 
-### Templates
-t_globals = {
-    'datestr': web.datestr
-}
-render = web.template.render('templates', globals=t_globals)
+def get_unpublished_posts():
+    return db.select('entries', where='published=0', order='id DESC')
 
-class Index:
-    
-    def GET(self):
-        return render.index()
+def get_post(id):
+    try:
+        return db.select('entries', where='id=$id', vars=locals())[0]
+    except IndexError:
+        return None
 
+def new_post(title, text):
+    db.insert('entries', title=title, content=text, posted_on=datetime.datetime.utcnow(), published=1)
 
-class Blog:
+def del_post(id):
+    db.delete('entries', where="id=$id", vars=locals())
 
-    def GET(self):
-        """ Show page """
-        posts = model.get_posts()
-        return render.blog(posts)
-
-
-class View:
-
-    def GET(self, id):
-        """ View single post """
-        post = model.get_post(int(id))
-        return render.view(post)
-
-
-class New:
-
-    form = web.form.Form(
-        web.form.Textbox('title', web.form.notnull, 
-            size=30,
-            description="Post title:"),
-        web.form.Textarea('content', web.form.notnull, 
-            rows=30, cols=80,
-            description="Post content:"),
-        web.form.Button('Post entry'),
-    )
-
-    def GET(self):
-        form = self.form()
-        return render.new(form)
-
-    def POST(self):
-        form = self.form()
-        if not form.validates():
-            return render.new(form)
-        model.new_post(form.d.title, form.d.content)
-        raise web.seeother('/blog')
-
-
-class Delete:
-
-    def POST(self, id):
-        model.del_post(int(id))
-        raise web.seeother('/blog')
-
-
-class Edit:
-
-    def GET(self, id):
-        post = model.get_post(int(id))
-        form = New.form()
-        form.fill(post)
-        return render.edit(post, form)
-
-
-    def POST(self, id):
-        form = New.form()
-        post = model.get_post(int(id))
-        if not form.validates():
-            return render.edit(post, form)
-        model.update_post(int(id), form.d.title, form.d.content)
-        raise web.seeother('/blog')
-
-
-app = web.application(urls, globals())
-
-if __name__ == '__main__':
-    app.run()
+def update_post(id, title, text):
+    db.update('entries', where="id=$id", vars=locals(),
+        title=title, content=text)

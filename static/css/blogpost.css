@@ -1,5 +1,3 @@
-#header{background:none;height:4em}#header .name{margin:0;padding:.7em 0 0 0;font-size:1.5em;text-transform:uppercase}
-#header .nav{margin:0;padding:.7em .3em 0 0;text-transform:uppercase;font-size:1.5em}
 #hero{background:#0e184f;width:100%;position:relative}#hero #title{font-family:"Helvetica Neue",Sans-Serif;font-weight:100;font-size:7em;position:absolute;color:#fff;width:100%;text-align:center;bottom:.8em}
 #hero .hero-img{display:block;max-width:100%;height:auto;opacity:.4}
 #post-content{width:80%;font-size:20px;font-color:#444;font-style:"Helvetica Neue",Sans-Serif;font-weight:200;padding-top:20px;margin:0 auto;line-height:1.5em}
