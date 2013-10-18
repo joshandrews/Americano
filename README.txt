@@ -6,10 +6,11 @@ Current Version: 0.2
 
 Next Version: 0.3
 	- WYSIWYG Editor
-	- Authentification
+	- Authentication
+	- Latte CMS
 
 Release Version: 1.0
-	- Polished blogging framework
+	- Polished blogging framework (Latte)
 	- Inline comments
 	- About page
 	- Dynamic home page
