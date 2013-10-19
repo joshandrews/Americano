@@ -101,32 +101,31 @@ class View:
 
 class New:
 
-    form = web.form.Form(
-        web.form.Textbox('title', web.form.notnull, 
-            size=30,
-            description="Post title:"),
-        web.form.Textarea('content', web.form.notnull, 
-            rows=30, cols=80,
-            description="Post content:"),
-        web.form.Button('Post entry'),
-    )
-
     def GET(self):
-        form = self.form()
-        return render.new(form)
+        render = user.create_render(session)
+        return render.new()
 
     def POST(self):
-        form = self.form()
-        if not form.validates():
-            return render.new(form)
-        blog.new_post(form.d.title, form.d.content)
-        raise web.seeother('/blog')
+        print "hit post"
+        title, body, published = web.input().title, web.input().body, int(web.input().published)
+        if user.logged(session):
+            if session.privilege == 2:
+                if title == "" or body == "":
+                    render = user.create_render(session)
+                    return render.new()
+                blog.new_post(title, body, published)
+        if published == 1:
+            raise web.seeother('/blog')
+        else:
+            raise web.seeother('/latte') 
 
 
 class Delete:
 
     def POST(self, id):
-        blog.del_post(int(id))
+        if user.logged(session):
+            if session.privilege == 2:
+                blog.del_post(int(id))
         raise web.seeother('/blog')
 
 
@@ -136,15 +135,18 @@ class Edit:
         post = blog.get_post(int(id))
         form = New.form()
         form.fill(post)
+        render = user.create_render(session)
         return render.edit(post, form)
 
 
     def POST(self, id):
-        form = New.form()
-        post = blog.get_post(int(id))
-        if not form.validates():
-            return render.edit(post, form)
-        blog.update_post(int(id), form.d.title, form.d.content)
+        if user.logged(session):
+            if session.privilege == 2:
+                form = New.form()
+                post = blog.get_post(int(id))
+                if not form.validates():
+                    return render.edit(post, form)
+                blog.update_post(int(id), form.d.title, form.d.content)
         raise web.seeother('/blog')
 
 if __name__ == '__main__':

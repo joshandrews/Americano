@@ -58,7 +58,7 @@ $def with (published_posts, unpublished_posts)
 									</a>
 									— $datestr(post.posted_on) 
 									<div class="post-body">
-										$post.content
+										$:post.content
 									</div>
 									<a class="continue-reading" href="/blog/$post.id">Continue Reading &#65515;</a>
 								</div>
@@ -73,7 +73,7 @@ $def with (published_posts, unpublished_posts)
 									</a>
 									— $datestr(post.posted_on) 
 									<div class="post-body">
-										$post.content
+										$:post.content
 									</div>
 									<a class="continue-reading" href="/blog/$post.id">Continue Reading &#65515;</a>
 								</div>

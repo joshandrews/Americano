@@ -1,15 +1,18 @@
-$def with (posts)
-
+$def with ()
 <html>
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="/static/css/site.css" />
 		<link rel="stylesheet" type="text/css" href="/static/css/sidebar.css" />
 		<link rel="stylesheet" type="text/css" href="/static/css/linkeffect.css" />
-		<link rel="stylesheet" type="text/css" href="/static/css/blog.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/latte.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/skinny_header.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/new.css" />
+		<link rel="stylesheet" href="/static/css/medium-editor.css">
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 		<script src="/static/scripts/classie.js"></script>
 		<script src="/static/scripts/modernizr.custom.js"></script>
+		<script src="/static/scripts/new.js"></script>
 	</head>
 	<body>
 		<div id="st-container" class="st-container">
@@ -31,7 +34,7 @@ $def with (posts)
 						<div class="name">
 							<a href="/" class="button">
 								<img src="/static/images/coffee.svg"/>
-								Josh Andrews
+								Latte
 							</a>
 						</div>
 						<ul class="nav cl-effect-1">
@@ -44,26 +47,32 @@ $def with (posts)
 						</li>
 					</div>
 					<div id="content">
-						$for post in posts:
-							<div class="blog-post">
-								
-								<a class="post-title" href="/blog/$post.id">
-									$post.title
-								</a>
-								— $datestr(post.posted_on) 
-								<div class="post-body">
-									$:post.content
+						<div id="title" class="title editable">
+							<p>Title<p>
+						</div>
+						<div id="body" class="body editable">
+							<p>Body</p>
+						</div>
+						<div class="submit-form">
+							<form action="" method="post">
+								<input type="hidden" name="title" id="title-input"></input>
+								<input type="hidden" name="body" id="body-input"></input>
+								<input type="hidden" name="published" id="published-input"></input>
+								<button class="submit" id="draft" name="draft" value="draft">— Save as Draft</button>
+								<div class="button-container">
+									<div class="or"><div class="strikethrough">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> or <div class="strikethrough">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
 								</div>
-								<a class="continue-reading" href="/blog/$post.id">Continue Reading &#65515;</a>
-							</div>
+								<div class="button-container">
+									<button class="submit" id="publish" name="publish" value="publish">+ Publish</button>
+								</div>
+							</form>
+						</div>
 					</div>
 					<div id="foot">
-						<div id="foot-message">
-							
-						</div>
 					</div>
 				</div>
 			</div>
+			<script src="/static/scripts/medium-editor.min.js"></script>
 			<script src="/static/scripts/sidebarEffects.js"></script>
 		</div>
 	</body>
