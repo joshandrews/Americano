@@ -106,7 +106,6 @@ class New:
         return render.new()
 
     def POST(self):
-        print "hit post"
         title, body, published = web.input().title, web.input().body, int(web.input().published)
         if user.logged(session):
             if session.privilege == 2:
@@ -126,28 +125,35 @@ class Delete:
         if user.logged(session):
             if session.privilege == 2:
                 blog.del_post(int(id))
-        raise web.seeother('/blog')
+        raise web.seeother('/latte')
 
 
 class Edit:
 
     def GET(self, id):
         post = blog.get_post(int(id))
-        form = New.form()
-        form.fill(post)
+        if post is None:
+            post_id = blog.new_post("title", "<p>body</p>", 0)
+            post = blog.get_post(post_id)
+            print post_id
+            raise web.seeother("/blog/edit/"+str(post_id))
         render = user.create_render(session)
-        return render.edit(post, form)
+        return render.edit(post)
 
 
     def POST(self, id):
+        title, body, published = web.input().title, web.input().body, int(web.input().published)
         if user.logged(session):
             if session.privilege == 2:
-                form = New.form()
                 post = blog.get_post(int(id))
-                if not form.validates():
-                    return render.edit(post, form)
-                blog.update_post(int(id), form.d.title, form.d.content)
-        raise web.seeother('/blog')
+                if title == "" or body == "":
+                    render = user.create_render(session)
+                    return render.edit(post)
+                blog.update_post(int(id), title, body, published)
+        if published == 1:
+            raise web.seeother('/blog')
+        else:
+            raise web.seeother('/latte') 
 
 if __name__ == '__main__':
     app.run()

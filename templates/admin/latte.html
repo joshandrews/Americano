@@ -46,13 +46,12 @@ $def with (published_posts, unpublished_posts)
 					</div>
 					<div id="content">
 						<div class="new-post">
-							<a href="/blog/new" class="section-header new-post-link">+ New Post</a>
+							<a href="/blog/edit/0" class="section-header new-post-link">+ New Post</a>
 						</div>
 						<div class="published-posts">
 							<h3 class="published-posts-head section-header">Published Posts</h3>
 							$for post in published_posts:
 								<div class="blog-post">
-									
 									<a class="post-title" href="/blog/$post.id">
 										$post.title
 									</a>
@@ -60,14 +59,36 @@ $def with (published_posts, unpublished_posts)
 									<div class="post-body">
 										$:post.content
 									</div>
-									<a class="continue-reading" href="/blog/$post.id">Continue Reading &#65515;</a>
+									<!--<a class="continue-reading" href="/blog/$post.id">Continue Reading &#65515;</a>-->
+									<div class="icons">
+										<a class="edit svg-icon" href="/blog/edit/$post.id">
+											<svg height="25" version="1.1" width="25" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative; left: -0.0166626px; top: -0.983337px;">
+										        <desc></desc>
+										        <defs/>
+										        <path style="" fill="#444444" stroke="none" d="M21.561,5.318l-2.879-2.879C18.389,2.146,18.005,2,17.621,2c-0.385,0-0.768,0.146-1.061,0.439L13,6H4C3.448,6,3,6.447,3,7
+												v13c0,0.553,0.448,1,1,1h13c0.552,0,1-0.447,1-1v-9l3.561-3.561C21.854,7.146,22,6.762,22,6.378S21.854,5.611,21.561,5.318z
+												 M11.5,14.672L9.328,12.5l6.293-6.293l2.172,2.172L11.5,14.672z M8.939,13.333l1.756,1.728L9,15L8.939,13.333z M16,19H5V8h6
+												l-3.18,3.18c-0.293,0.293-0.478,0.812-0.629,1.289C7.031,12.969,7,13.525,7,13.939V17h3.061c0.414,0,1.108-0.1,1.571-0.29
+												c0.464-0.19,0.896-0.347,1.188-0.64L16,13V19z M18.5,7.672L16.328,5.5l1.293-1.293l2.171,2.172L18.5,7.672z"/>
+										    </svg>
+										</a>
+										<a class="delete svg-icon" href="/blog/delete/$post.id">
+											<svg height="25" version="1.1" width="25" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative; left: -0.0166626px; top: -0.983337px;">
+										        <desc></desc>
+										        <defs/>
+										        <path style="" fill="#444444" stroke="none" d="M12,4c-4.419,0-8,3.582-8,8s3.581,8,8,8s8-3.582,8-8S16.419,4,12,4z M15.707,14.293c0.391,0.391,0.391,1.023,0,1.414
+												C15.512,15.902,15.256,16,15,16s-0.512-0.098-0.707-0.293L12,13.414l-2.293,2.293C9.512,15.902,9.256,16,9,16
+												s-0.512-0.098-0.707-0.293c-0.391-0.391-0.391-1.023,0-1.414L10.586,12L8.293,9.707c-0.391-0.391-0.391-1.023,0-1.414
+												s1.023-0.391,1.414,0L12,10.586l2.293-2.293c0.391-0.391,1.023-0.391,1.414,0s0.391,1.023,0,1.414L13.414,12L15.707,14.293z"/>
+										    </svg>
+										</a>
+									</div>
 								</div>
 						</div>
 						<div class="unpublished-posts">
 							<h3 class="unpublished-posts-head section-header">Unublished Posts</h3>
 							$for post in unpublished_posts:
 								<div class="blog-post">
-									
 									<a class="post-title" href="/blog/$post.id">
 										$post.title
 									</a>
@@ -75,7 +96,30 @@ $def with (published_posts, unpublished_posts)
 									<div class="post-body">
 										$:post.content
 									</div>
-									<a class="continue-reading" href="/blog/$post.id">Continue Reading &#65515;</a>
+									<!--<a class="continue-reading" href="/blog/$post.id">Continue Reading &#65515;</a>-->
+									<div class="icons">
+										<a class="edit svg-icon" href="/blog/edit/$post.id">
+											<svg height="25" version="1.1" width="25" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative; left: -0.0166626px; top: -0.983337px;">
+										        <desc></desc>
+										        <defs/>
+										        <path style="" fill="#444444" stroke="none" d="M21.561,5.318l-2.879-2.879C18.389,2.146,18.005,2,17.621,2c-0.385,0-0.768,0.146-1.061,0.439L13,6H4C3.448,6,3,6.447,3,7
+												v13c0,0.553,0.448,1,1,1h13c0.552,0,1-0.447,1-1v-9l3.561-3.561C21.854,7.146,22,6.762,22,6.378S21.854,5.611,21.561,5.318z
+												 M11.5,14.672L9.328,12.5l6.293-6.293l2.172,2.172L11.5,14.672z M8.939,13.333l1.756,1.728L9,15L8.939,13.333z M16,19H5V8h6
+												l-3.18,3.18c-0.293,0.293-0.478,0.812-0.629,1.289C7.031,12.969,7,13.525,7,13.939V17h3.061c0.414,0,1.108-0.1,1.571-0.29
+												c0.464-0.19,0.896-0.347,1.188-0.64L16,13V19z M18.5,7.672L16.328,5.5l1.293-1.293l2.171,2.172L18.5,7.672z"/>
+										    </svg>
+										</a>
+										<a class="delete svg-icon" href="/blog/delete/$post.id">
+											<svg height="25" version="1.1" width="25" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative; left: -0.0166626px; top: -0.983337px;">
+										        <desc></desc>
+										        <defs/>
+										        <path style="" fill="#444444" stroke="none" d="M12,4c-4.419,0-8,3.582-8,8s3.581,8,8,8s8-3.582,8-8S16.419,4,12,4z M15.707,14.293c0.391,0.391,0.391,1.023,0,1.414
+												C15.512,15.902,15.256,16,15,16s-0.512-0.098-0.707-0.293L12,13.414l-2.293,2.293C9.512,15.902,9.256,16,9,16
+												s-0.512-0.098-0.707-0.293c-0.391-0.391-0.391-1.023,0-1.414L10.586,12L8.293,9.707c-0.391-0.391-0.391-1.023,0-1.414
+												s1.023-0.391,1.414,0L12,10.586l2.293-2.293c0.391-0.391,1.023-0.391,1.414,0s0.391,1.023,0,1.414L13.414,12L15.707,14.293z"/>
+										    </svg>
+										</a>
+									</div>
 								</div>
 						</div>
 					</div>

@@ -37,7 +37,31 @@
 	}
 	.blog-post {
 		border-bottom: 1px solid #DDDDDD;
-		padding: 2em 0 2em 0;
+		padding: 2em 0 1em 0;
+		.svg-icon {
+			display: inline;
+			text-decoration: none;
+			svg {
+				zoom: 120%;
+			}
+		}
+		.edit {
+			svg:hover {
+				path {
+					fill: #7EB12C;	
+				}
+			}
+		}
+		.delete {
+			svg:hover {
+				path {
+					fill: #893027;
+				}
+			}
+		}
+		.icons {
+			margin: 1em 0 0 0;
+		}
 		.post-title {
 			font-family: "Helvetica Neue", sans-serif;
 			font-weight: 200;

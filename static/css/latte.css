@@ -3,7 +3,11 @@
 #content .new-post .new-post-link:hover{color:#7eb12c}
 #content .published-posts{width:48%;float:left}#content .published-posts .published-posts-head{color:#76c3bd}
 #content .unpublished-posts{width:48%;float:right}#content .unpublished-posts .unpublished-posts-head{color:#893027}
-#content .blog-post{border-bottom:1px solid #ddd;padding:2em 0 2em 0}#content .blog-post .post-title{font-family:"Helvetica Neue",sans-serif;font-weight:200;font-size:28px;font-style:normal;margin:20px 0 20px 0;color:#444;text-decoration:none}
+#content .blog-post{border-bottom:1px solid #ddd;padding:2em 0 1em 0}#content .blog-post .svg-icon{display:inline;text-decoration:none}#content .blog-post .svg-icon svg{zoom:120%}
+#content .blog-post .edit svg:hover path{fill:#7eb12c}
+#content .blog-post .delete svg:hover path{fill:#893027}
+#content .blog-post .icons{margin:1em 0 0 0}
+#content .blog-post .post-title{font-family:"Helvetica Neue",sans-serif;font-weight:200;font-size:28px;font-style:normal;margin:20px 0 20px 0;color:#444;text-decoration:none}
 #content .blog-post .post-title:hover{color:#999}
 #content .blog-post .post-body{font-size:18px;font-color:#444;font-style:"Helvetica Neue",Sans-Serif;font-weight:200;line-height:1.3em}
 #content .blog-post .continue-reading{color:#444;font-style:"Helvetica Neue",Sans-Serif;font-weight:200;text-decoration:none;font-size:20px;padding-bottom:1em}

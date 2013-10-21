@@ -1,13 +1,100 @@
-$def with (post, form)
-
-<h1>Edit $form.d.title</h1>
-
-<form action="" method="post">
-$:form.render()
-</form>
-
-
-<h2>Delete post</h2>
-<form action="/blog/delete/$post.id" method="post">
-    <input type="submit" value="Delete post"/>
-</form>
+$def with (post)
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="/static/css/site.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/sidebar.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/linkeffect.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/latte.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/skinny_header.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/edit.css" />
+		<link rel="stylesheet" href="/static/css/medium-editor.css">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+		<script src="/static/scripts/classie.js"></script>
+		<script src="/static/scripts/modernizr.custom.js"></script>
+		<script src="/static/scripts/edit.js"></script>
+	</head>
+	<body>
+		<div id="st-container" class="st-container">
+			<nav class="st-menu st-effect-4" id="menu-4">
+				<div class="icon icon-stack">
+					<img src="/static/images/coffee.svg"/>
+				</div>
+				<ul>
+					<li><a class="icon icon-data" href="/blog">Blog</a></li>
+					<li><a class="icon icon-location" href="#">About</a></li>
+				</ul>
+			</nav>
+			<div class="st-pusher">
+				<div class="st-content">
+					<div id="header">
+						<div id="st-trigger-effects" class="column">
+							<button class="nav-btn" data-effect="st-effect-4"></button>
+						</div>
+						<div class="name">
+							<a href="/" class="button">
+								<img src="/static/images/coffee.svg"/>
+								Latte
+							</a>
+						</div>
+						<ul class="nav cl-effect-1">
+							<li class="button">
+								<a href="/blog" class="button">Blog</a>
+							</li>
+							<li class="button">
+								<a href="#" class="button">About</a>
+							</li>
+						</li>
+					</div>
+					<div id="content">
+						<form action="/blog/delete/$post.id" method="post">
+				    		<button class="submit delete" type="submit">
+				    			<svg height="25" version="1.1" width="25" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative; left: -0.0166626px; top: -0.983337px;">
+							        <desc></desc>
+							        <defs/>
+							        <path style="" fill="#444444" stroke="none" d="M12,4c-4.419,0-8,3.582-8,8s3.581,8,8,8s8-3.582,8-8S16.419,4,12,4z M15.707,14.293c0.391,0.391,0.391,1.023,0,1.414
+									C15.512,15.902,15.256,16,15,16s-0.512-0.098-0.707-0.293L12,13.414l-2.293,2.293C9.512,15.902,9.256,16,9,16
+									s-0.512-0.098-0.707-0.293c-0.391-0.391-0.391-1.023,0-1.414L10.586,12L8.293,9.707c-0.391-0.391-0.391-1.023,0-1.414
+									s1.023-0.391,1.414,0L12,10.586l2.293-2.293c0.391-0.391,1.023-0.391,1.414,0s0.391,1.023,0,1.414L13.414,12L15.707,14.293z"/>
+								</svg>
+				    			<div id="delete-text"><div>Delete Post</div></div>
+				    		</button>
+						</form>
+						<div id="title" class="title editable">
+							<p>$post.title<p>
+						</div>
+						<div id="body" class="body editable">
+							$:post.content
+						</div>
+						<div class="submit-form">
+							<form action="" method="post">
+								<input type="hidden" name="title" id="title-input"></input>
+								<input type="hidden" name="body" id="body-input"></input>
+								<input type="hidden" name="published" id="published-input"></input>
+								<div class="button-container">
+									$if post.published == 1:
+										<button class="submit" id="draft" name="draft" value="draft">— Unpublish Post</button>
+									$else:
+										<button class="submit" id="draft" name="draft" value="draft">— Save as Draft</button>
+								</div>
+								<div class="button-container">
+									<div class="or"><div class="strikethrough">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div> or <div class="strikethrough">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div></div>
+								</div>
+								<div class="button-container">
+									$if post.published == 1:
+										<button class="submit" id="publish" name="publish" value="publish">+ Update post</button>
+									$else:
+										<button class="submit" id="publish" name="publish" value="publish">+ Publish</button>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div id="foot">
+					</div>
+				</div>
+			</div>
+			<script src="/static/scripts/medium-editor.min.js"></script>
+			<script src="/static/scripts/sidebarEffects.js"></script>
+		</div>
+	</body>
+</html>

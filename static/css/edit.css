@@ -9,6 +9,12 @@
 #content .submit:focus{outline:0}
 #content #draft{color:#61221c;margin:.3em 0}
 #content #draft:hover{color:#b13e32}
+#content .delete{overflow:hidden;white-space:nowrap;display:inline-block;text-decoration:none;float:right}#content .delete svg{margin-top:5px;float:left;zoom:200%}
+#content .delete svg:hover path{fill:#893027}
+#content .delete div{font-size:.9em;opacity:0;max-width:0;float:left;margin-top:.31em;transition:max-width .1s ease-out .1s,opacity .1s ease-out .1s,color}#content .delete div div{float:left}
+#content .delete:hover div{opacity:1;max-width:300px;transition:max-width .1s ease-out .1s,opacity .1s ease-out .1s;color:#893027}
+#content .delete:hover svg path{fill:#893027}
+#content .delete:hover{-webkit-transition:all 1s ease-in-out;-moz-transition:all 1s ease-in-out;-o-transition:all 1s ease-in-out;transition:all 1s ease-in-out}
 .strikethrough{text-decoration:line-through;display:inline}
 .or{font-style:italic;display:inline}
 .submit-form{text-align:center;margin:0 auto}

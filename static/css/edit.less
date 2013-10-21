@@ -69,6 +69,57 @@
 	#draft:hover {
 	    color: lighten(#893027, 10%);
 	}
+	.delete {
+		overflow: hidden;
+	    white-space:nowrap;
+	    display: inline-block;
+	    text-decoration: none;
+	    float: right;
+		svg {
+			margin-top: 5px;
+			float: left;
+			zoom: 200%;
+		}
+		svg:hover {
+			path {
+				fill: #893027;
+			}
+		}
+		div {
+			font-size: .9em;
+			opacity: 0;
+	        max-width: 0;
+	        float: left;
+	        margin-top: .31em;
+			transition: max-width .1s ease-out .1s, opacity .1s ease-out .1s, color;
+			div {
+				float: left;
+			}
+
+		}
+	}
+	.delete:hover div {
+        opacity: 1;
+        max-width: 300px;
+        transition: max-width .1s ease-out .1s, opacity .1s ease-out .1s;
+        color: #893027;
+    }
+    .delete:hover {
+    	svg {
+    		path {
+    			fill: #893027;
+    		}
+    	}
+    }
+	.delete:hover {
+		-webkit-transition: all 1s ease-in-out;
+        -moz-transition: all 1s ease-in-out;
+        -o-transition: all 1s ease-in-out;
+        transition: all 1s ease-in-out;
+	}
+	.delete-post {
+
+	}
 
 }
 
