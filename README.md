@@ -10,6 +10,7 @@ Current Version: 0.3
 Next Version: 0.4
 -----------------------
 	- [ ] Background update edit page
+	- [ ] Post Trash
 	- [ ] Nice login page
 	- [ ] Fewer 404s - correct redirects or landing pages
 	- [ ] Reorg structure
