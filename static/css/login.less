@@ -1,0 +1,30 @@
+@import 'colors.less';
+@import 'fonts.less';
+
+#content {
+	form {
+		width: 200px;
+		margin: 2em auto 0em auto;
+		p {
+			input {
+				.ffstandard-light();
+				font-size: 2em;
+				color: @text-color;
+				border: none;
+				outline: none;
+				letter-spacing: .1em;
+			}
+			.login {
+				color: darken(@green, 20%);
+				padding: 0;
+				border:0;
+				background-color:transparent;
+				font-size: 2em;
+				cursor: pointer;
+			}
+			.login:hover {
+				color: @green;
+			}
+		}
+	}
+}

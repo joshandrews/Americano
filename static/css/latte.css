@@ -1,15 +1,106 @@
-.section-header{font-family:"Helvetica Neue",sans-serif;font-weight:200;font-size:28px;font-style:normal;text-transform:uppercase;text-decoration:none}
-#content{margin:0 auto;padding:2em 0 2em 0;width:90%}#content .new-post{width:100%;border-bottom:1px dashed #ddd;padding:1em 0 1em 0}#content .new-post .new-post-link{color:#444}
-#content .new-post .new-post-link:hover{color:#7eb12c}
-#content .published-posts{width:48%;float:left}#content .published-posts .published-posts-head{color:#76c3bd}
-#content .unpublished-posts{width:48%;float:right}#content .unpublished-posts .unpublished-posts-head{color:#893027}
-#content .blog-post{border-bottom:1px solid #ddd;padding:2em 0 1em 0}#content .blog-post .svg-icon{display:inline;text-decoration:none}#content .blog-post .svg-icon svg{zoom:120%}
-#content .blog-post .edit svg:hover path{fill:#7eb12c}
-#content .blog-post .delete svg:hover path{fill:#893027}
-#content .blog-post .icons{margin:1em 0 0 0}
-#content .blog-post .post-title{font-family:"Helvetica Neue",sans-serif;font-weight:200;font-size:28px;font-style:normal;margin:20px 0 20px 0;color:#444;text-decoration:none}
-#content .blog-post .post-title:hover{color:#999}
-#content .blog-post .post-body{font-size:18px;font-color:#444;font-style:"Helvetica Neue",Sans-Serif;font-weight:200;line-height:1.3em}
-#content .blog-post .continue-reading{color:#444;font-style:"Helvetica Neue",Sans-Serif;font-weight:200;text-decoration:none;font-size:20px;padding-bottom:1em}
-#content .blog-post .continue-reading:hover{color:#999}
-@media only screen and (min-width:320px) and (max-width:639px){#content{margin:0 auto;padding:2em 0 2em 0;width:90%}#content .published-posts{width:100%;display:block} #content .unpublished-posts{width:100%;display:block}}@media only screen and (min-width:640px) and (max-width:1024px){}
+.section-header {
+  font-family: "Helvetica Neue", Sans-Serif;
+  font-weight: 200;
+  font-size: 28px;
+  font-style: normal;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+#content {
+  margin: 0 auto;
+  padding: 2em 0 2em 0;
+  width: 90%;
+}
+#content .new-post {
+  width: 100%;
+  border-bottom: 1px dashed #DDD;
+  padding: 1em 0 1em 0;
+}
+#content .new-post .new-post-link {
+  color: #444444;
+}
+#content .new-post .new-post-link:hover {
+  color: #7EB12C;
+}
+#content .published-posts {
+  width: 48%;
+  float: left;
+}
+#content .published-posts .published-posts-head {
+  color: #76C3BD;
+}
+#content .unpublished-posts {
+  width: 48%;
+  float: right;
+}
+#content .unpublished-posts .unpublished-posts-head {
+  color: #893027;
+}
+#content .blog-post {
+  border-bottom: 1px solid #DDDDDD;
+  padding: 2em 0 1em 0;
+}
+#content .blog-post .svg-icon {
+  display: inline;
+  text-decoration: none;
+}
+#content .blog-post .svg-icon svg {
+  zoom: 120%;
+}
+#content .blog-post .edit svg:hover path {
+  fill: #7EB12C;
+}
+#content .blog-post .delete svg:hover path {
+  fill: #893027;
+}
+#content .blog-post .icons {
+  margin: 1em 0 0 0;
+}
+#content .blog-post .post-title {
+  font-family: "Helvetica Neue", Sans-Serif;
+  font-weight: 200;
+  font-size: 28px;
+  font-style: normal;
+  margin: 20px 0 20px 0;
+  color: #444444;
+  text-decoration: none;
+}
+#content .blog-post .post-title:hover {
+  color: #999999;
+}
+#content .blog-post .post-body {
+  font-size: 18px;
+  font-color: #444444;
+  font-family: "Helvetica Neue", Sans-Serif;
+  font-weight: 200;
+  line-height: 1.3em;
+}
+#content .blog-post .continue-reading {
+  color: #444444;
+  font-family: "Helvetica Neue", Sans-Serif;
+  font-weight: 200;
+  text-decoration: none;
+  font-size: 20px;
+  padding-bottom: 1em;
+}
+#content .blog-post .continue-reading:hover {
+  color: #999999;
+}
+@media only screen and (min-width: 320px) and (max-width: 639px) {
+  #content {
+    margin: 0 auto;
+    padding: 2em 0 2em 0;
+    width: 90%;
+  }
+  #content .published-posts {
+    width: 100%;
+    display: block;
+  }
+  #content .unpublished-posts {
+    width: 100%;
+    display: block;
+  }
+}
+@media only screen and (min-width: 640px) and (max-width: 1024px) {
+  
+}

@@ -1,19 +1,17 @@
-.ffnew() {
-	font-family: "Helvetica Neue", sans-serif;
-	font-weight: 200;
-}
+@import 'colors.less';
+@import 'fonts.less';
 
 #content {
 	width: 80%;
 	margin: 0 auto;
-	color: #444444;
+	color: @text-color;
 	.body {
-		.ffnew();
+		.ffstandard();
 		font-size: 28px;
 		border-bottom: 1px dashed #999;
 	}
 	.title {
-		.ffnew();
+		.ffstandard();
 		font-size: 5em;
 		color: #76c3bd;
 	}
@@ -35,11 +33,11 @@
 	blockquote {
 	    display: block;
 	    padding-left: 20px;
-	    border-left: 6px solid #df0d32;
+	    border-left: 6px solid lighten(@red, 10%);
 	}
 
 	.submit {
-		.ffnew();
+		.ffstandard();
 		padding: 0;
 		border:0;
 		background-color:transparent;
@@ -62,12 +60,12 @@
 	}
 
 	#draft {
-		color: darken(#893027, 10%);
+		color: darken(@red, 10%);
 		margin: .3em 0;
 	}
 
 	#draft:hover {
-	    color: lighten(#893027, 10%);
+	    color: lighten(@red, 10%);
 	}
 	.delete {
 		overflow: hidden;
@@ -82,7 +80,7 @@
 		}
 		svg:hover {
 			path {
-				fill: #893027;
+				fill: @red;
 			}
 		}
 		div {
@@ -102,12 +100,12 @@
         opacity: 1;
         max-width: 300px;
         transition: max-width .1s ease-out .1s, opacity .1s ease-out .1s;
-        color: #893027;
+        color: @red;
     }
     .delete:hover {
     	svg {
     		path {
-    			fill: #893027;
+    			fill: @red;
     		}
     	}
     }

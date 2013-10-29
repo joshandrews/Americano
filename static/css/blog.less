@@ -1,37 +1,37 @@
+@import 'fonts.less';
+@import 'colors.less';
+
 .blog-post {
 	margin: 0 auto;
 	width: 80%;
 	border-bottom: 1px solid #DDDDDD;
 	padding: 2em 0 2em 0;
 	.post-title {
-		font-family: "Helvetica Neue", sans-serif;
-		font-weight: 200;
+		.ffstandard();
 		font-size: 30px;
 		font-style: normal;
 		margin: 20px 0 20px 0;
-		color: #444444;
+		color: @text-color;
 		text-decoration: none;
 	}
 	.post-title:hover {
-		color: #999999;
+		color: darken(@text-color, 20%);
 	}
 	.post-body {
+		.ffstandard();
 		font-size: 20px;
-		font-color: #444444;
-		font-style: "Helvetica Neue", Sans-Serif;
-		font-weight: 200;
+		font-color: @text-color;
 		line-height: 1.5em;
 		padding-bottom: 1em;
 	}
 	.continue-reading {
-		color: #444444;
-		font-style: "Helvetica Neue", Sans-Serif;
-		font-weight: 200;
+		.ffstandard();
+		color: @text-color;
 		text-decoration: none;
 		font-size: 20px;
 	}
 	.continue-reading:hover {
-		color: #999999;
+		color: darken(@text-color, 20%);
 	}
 }
 

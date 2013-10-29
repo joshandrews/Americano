@@ -1,0 +1,24 @@
+#content form {
+  width: 200px;
+  margin: 2em auto 0em auto;
+}
+#content form p input {
+  font-family: "Helvetica Neue", "Arial", Sans-Serif;
+  font-weight: 100;
+  font-size: 2em;
+  color: #444444;
+  border: none;
+  outline: none;
+  letter-spacing: .1em;
+}
+#content form p .login {
+  color: #445f18;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  font-size: 2em;
+  cursor: pointer;
+}
+#content form p .login:hover {
+  color: #7eb12c;
+}

@@ -1,18 +1,11 @@
+@import 'colors.less';
+@import 'fonts.less';
+
 @column-width: 60;
 @gutter-width: 20;
 @columns: 16;
 
 @total-width: 100%;
-@background-dark: #2F2A26;
-@background-light: #EDEDED;
-@text-color: #444444;
-
-.ffbasic() {
-	font-family: "Dosis", "Helvetica Neue", sans-serif;
-	font-weight: 100;
-	font-size: 25px;
-	font-style: normal;
-}
 
 
 #content {
@@ -22,8 +15,7 @@
 	text-align: center;
 }
 .welcome {
-	font-family: "Helvetica Neue", sans-serif;
-	font-weight: 100;
+	.ffstandard-light();
 	font-size: 10em;
   	color: #7EB12C;
   	margin: 0px;

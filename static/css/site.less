@@ -1,24 +1,18 @@
 @import url(http://fonts.googleapis.com/css?family=Dosis:200,400);
 @import 'grid.less';
 @import 'colors.less';
-
-.ffbasic() {
-	font-family: "Dosis", "Helvetica Neue", sans-serif;
-	font-weight: 400;
-	font-size: 25px;
-	font-style: normal;
-}
+@import 'fonts.less';
 
 body {
 	margin: 0px;
 	padding: 0px;
-	background: #FFFFFF;
+	background: @white;
 }
 #header {
 	height: 8em;
 	width: auto;
-	background-color: #ffffff;
-	border-bottom: 1px dotted #999999;
+	background-color: @white;
+	border-bottom: 1px dotted @border-color;
 	.name {
 		img {
 			float: left;
@@ -28,7 +22,7 @@ body {
 		margin: 50px 0px 0px 50px;
 		padding-left: 30px;
 		float: left;
-		.ffbasic();
+		.ffheader();
 		a{
 			color: @text-color;
 			text-decoration: none; 
@@ -43,7 +37,7 @@ body {
 		    list-style-type: none;
 		    display: inline;
 		    margin-left: 70px;
-			.ffbasic();
+			.ffheader();
 			a {
 				color: @text-color;
 			}
@@ -52,7 +46,7 @@ body {
 }
 
 .nav-btn {
-	background: #333333 url("../images/nav-icon.svg") left center no-repeat;
+	background: @text-color url("../images/nav-icon.svg") left center no-repeat;
 	height: 3em;
 	width: 3em;
 	border:0;
@@ -77,8 +71,7 @@ body {
 	margin:0 auto;
 }
 #foot-message {
-	font-family: "Helvetica Neue", sans-serif;
-	font-weight: 100;
+	.ffstandard-light();
 	font-size: 10px;
 	color: @text-color;
 }
