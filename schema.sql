@@ -1,18 +1,19 @@
 CREATE TABLE entries (
-    id INT AUTO_INCREMENT,
-    title TEXT,
-    content TEXT,
-    posted_on DATETIME,
-    primary key (id)
-);
+  id int(11) unsigned NOT NULL AUTO_INCREMENT,
+  title text,
+  content text,
+  posted_on datetime DEFAULT NULL,
+  published int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (id)
+)
 
-CREATE TABLE users
-(
-  id serial NOT NULL,
-  user character varying(80) NOT NULL,
-  pass character(40) NOT NULL,
-  salt character(40) NOT NULL,
-  email character varying(100) NOT NULL,
-  privilege integer NOT NULL DEFAULT 0,
-  CONSTRAINT utilisateur_pkey PRIMARY KEY (id)
+CREATE TABLE users (
+  id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  user varchar(80) NOT NULL,
+  pass char(40) NOT NULL,
+  salt char(40) NOT NULL,
+  email varchar(100) NOT NULL,
+  privilege int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (id),
+  UNIQUE KEY id (id)
 )
