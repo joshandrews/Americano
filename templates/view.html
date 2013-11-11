@@ -11,6 +11,7 @@ $def with (post)
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 		<script src="/static/scripts/classie.js"></script>
 		<script src="/static/scripts/modernizr.custom.js"></script>
+        <script src="/static/scripts/blogpost.js"></script>
 	</head>
 	<body>
 		<div id="st-container" class="st-container">
@@ -42,15 +43,18 @@ $def with (post)
 							<li class="button">
 								<a href="#" class="button">About</a>
 							</li>
-						</li>
+						</ul>
 					</div>
-					<div id="hero">
-						<div id="title">
-							$post.title
-						</div>
-						<!--$datestr(post.posted_on)-->
-						<img class="hero-img" src="/static/images/vancouver-skyline.jpg">
-					</div>
+                    <section id="hero">
+                        <article id="title" class="as">$post.title</article>
+                    </section>
+                    <!--<div id="hero">
+                        <div class="hero-img"></div>
+                        <div id="title">
+                            $post.title
+                        </div>
+                        <img class="hero-img" src="/static/images/vancouver-skyline.jpg">
+                    </div>-->
 					<div id="post-content">
 						<article>
 							$:post.content
