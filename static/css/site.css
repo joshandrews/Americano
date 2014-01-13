@@ -1,17 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Dosis:200,400);
 body {
-  width: 100%;
-  *zoom: 1;
-}
-body:before,
-body:after {
-  content: "";
-  display: table;
-}
-body:after {
-  clear: both;
-}
-body {
   margin: 0px;
   padding: 0px;
   background: #ffffff;
