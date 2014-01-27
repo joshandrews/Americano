@@ -1,13 +1,16 @@
+#header {
+  background-color: #CCCCCC;
+}
 #content {
   height: 50%;
-  background-color: #ededed;
+  background-color: #333333;
   margin: 0 auto;
   text-align: center;
 }
 .welcome {
   font-family: "Helvetica Neue", "Arial", Sans-Serif;
   font-weight: 100;
-  font-size: 10em;
+  font-size: 8em;
   color: #7EB12C;
   margin: 0px;
   padding-top: .5em;

@@ -50,11 +50,7 @@ $def with (posts)
 								<a class="post-title" href="/blog/$post.id">
 									$post.title
 								</a>
-								— $datestr(post.posted_on) 
-								<div class="post-body">
-									$:post.content
-								</div>
-								<a class="continue-reading" href="/blog/$post.id">Continue Reading &#65515;</a>
+								<span>— $datestr(post.posted_on)</span>
 							</div>
 					</div>
 					<div id="foot">

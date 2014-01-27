@@ -1,7 +1,6 @@
 .blog-post {
   margin: 0 auto;
-  width: 80%;
-  border-bottom: 1px solid #DDDDDD;
+  width: 40em;
   padding: 2em 0 2em 0;
 }
 .blog-post .post-title {
@@ -12,9 +11,11 @@
   margin: 20px 0 20px 0;
   color: #444444;
   text-decoration: none;
+  border-bottom: 4px solid #ffffff;
 }
 .blog-post .post-title:hover {
   color: #111111;
+  border-bottom: 4px solid #893027;
 }
 .blog-post .post-body {
   font-family: "Helvetica Neue", Sans-Serif;
@@ -33,6 +34,10 @@
 }
 .blog-post .continue-reading:hover {
   color: #111111;
+}
+.blog-post span {
+  font-family: "Helvetica Neue", "Arial", Sans-Serif;
+  font-weight: 100;
 }
 @media only screen and (min-width: 320px) and (max-width: 639px) {
   .blog-post {
