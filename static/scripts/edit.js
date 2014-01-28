@@ -21,5 +21,5 @@ $( document ).ready(function() {
         $('#published-input').val("0");
     });
 	//https://github.com/orthes/medium-editor-images-plugin
-	//$('.editable').mediumImages();
+	$('.editable').mediumImages();
 });
