@@ -4,7 +4,7 @@
   margin: 0 auto;
   width: 100%;
   position: block;
-  background-size: cover;
+  background-size: 100%;
 }
 #hero article {
   font-family: "Helvetica Neue", Sans-Serif;

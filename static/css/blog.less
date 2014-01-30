@@ -1,42 +1,23 @@
 @import 'fonts.less';
 @import 'colors.less';
 
-@all-background-colors: "#76c3bd,#893027,#7EB12C,#FFF100";
 
-@background-color: color(~`@{all-background-colors}.split(',')[Math.floor(Math.random()*@{all-background-colors}.split(',').length)]`);
 
 .blog-post {
-	margin: 0 auto;
-	width: 40em;
 	padding: 2em 0 2em 0;
+    margin: 0 auto;
+    width: 50em;
 	.post-title {
 		.ffstandard();
 		font-size: 30px;
 		font-style: normal;
-		margin: 20px 0 20px 0;
 		color: @text-color;
 		text-decoration: none;
         border-bottom: 4px solid @white;
 	}
 	.post-title:hover {
 		color: darken(@text-color, 20%);
-        border-bottom: 4px solid @background-color;
-	}
-	.post-body {
-		.ffstandard();
-		font-size: 20px;
-		font-color: @text-color;
-		line-height: 1.5em;
-		padding-bottom: 1em;
-	}
-	.continue-reading {
-		.ffstandard();
-		color: @text-color;
-		text-decoration: none;
-		font-size: 20px;
-	}
-	.continue-reading:hover {
-		color: darken(@text-color, 20%);
+        border-bottom: 4px solid @blue;
 	}
     span {
         .ffstandard-light();

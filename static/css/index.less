@@ -5,28 +5,71 @@
   background-color: #CCCCCC;
 }
 #content {
-	height: 50%;
+    height: auto;
 	background-color: #333333;
 	margin: 0 auto;
 	text-align: center;
+    padding: 0px 20px 0px 20px;
+    .welcome {
+        .ffstandard();
+        padding-top: 2.5em;
+        padding-bottom: 2.5em;
+        line-height: 1.8em;
+        h4 {
+            font-size: 2em;
+            color: #7EB12C;
+            margin: 0px;
+            padding-top: .5em;
+            padding-bottom: .5em;
+        }
+        div {
+            font-size: 1.2em;
+            color: #EFEFEF;
+            width: 50%;
+            margin: 0 auto;
+            padding-bottom: 1em;
+        }
+
+        .fmlink {
+            padding: 5px 0px 5px 0px;
+        }
+
+        a {
+            color: @blue;
+            font-weight: 400;
+        }
+
+        a:hover {
+            color: lighten(@blue, 20%);
+        }
+
+        a:visited {
+            color: @blue;
+        }
+    }
 }
-.welcome {
-	.ffstandard-light();
-	font-size: 8em;
-  	color: #7EB12C;
-  	margin: 0px;
-  	padding-top: .5em;
-}
+
 @media only screen and (min-width:320px) and (max-width:639px) {
-	.welcome {
-		padding-top: 1em;
-		font-size: 4em;
+    #content {
+        padding-bottom: 10px;
+        .welcome {
+            div {
+                width: 80%;
+            }
+        }
 	}
 }
 @media only screen and (min-width : 640px) and (max-width : 1024px) {
-	.welcome {
-		padding-top: 1em;
-		font-size: 6em;
+    #content {
+        padding-bottom: 10px;
+        .welcome {
+            line-height: 2.2em;
+            padding-top: 25px;
+            padding-bottom: 15px;
+            div {
+                width: 70%;
+            }
+        }
 	}
 }
 @media screen and (min-width:960px) and (max-width:1279px) {}

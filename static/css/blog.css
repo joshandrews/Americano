@@ -1,39 +1,20 @@
 .blog-post {
-  margin: 0 auto;
-  width: 40em;
   padding: 2em 0 2em 0;
+  margin: 0 auto;
+  width: 50em;
 }
 .blog-post .post-title {
   font-family: "Helvetica Neue", Sans-Serif;
   font-weight: 200;
   font-size: 30px;
   font-style: normal;
-  margin: 20px 0 20px 0;
   color: #444444;
   text-decoration: none;
   border-bottom: 4px solid #ffffff;
 }
 .blog-post .post-title:hover {
   color: #111111;
-  border-bottom: 4px solid #893027;
-}
-.blog-post .post-body {
-  font-family: "Helvetica Neue", Sans-Serif;
-  font-weight: 200;
-  font-size: 20px;
-  font-color: #444444;
-  line-height: 1.5em;
-  padding-bottom: 1em;
-}
-.blog-post .continue-reading {
-  font-family: "Helvetica Neue", Sans-Serif;
-  font-weight: 200;
-  color: #444444;
-  text-decoration: none;
-  font-size: 20px;
-}
-.blog-post .continue-reading:hover {
-  color: #111111;
+  border-bottom: 4px solid #76c3bd;
 }
 .blog-post span {
   font-family: "Helvetica Neue", "Arial", Sans-Serif;

@@ -3,7 +3,9 @@ function scrollBanner() {
     scrollPos = jQuery(this).scrollTop();
     console.log(scrollPos);
     //Scroll and fade out the banner text
-    if ($(window).width() >= 640) {
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    }
+    else {
         jQuery('#title').css({
           'margin-top' : -(.8+scrollPos/3)+"em",
           'opacity' : 1-(scrollPos/300)
