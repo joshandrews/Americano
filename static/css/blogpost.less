@@ -1,13 +1,22 @@
+@import 'fonts.less';
+@import 'colors.less';
+
 #hero {
     background: url(../images/vancouver-skyline.jpg) 50% 0 no-repeat fixed;
     height: 100%;
     margin: 0 auto;
     width: 100%;
     position: block;
-    background-size: 100%;
-    article {
-        font-family: "Helvetica Neue", Sans-Serif;
-        font-weight: 200;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 100%;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/vancouver-skyline.jpg',sizingMethod='scale');
+    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/vancouver-skyline.jpg', sizingMethod='scale')";
+
+    div {
+        .ffstandard();
         font-size: 5em;
         position: absolute;
         color: #FFFFFF;
@@ -50,13 +59,28 @@
 
 @media only screen and (min-width:320px) and (max-width:639px) {
 	#hero {
-		article {
+        background: url(../images/vancouver-skyline.jpg) no-repeat center center scroll;
+        width: 100%;
+        height: 100%;
+        div {
+            margin: auto;
+            padding: 5px;
 			font-size: 2em;
+            font-weight: 200;
+            color: #FFFFFF;
+            position: relative;
+            width: 80%;
+            text-align: center;
+            text-shadow: 0px 0px 5px rgba(0, 0, 0, 1);
+            top: 45%;
 		}
 	}
 	#post-content {
 		width: 85%;
 	}
+    .st-menu {
+        position: fixed;
+    }
 }
 @media only screen and (min-width : 640px) and (max-width : 1024px) {
 	#hero {

@@ -14,7 +14,7 @@ urls = (
     '/logout', "Logout",
     '/latte', 'Latte',
     '/blog', 'Blog',
-    '/blog/(\d+)', 'View',
+    '/blog/(\d+)', 'BlogPost',
     '/blog/new', 'New',
     '/blog/delete/(\d+)', 'Delete',
     '/blog/edit/(\d+)', 'Edit',
@@ -25,7 +25,7 @@ urls = (
 t_globals = {
     'datestr': web.datestr
 }
-render = web.template.render('templates', globals=t_globals)
+render = web.template.render('templates', cache=config.cache, globals=t_globals)
 app = web.application(urls, globals())
 
 ### Authentication 
@@ -91,12 +91,12 @@ class Blog:
         return render.blog(posts)
 
 
-class View:
+class BlogPost:
 
     def GET(self, id):
         """ View single post """
         post = blog.get_post(int(id))
-        return render.view(post)
+        return render.blogpost(post)
 
 
 class New:

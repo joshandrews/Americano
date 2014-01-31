@@ -5,7 +5,7 @@ CREATE TABLE entries (
   posted_on datetime DEFAULT NULL,
   published int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (id)
-)
+);
 
 CREATE TABLE users (
   id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -16,4 +16,4 @@ CREATE TABLE users (
   privilege int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (id),
   UNIQUE KEY id (id)
-)
+);
