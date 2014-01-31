@@ -25,7 +25,7 @@ urls = (
 t_globals = {
     'datestr': web.datestr
 }
-render = web.template.render('templates', cache=config.cache, globals=t_globals)
+render = web.template.render('templates', cache=blog.cache, globals=t_globals)
 app = web.application(urls, globals())
 
 ### Authentication 
