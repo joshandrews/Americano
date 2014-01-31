@@ -12,7 +12,7 @@ urls = (
     '/', 'Index',
     '/login', 'Login',
     '/logout', "Logout",
-    '/latte', 'Latte',
+    '/americano', 'Americano',
     '/blog', 'Blog',
     '/blog/(\d+)', 'BlogPost',
     '/blog/new', 'New',
@@ -38,7 +38,7 @@ class Login:
     def GET(self):
         if user.logged(session):
             render = user.create_render(session)
-            raise web.seeother('/latte')
+            raise web.seeother('/americano')
         else:
             render = user.create_render(session)
             return '%s' % render.login()
@@ -50,21 +50,21 @@ class Login:
             session.login = 1
             session.privilege = ident['privilege']
             render = user.create_render(session)
-            raise web.seeother('/latte')
+            raise web.seeother('/americano')
         else:
             session.login = 0
             session.privilege = 0
             render = user.create_render(session)
             return render.login_error()
 
-class Latte:
+class Americano:
     
     def GET(self):
         if user.logged(session):
             published_posts = blog.get_published_posts()
             unpublished_posts = blog.get_unpublished_posts()
             render = user.create_render(session)
-            return render.latte(published_posts, unpublished_posts)
+            return render.americano(published_posts, unpublished_posts)
         else:
             raise web.seeother('/login')
 
@@ -73,8 +73,7 @@ class Logout:
     def GET(self):
         session.login = 0
         session.kill()
-        render = user.create_render(session.privilege)
-        return render.index()
+        raise web.seeother('/blog')
 
 
 class Index:
@@ -116,7 +115,7 @@ class New:
         if published == 1:
             raise web.seeother('/blog')
         else:
-            raise web.seeother('/latte') 
+            raise web.seeother('/americano')
 
 
 class Delete:
@@ -125,7 +124,7 @@ class Delete:
         if user.logged(session):
             if session.privilege == 2:
                 blog.del_post(int(id))
-        raise web.seeother('/latte')
+        raise web.seeother('/americano')
 
 
 class Edit:
@@ -153,7 +152,7 @@ class Edit:
         if published == 1:
             raise web.seeother('/blog')
         else:
-            raise web.seeother('/latte') 
+            raise web.seeother('/americano')
 
 if __name__ == '__main__':
     app.run()

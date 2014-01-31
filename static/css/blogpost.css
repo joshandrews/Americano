@@ -64,7 +64,7 @@
     padding: 5px;
     font-size: 2em;
     font-weight: 200;
-    color: #FFFFFF;
+    color: #ffffff;
     position: relative;
     width: 80%;
     text-align: center;
@@ -79,7 +79,7 @@
   }
 }
 @media only screen and (min-width: 640px) and (max-width: 1024px) {
-  #hero article {
+  #hero div {
     font-size: 3em;
   }
   #post-content {

@@ -16,6 +16,7 @@ Next Version: 0.4
 	- [ ] Reorg structure
 	- [ ] Separate Latte
 	- [x] Home page
+	- [ ] Configured for nginx
 
 Release Version: 1.0
 ---------------------------

@@ -1,6 +1,11 @@
 #content form {
-  width: 200px;
+  width: 10em;
   margin: 2em auto 0em auto;
+  border-left: 0.5em solid #893027;
+  padding-left: 2em;
+}
+#content form p {
+  padding: 0;
 }
 #content form p input {
   font-family: "Helvetica Neue", "Arial", Sans-Serif;
@@ -10,15 +15,30 @@
   border: none;
   outline: none;
   letter-spacing: .1em;
+  padding: 0;
 }
-#content form p .login {
+#content form p .login:hover {
+  color: #7eb12c;
+}
+#content form .login {
   color: #445f18;
   padding: 0;
   border: 0;
   background-color: transparent;
-  font-size: 2em;
+  font-size: 1.5em;
   cursor: pointer;
 }
-#content form p .login:hover {
-  color: #7eb12c;
+@media only screen and (min-width: 320px) and (max-width: 639px) {
+  #content form {
+    border-left: 0.3em solid #893027;
+  }
+  #content form p input {
+    font-size: 1.5em;
+  }
+  #content form .login {
+    font-size: 1em;
+  }
+}
+@media only screen and (min-width: 640px) and (max-width: 1024px) {
+  
 }
