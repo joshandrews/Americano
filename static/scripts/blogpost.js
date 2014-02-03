@@ -8,7 +8,7 @@ function scrollBanner() {
     else {
         jQuery('#title').css({
           'margin-top' : -(.8+scrollPos/3)+"em",
-          'opacity' : 1-(scrollPos/300)
+          'opacity' : 1-(scrollPos/500)
         });
         jQuery('.arrow').css({
           'opacity' : 1-(scrollPos/500)

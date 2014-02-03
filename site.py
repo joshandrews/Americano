@@ -12,27 +12,54 @@ urls = (
     '/', 'Index',
     '/login', 'Login',
     '/logout', "Logout",
+    '/work', 'Work',
     '/americano', 'Americano',
     '/blog', 'Blog',
     '/blog/(\d+)', 'BlogPost',
     '/blog/new', 'New',
     '/blog/delete/(\d+)', 'Delete',
     '/blog/edit/(\d+)', 'Edit',
+    '/jarvis', "Jarvis"
 )
 
 
-### Templates
-t_globals = {
-    'datestr': web.datestr
-}
-render = web.template.render('templates', cache=blog.cache, globals=t_globals)
 app = web.application(urls, globals())
 
 ### Authentication 
 store = web.session.DiskStore('sessions')
 session = web.session.Session(app, store, initializer={'login': 0, 'privilege': 0})
 
-        
+
+### Templates
+t_globals = {
+    'datestr': web.datestr,
+}
+render = web.template.render('templates/common', cache=blog.cache, globals=t_globals)
+
+def gen_head():
+    if session.login==1:
+        if session.privilege == 2:
+            render = web.template.render('templates/admin', globals=t_globals)
+            return render.header()
+        else:
+            render = web.template.render('templates/common', globals=t_globals)
+            return render.header()
+    else:
+        render = web.template.render('templates/common', globals=t_globals)
+        return render.header()
+
+def gen_offleft():
+    if session.login==1:
+        if session.privilege == 2:
+            render = web.template.render('templates/admin', globals=t_globals)
+            return render.offleft()
+        else:
+            render = web.template.render('templates/common', globals=t_globals)
+            return render.offleft()
+    else:
+        render = web.template.render('templates/common', globals=t_globals)
+        return render.offleft()
+
 class Login:
 
     def GET(self):
@@ -41,7 +68,7 @@ class Login:
             raise web.seeother('/americano')
         else:
             render = user.create_render(session)
-            return '%s' % render.login()
+            return '%s' % render.login(gen_head(), gen_offleft())
 
     def POST(self):
         username, passwd = web.input().user, web.input().passwd
@@ -64,7 +91,7 @@ class Americano:
             published_posts = blog.get_published_posts()
             unpublished_posts = blog.get_unpublished_posts()
             render = user.create_render(session)
-            return render.americano(published_posts, unpublished_posts)
+            return render.americano(gen_head(), gen_offleft(), published_posts, unpublished_posts)
         else:
             raise web.seeother('/login')
 
@@ -79,7 +106,8 @@ class Logout:
 class Index:
     
     def GET(self):
-        return render.index()
+        render = web.template.render('templates/common', globals=t_globals)
+        return render.index(gen_head(), gen_offleft())
 
 
 class Blog:
@@ -87,7 +115,8 @@ class Blog:
     def GET(self):
         """ Show page """
         posts = blog.get_published_posts()
-        return render.blog(posts)
+        render = web.template.render('templates/common', globals=t_globals)
+        return render.blog(gen_head(), gen_offleft(), posts)
 
 
 class BlogPost:
@@ -95,14 +124,15 @@ class BlogPost:
     def GET(self, id):
         """ View single post """
         post = blog.get_post(int(id))
-        return render.blogpost(post)
+        render = web.template.render('templates/common', globals=t_globals)
+        return render.blogpost(gen_head(), gen_offleft(), post)
 
 
 class New:
 
     def GET(self):
         render = user.create_render(session)
-        return render.new()
+        return render.new(gen_head(), gen_offleft())
 
     def POST(self):
         title, body, published = web.input().title, web.input().body, int(web.input().published)
@@ -110,7 +140,7 @@ class New:
             if session.privilege == 2:
                 if title == "" or body == "":
                     render = user.create_render(session)
-                    return render.new()
+                    return render.new(gen_head(), gen_offleft())
                 blog.new_post(title, body, published)
         if published == 1:
             raise web.seeother('/blog')
@@ -126,6 +156,12 @@ class Delete:
                 blog.del_post(int(id))
         raise web.seeother('/americano')
 
+class Work:
+
+    def GET(self):
+        render = web.template.render('templates/common', globals=t_globals)
+        return render.work(gen_head(), gen_offleft())
+
 
 class Edit:
 
@@ -137,7 +173,7 @@ class Edit:
             print post_id
             raise web.seeother("/blog/edit/"+str(post_id))
         render = user.create_render(session)
-        return render.edit(post)
+        return render.edit(gen_head(), gen_offleft(), post)
 
 
     def POST(self, id):
@@ -147,7 +183,7 @@ class Edit:
                 post = blog.get_post(int(id))
                 if title == "" or body == "":
                     render = user.create_render(session)
-                    return render.edit(post)
+                    return render.edit(gen_head(), gen_offleft(), post)
                 blog.update_post(int(id), title, body, published)
         if published == 1:
             raise web.seeother('/blog')

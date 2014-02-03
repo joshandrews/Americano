@@ -75,7 +75,7 @@ body {
 	font-size: 10px;
 	color: @text-color;
 }
-@media only screen and (min-width:320px) and (max-width:479px) {
+@media only screen and (min-width:320px) and (max-width:639px) {
 	.nav-btn {
 		display: block;
 		position: absolute;
@@ -100,8 +100,9 @@ body {
 		}
 	}
 }
-@media only screen and (min-width : 480px) and (max-width : 639px) {
-    #header {
+
+@media only screen and (min-width : 640px) and (max-width : 1024px) {
+	#header {
 		height: 4em;
 		.name {
 			margin: 0px;
@@ -114,23 +115,6 @@ body {
                 margin-left: 10px;
                 margin-right: 15px;
             }
-			margin: 0px;
-			padding: .7em .3em 0 0;
-			text-transform: uppercase;
-			font-size: 1.5em
-		}
-	}
-}
-@media only screen and (min-width : 640px) and (max-width : 1024px) {
-	#header {
-		height: 4em;
-		.name {
-			margin: 0px;
-			padding: .7em 0 0 0;
-			font-size: 1.5em;
-			text-transform: uppercase;
-		}
-		.nav {
 			margin: 0px;
 			padding: .7em .3em 0 0;
 			text-transform: uppercase;

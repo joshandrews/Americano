@@ -1,10 +1,9 @@
-$def with ()
+$def with (head, offleft)
 <html>
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="/static/css/index.css" />
 		<link rel="stylesheet" type="text/css" href="/static/css/site.css" />
-		<link rel="stylesheet" type="text/css" href="/static/css/nlform.css" />
 		<link rel="stylesheet" type="text/css" href="/static/css/sidebar.css" />
 		<link rel="stylesheet" type="text/css" href="/static/css/linkeffect.css" />
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
@@ -13,51 +12,25 @@ $def with ()
 	</head>
 	<body>
 		<div id="st-container" class="st-container">
-			<nav class="st-menu st-effect-4" id="menu-4">
-				<div class="icon icon-stack">
-					<img src="/static/images/coffee.svg"/>
-				</div>
-				<ul>
-					<li><a class="icon icon-data" href="/blog">Blog</a></li>
-					<li><a class="icon icon-location" href="#">About</a></li>
-				</ul>
-			</nav>
+			$:offleft
 			<div class="st-pusher">
 				<div class="st-content">
-					<div id="header">
-						<div id="st-trigger-effects" class="column">
-							<button class="nav-btn" data-effect="st-effect-4"></button>
-						</div>
-						<div class="name">
-							
-							<a href="/" class="button">
-								<img src="/static/images/coffee.svg"/>
-								Josh Andrews
-							</a>
-						</div>
-						<ul class="nav cl-effect-1">
-							<li class="button">
-								<a href="/blog" class="button">Blog</a>
-							</li>
-							<li class="button">
-								<a href="#" class="button">About</a>
-							</li>
-						</li>
-					</div>
+					$:head
 					<div id="content">
 						<div class="welcome">
                             <h4>About Me</h4>
                             <div>
                                 Hello, I am a 3rd year computer science student at UBC in Vancouver, Canada.  In my spare time I develop
-                                <a href="http://ubcsailbot.org/2013/11/30/designing-an-autonomous-route-planning-algorithm-prototype">software</a>/
+                                <a href="http://ubcsailbot.org/2013/11/02/introduction-to-the-gui/">software</a>/
                                 <a href="http://ubcsailbot.org/2013/11/30/designing-an-autonomous-route-planning-algorithm-prototype">firmware</a>
                                 for <a href="http://ubcsailbot.org">UBC Sailbot</a> and <a href="http://github.com/joshandrews">build apps</a> that try to offer
-                                a glimpse at the future of computing.  I enjoy making music and photography.  I try to occasionally dip my toes into design.
+                                a glimpse at the future of computing.  I enjoy making music and <a href="http://www.flickr.com/photos/josh-andrews/">photography</a>.  I try to occasionally dip my toes into design.
                             </div>
                             <h4>Find Me</h4>
                             <div class="fmlink"><a href="http://github.com/joshandrews">GitHub</a></div>
                             <div class="fmlink"><a href="http://facebook.com/joshandrews1">Facebook</a></div>
                             <div class="fmlink"><a href="http://ca.linkedin.com/in/joshpandrews">LinkedIn</a></div>
+                            <div class="fmlink"><a href="mailto:joshphilipandrews@gmail.com">Email</a></div>
                         </div>
 					</div>
 				</div>
