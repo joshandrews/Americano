@@ -1,4 +1,5 @@
-""" Basic blog using webpy 0.3 """
+#!/usr/bin/env python
+
 import web
 import blog
 import user

@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import web, datetime
 
 db = web.database(dbn='mysql', db='blog', user='admin', pw='andre')
