@@ -35,7 +35,7 @@ session = web.session.Session(app, store, initializer={'login': 0, 'privilege': 
 t_globals = {
     'datestr': web.datestr,
 }
-render = web.template.render('templates/common', globals=t_globals)
+render = web.template.render('templates/common', cache=blog.cache, globals=t_globals)
 
 def gen_head():
     if session.login==1:
