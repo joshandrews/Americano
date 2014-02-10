@@ -4,13 +4,25 @@
 #content {
     margin: 0 auto;
     width: 50%;
+    img {
+        width: 100%;
+    }
     h3 {
         font-size: 2em;
         color: @green;
         .ffstandard();
     }
     div {
+        margin:2em 0 0 0;
         .ffstandard();
+        font-size:1.2em;
+        a {
+            color: darken(@blue, 20%);
+            font-weight: 400;
+        }
+        a:hover {
+            color: @blue;
+        }
     }
 }
 
