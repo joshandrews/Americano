@@ -3,7 +3,7 @@
 import web, datetime
 
 db = web.database(dbn='mysql', db='blog', user='admin', pw='andre')
-cache = True
+cache = False
 
 def get_posts():
     return db.select('entries', order='id DESC')
