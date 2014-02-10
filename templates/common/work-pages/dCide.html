@@ -1,0 +1,27 @@
+$def with (head, offleft)
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="/static/css/site.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/sidebar.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/linkeffect.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/work-page.css" />
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+		<script src="/static/scripts/classie.js"></script>
+		<script src="/static/scripts/modernizr.custom.js"></script>
+	</head>
+	<body>
+		<div id="st-container" class="st-container">
+			$:offleft
+			<div class="st-pusher">
+				<div class="st-content">
+					$:head
+					<div id="content">
+                        <h3>dCide</h3>
+					</div>
+				</div>
+			</div>
+			<script src="/static/scripts/sidebarEffects.js"></script>
+		</div>
+	</body>
+</html>

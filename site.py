@@ -19,7 +19,7 @@ urls = (
     '/blog/new', 'New',
     '/blog/delete/(\d+)', 'Delete',
     '/blog/edit/(\d+)', 'Edit',
-    '/jarvis', "Jarvis"
+    '/work/(.*)', "WorkPage"
 )
 
 
@@ -59,6 +59,12 @@ def gen_offleft():
     else:
         render = web.template.render('templates/common', globals=t_globals)
         return render.offleft()
+
+class WorkPage:
+     def GET(self, page):
+            print "we gocha!"
+            workpage = web.template.frender('templates/common/work-pages/'+page+".html")
+            return workpage(gen_head(), gen_offleft())
 
 class Login:
 
@@ -106,6 +112,7 @@ class Logout:
 class Index:
     
     def GET(self):
+        print "here we go"
         render = web.template.render('templates/common', globals=t_globals)
         return render.index(gen_head(), gen_offleft())
 
