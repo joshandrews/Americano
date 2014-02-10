@@ -20,7 +20,8 @@ urls = (
     '/blog/new', 'New',
     '/blog/delete/(\d+)', 'Delete',
     '/blog/edit/(\d+)', 'Edit',
-    '/work/(.*)', "WorkPage"
+    '/work/(.*)', "WorkPage",
+    '/favicon.ico', "Favicon"
 )
 
 
@@ -60,6 +61,11 @@ def gen_offleft():
     else:
         render = web.template.render('templates/common', globals=t_globals)
         return render.offleft()
+
+class Favicon:
+    def GET(self):
+        f = open("static/images/favicon.ico", 'rb')
+        return f.read()
 
 class WorkPage:
      def GET(self, page):
