@@ -1,9 +1,15 @@
-.blog-post {
+#content-blog {
+  background-color: #FFFFFF;
+  margin: 0;
+  text-align: left;
+  padding: 0;
+}
+#content-blog .blog-post {
   padding: 2em 0 2em 0;
   margin: 0 auto;
   width: 50em;
 }
-.blog-post .post-title {
+#content-blog .blog-post .post-title {
   font-family: "Helvetica Neue", Sans-Serif;
   font-weight: 200;
   font-size: 30px;
@@ -12,11 +18,11 @@
   text-decoration: none;
   border-bottom: 4px solid #ffffff;
 }
-.blog-post .post-title:hover {
+#content-blog .blog-post .post-title:hover {
   color: #111111;
   border-bottom: 4px solid #76c3bd;
 }
-.blog-post span {
+#content-blog .blog-post span {
   font-family: "Helvetica Neue", "Arial", Sans-Serif;
   font-weight: 100;
 }

@@ -16,7 +16,7 @@ urls = (
     '/work', 'Work',
     '/americano', 'Americano',
     '/blog', 'Blog',
-    '/blog/(\d+)', 'BlogPost',
+    '/blog/(\d+)/(.*)', 'BlogPost',
     '/blog/new', 'New',
     '/blog/delete/(\d+)', 'Delete',
     '/blog/edit/(\d+)', 'Edit',
@@ -69,7 +69,6 @@ class Favicon:
 
 class WorkPage:
      def GET(self, page):
-            print "we gocha!"
             workpage = web.template.frender('templates/common/work-pages/'+page+".html")
             return workpage(gen_head(), gen_offleft())
 
@@ -119,7 +118,6 @@ class Logout:
 class Index:
     
     def GET(self):
-        print "here we go"
         render = web.template.render('templates/common', globals=t_globals)
         return render.index(gen_head(), gen_offleft())
 
@@ -135,7 +133,7 @@ class Blog:
 
 class BlogPost:
 
-    def GET(self, id):
+    def GET(self, id, name):
         """ View single post """
         post = blog.get_post(int(id))
         render = web.template.render('templates/common', globals=t_globals)
