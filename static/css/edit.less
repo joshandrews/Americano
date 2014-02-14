@@ -7,7 +7,7 @@
 	color: @text-color;
 	.body {
 		.ffstandard();
-		font-size: 28px;
+		font-size: 1.5em;
 		border-bottom: 1px dashed #999;
 	}
 	.title {
@@ -15,6 +15,19 @@
 		font-size: 5em;
 		color: #76c3bd;
 	}
+    #image-upload {
+        position: relative;
+        margin: 2em 2em 1em 2em;
+        input {
+            outline: none;
+            display: none;
+        }
+        label {
+            text-align: center;
+            .ffstandard();
+            font-size: 1.2em;
+        }
+    }
 
 	h1 {
 	    font-size: 60px;
@@ -140,10 +153,12 @@
 
 }
 
-
 @media only screen and (min-width:320px) and (max-width:639px) {
-
+    #content {
+        .before-post {
+            display: none;
+        }
+    }
 }
 @media only screen and (min-width : 640px) and (max-width : 1024px) {
-
 }

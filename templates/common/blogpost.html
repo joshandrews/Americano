@@ -1,4 +1,4 @@
-$def with (head, offleft, post)
+$def with (head, offleft, post, heroURL)
 
 <html>
 	<head>
@@ -19,7 +19,7 @@ $def with (head, offleft, post)
 			<div class="st-pusher">
 				<div class="st-content">
 					$:head
-                    <section id="hero">
+                    <section id="hero" style="background-image: url($:heroURL);">
                         <div id="title" class="as">$post.title</div>
                         <span class="arrow"></span>
                     </section>

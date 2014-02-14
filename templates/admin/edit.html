@@ -8,9 +8,9 @@ $def with (head, offleft, post)
 		<link rel="stylesheet" type="text/css" href="/static/css/americano.css" />
 		<link rel="stylesheet" type="text/css" href="/static/css/skinny_header.css" />
 		<link rel="stylesheet" type="text/css" href="/static/css/edit.css" />
+        <link rel="stylesheet" type="text/css" href="/static/css/progressbutton.css" />
 		<link rel="stylesheet" href="/static/css/medium-editor.css">
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-		<script src="/static/scripts/classie.js"></script>
 		<script src="/static/scripts/modernizr.custom.js"></script>
 		<script src="/static/scripts/edit.js"></script>
 	</head>
@@ -21,20 +21,33 @@ $def with (head, offleft, post)
 				<div class="st-content">
 					$:head
 					<div id="content">
-						<form action="/blog/delete/$post.id" method="post">
-				    		<button class="submit delete" type="submit">
-				    			<svg height="25" version="1.1" width="25" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative; left: -0.0166626px; top: -0.983337px;">
-							        <desc></desc>
-							        <defs/>
-							        <path style="" fill="#444444" stroke="none" d="M12,4c-4.419,0-8,3.582-8,8s3.581,8,8,8s8-3.582,8-8S16.419,4,12,4z M15.707,14.293c0.391,0.391,0.391,1.023,0,1.414
-									C15.512,15.902,15.256,16,15,16s-0.512-0.098-0.707-0.293L12,13.414l-2.293,2.293C9.512,15.902,9.256,16,9,16
-									s-0.512-0.098-0.707-0.293c-0.391-0.391-0.391-1.023,0-1.414L10.586,12L8.293,9.707c-0.391-0.391-0.391-1.023,0-1.414
-									s1.023-0.391,1.414,0L12,10.586l2.293-2.293c0.391-0.391,1.023-0.391,1.414,0s0.391,1.023,0,1.414L13.414,12L15.707,14.293z"/>
-								</svg>
-				    			<div id="delete-text"><div>Delete Post</div></div>
-				    		</button>
-						</form>
-						<div id="title" class="title editable">
+						<div class="before-post">
+                            <form action="/blog/delete/$post.id" method="post">
+                                <button class="submit delete" type="submit">
+                                    <svg height="25" version="1.1" width="25" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative; left: -0.0166626px; top: -0.983337px;">
+                                        <desc></desc>
+                                        <defs/>
+                                        <path style="" fill="#444444" stroke="none" d="M12,4c-4.419,0-8,3.582-8,8s3.581,8,8,8s8-3.582,8-8S16.419,4,12,4z M15.707,14.293c0.391,0.391,0.391,1.023,0,1.414
+                                        C15.512,15.902,15.256,16,15,16s-0.512-0.098-0.707-0.293L12,13.414l-2.293,2.293C9.512,15.902,9.256,16,9,16
+                                        s-0.512-0.098-0.707-0.293c-0.391-0.391-0.391-1.023,0-1.414L10.586,12L8.293,9.707c-0.391-0.391-0.391-1.023,0-1.414
+                                        s1.023-0.391,1.414,0L12,10.586l2.293-2.293c0.391-0.391,1.023-0.391,1.414,0s0.391,1.023,0,1.414L13.414,12L15.707,14.293z"/>
+                                    </svg>
+                                    <div id="delete-text"><div>Delete Post</div></div>
+                                </button>
+                            </form>
+                            <form id="image-upload" method="POST" enctype="multipart/form-data" action="/upload/post-image/$post.id">
+                                <input type="file" id="file-input" name="myfile" onchange="document.getElementById('file-input-label').innerHTML = 'Post Image Selected'"/>
+                                <label for="file-input" id="file-input-label">Select a Post Image</label>
+                                <br/>
+                            </form>
+                            <button id="upload-submit" class="progress-button" data-style="shrink" data-horizontal="">
+                                <span class="content">Upload</span>
+                                <span class="progress">
+                                    <span class="progress-inner"></span>
+                                </span>
+                            </button>
+                        </div>
+                        <div id="title" class="title editable">
 							<p>$post.title<p>
 						</div>
 						<div id="body" class="body editable">
@@ -69,6 +82,8 @@ $def with (head, offleft, post)
 			</div>
 			<script src="/static/scripts/medium-editor.min.js"></script>
 			<script src="/static/scripts/sidebarEffects.js"></script>
+            <script src="/static/scripts/progressButton.js"></script>
+            <script src="/static/scripts/classie.js"></script>
 		</div>
 	</body>
 </html>

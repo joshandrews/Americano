@@ -4,6 +4,8 @@ import web
 import blog
 import user
 import hashlib
+import os
+import shutil
 
 ### Url mappings
 
@@ -21,7 +23,8 @@ urls = (
     '/blog/delete/(\d+)', 'Delete',
     '/blog/edit/(\d+)', 'Edit',
     '/work/(.*)', "WorkPage",
-    '/favicon.ico', "Favicon"
+    '/favicon.ico', "Favicon",
+    '/upload/post-image/(\d+)', "Upload"
 )
 
 
@@ -71,6 +74,25 @@ class WorkPage:
      def GET(self, page):
             workpage = web.template.frender('templates/common/work-pages/'+page+".html")
             return workpage(gen_head(), gen_offleft())
+
+class Upload:
+    def POST(self, id):
+        x = web.input(myfile={})
+        filedir = 'static/images/uploads/'+id+"/" # change this to the directory you want to store the file in.
+
+        if 'myfile' in x: # to check if the file-object is created
+            filepath=x.myfile.filename.replace('\\','/') # replaces the windows-style slashes with linux ones.
+            filename=filepath.split('/')[-1] # splits the and chooses the last part (the filename with extension)
+            # Removes all files in images/id directory
+            shutil.rmtree(filedir)
+
+            if not os.path.exists(filedir):
+                os.makedirs(filedir)
+
+
+            fout = open(filedir +'/'+ filename,'w') # creates the file where the uploaded file should be stored
+            fout.write(x.myfile.file.read()) # writes the uploaded file to the newly created file.
+            fout.close() # closes the file, upload complete.
 
 class Login:
 
@@ -136,8 +158,19 @@ class BlogPost:
     def GET(self, id, name):
         """ View single post """
         post = blog.get_post(int(id))
+        idname = post.title.lstrip().rstrip().replace(' ', '-').replace('!', '').replace(',','').lower()
+        if idname != name:
+            web.seeother("/blog/"+id+"/"+idname)
         render = web.template.render('templates/common', globals=t_globals)
-        return render.blogpost(gen_head(), gen_offleft(), post)
+        filedir = 'static/images/uploads/'+id+"/" # change this to the directory you want to store the file in.
+        heroURL = '/static/images/winter-dusting.jpg'
+        if os.path.exists(filedir):
+            for file in os.listdir(filedir):
+                if file.endswith(".jpg") or file.endswith(".jpeg") or file.endswith(".gif") or file.endswith(".png"):
+                    heroURL = "/"+filedir+file
+                    break
+        print heroURL
+        return render.blogpost(gen_head(), gen_offleft(), post, heroURL)
 
 
 class New:
