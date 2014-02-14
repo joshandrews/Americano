@@ -83,11 +83,12 @@ class Upload:
         if 'myfile' in x: # to check if the file-object is created
             filepath=x.myfile.filename.replace('\\','/') # replaces the windows-style slashes with linux ones.
             filename=filepath.split('/')[-1] # splits the and chooses the last part (the filename with extension)
-            # Removes all files in images/id directory
-            shutil.rmtree(filedir)
 
             if not os.path.exists(filedir):
                 os.makedirs(filedir)
+            else:
+                # Removes all files in images/id directory
+                shutil.rmtree(filedir)
 
 
             fout = open(filedir +'/'+ filename,'w') # creates the file where the uploaded file should be stored
