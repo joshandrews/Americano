@@ -6,6 +6,8 @@ import user
 import hashlib
 import os
 import shutil
+import htmltruncate
+import re
 
 ### Url mappings
 
@@ -24,7 +26,9 @@ urls = (
     '/blog/edit/(\d+)', 'Edit',
     '/work/(.*)', "WorkPage",
     '/favicon.ico', "Favicon",
-    '/upload/post-image/(\d+)', "Upload"
+    '/upload/post-image/(\d+)', "Upload",
+    '/blog/edit/live-save-body/(\d+)', "LiveSaveBody",
+    '/blog/edit/live-save-title/(\d+)', "LiveSaveTitle"
 )
 
 
@@ -84,12 +88,10 @@ class Upload:
             filepath=x.myfile.filename.replace('\\','/') # replaces the windows-style slashes with linux ones.
             filename=filepath.split('/')[-1] # splits the and chooses the last part (the filename with extension)
 
-            if not os.path.exists(filedir):
-                os.makedirs(filedir)
-            else:
-                # Removes all files in images/id directory
+            if os.path.exists(filedir):
                 shutil.rmtree(filedir)
 
+            os.makedirs(filedir)
 
             fout = open(filedir +'/'+ filename,'w') # creates the file where the uploaded file should be stored
             fout.write(x.myfile.file.read()) # writes the uploaded file to the newly created file.
@@ -126,7 +128,7 @@ class Americano:
             published_posts = blog.get_published_posts()
             unpublished_posts = blog.get_unpublished_posts()
             render = user.create_render(session)
-            return render.americano(gen_head(), gen_offleft(), published_posts, unpublished_posts)
+            return render.americano(gen_head(), gen_offleft(), published_posts, unpublished_posts, htmltruncate)
         else:
             raise web.seeother('/login')
 
@@ -171,7 +173,12 @@ class BlogPost:
                     heroURL = "/"+filedir+file
                     break
         print heroURL
-        return render.blogpost(gen_head(), gen_offleft(), post, heroURL)
+        if post.published == 0:
+            if user.logged(session):
+                if session.privilege == 2:
+                    return render.blogpost(gen_head(), gen_offleft(), post, heroURL)
+        else:
+            return render.blogpost(gen_head(), gen_offleft(), post, heroURL)
 
 
 class New:
@@ -202,6 +209,12 @@ class Delete:
                 blog.del_post(int(id))
         raise web.seeother('/americano')
 
+    def GET(self, id):
+        if user.logged(session):
+            if session.privilege == 2:
+                blog.del_post(int(id))
+        raise web.seeother('/americano')
+
 class Work:
 
     def GET(self):
@@ -214,8 +227,7 @@ class Edit:
     def GET(self, id):
         post = blog.get_post(int(id))
         if post is None:
-            post_id = blog.new_post("title", "<p>body</p>", 0)
-            post = blog.get_post(post_id)
+            post_id = blog.new_post("<p><br></p>", "<p><br></p>", 0)
             print post_id
             raise web.seeother("/blog/edit/"+str(post_id))
         render = user.create_render(session)
@@ -227,14 +239,25 @@ class Edit:
         if user.logged(session):
             if session.privilege == 2:
                 post = blog.get_post(int(id))
-                if title == "" or body == "":
-                    render = user.create_render(session)
-                    return render.edit(gen_head(), gen_offleft(), post)
-                blog.update_post(int(id), title, body, published)
+                print re.sub('<[^<]+?>', '', title) + "asdfasdfasdf"
+                if re.sub('<[^<]+?>', '', title) == "" or body == "<p><br></p>":
+                    Delete.POST(self, int(id))
+                else:
+                    blog.update_post(int(id), title, body, published)
         if published == 1:
             raise web.seeother('/blog')
         else:
             raise web.seeother('/americano')
+
+class LiveSaveBody:
+    def POST(self, id):
+        body = web.input().textarea
+        blog.update_post_body(int(id), body)
+
+class LiveSaveTitle:
+    def POST(self, id):
+        title = web.input().title
+        blog.update_post_title(int(id), title)
 
 if __name__ == '__main__':
     app.run()

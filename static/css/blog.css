@@ -12,7 +12,7 @@
 #content-blog .blog-post .post-title {
   font-family: "Helvetica Neue", Sans-Serif;
   font-weight: 200;
-  font-size: 30px;
+  font-size: 1.8em;
   font-style: normal;
   color: #444444;
   text-decoration: none;
@@ -27,12 +27,18 @@
   font-weight: 100;
 }
 @media only screen and (min-width: 320px) and (max-width: 639px) {
-  .blog-post {
+  #content-blog .blog-post {
     width: 90%;
+  }
+  #content-blog .blog-post .post-title {
+    font-size: 1.4em;
   }
 }
 @media only screen and (min-width: 640px) and (max-width: 1024px) {
-  .blog-post {
+  #content-blog .blog-post {
     width: 85%;
+  }
+  #content-blog .blog-post .post-title {
+    font-size: 1.6em;
   }
 }

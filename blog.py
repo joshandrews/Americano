@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import web, datetime
+import web, datetime, re
 
 db = web.database(dbn='mysql', db='blog', user='admin', pw='andre')
 cache = True
@@ -22,11 +22,17 @@ def get_post(id):
 
 def new_post(title, text, published):
 	dt = datetime.datetime.utcnow()
-	return db.insert('entries', title=title, content=text, posted_on=dt, published=published)
+	return db.insert('entries', title=re.sub('<[^<]+?>', '', title), content=text, posted_on=dt, published=published)
 
 def del_post(id):
     db.delete('entries', where="id=$id", vars=locals())
 
 def update_post(id, title, text, published):
     db.update('entries', where="id=$id", vars=locals(),
-        title=title, content=text, published=published)
+        title=re.sub('<[^<]+?>', '', title), content=text, published=published)
+
+def update_post_body(id, text):
+    db.update('entries', where="id=$id", vars=locals(), content=text)
+
+def update_post_title(id, title):
+    db.update('entries', where="id=$id", vars=locals(), title=re.sub('<[^<]+?>', '', title))

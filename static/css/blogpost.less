@@ -50,11 +50,16 @@
 	width: 50%;
 	font-size: 20px;
 	color: #444444;
-	font-family: "Helvetica Neue", Sans-Serif;
-	font-weight: 200;
+	.ffstandard();
 	padding-top: 20px;
 	margin: 0 auto;
 	line-height: 1.5em;
+    article {
+        blockquote {
+            padding-left: 20px;
+            border-left: 6px solid lighten(@red, 10%);
+        }
+    }
 }
 
 @media only screen and (min-width:320px) and (max-width:639px) {

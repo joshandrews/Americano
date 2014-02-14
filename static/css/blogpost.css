@@ -53,6 +53,10 @@
   margin: 0 auto;
   line-height: 1.5em;
 }
+#post-content article blockquote {
+  padding-left: 20px;
+  border-left: 6px solid #b13e32;
+}
 @media only screen and (min-width: 320px) and (max-width: 639px) {
   #hero {
     background: url(../images/winter-dusting.jpg) no-repeat center center scroll;

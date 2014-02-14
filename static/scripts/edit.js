@@ -4,8 +4,6 @@ $( document ).ready(function() {
 	//https://github.com/daviferreira/medium-editor
 	var editor = new MediumEditor('.editable');
     var prog;
-    var xhr = new XMLHttpRequest();
-
     $('#publish').click(function () {
         var title = $('#title').html();
         title = title.replace(/<\/?[^>]+(>|$)/g, "");
@@ -57,6 +55,46 @@ $( document ).ready(function() {
 
     });
 
+    $('#body').live('keyup',function () {
+        console.log("this is a test");
+        var itemValue = document.getElementById('body').innerHTML;
+        var postID = document.getElementById('post-id').innerHTML;
+        $.ajax({
+                 type: "POST",
+                 url: "/blog/edit/live-save-body/"+postID,
+                 data: "textarea="+itemValue,
+                 success: function(msg) {
+                     $('#autosavenotify').text(msg);
+                 }
+         })
+     });
+    $('#body').live('mousedown',function () {
+        console.log("this is a test");
+        var itemValue = document.getElementById('body').innerHTML;
+        var postID = document.getElementById('post-id').innerHTML;
+        $.ajax({
+                 type: "POST",
+                 url: "/blog/edit/live-save-body/"+postID,
+                 data: "textarea="+itemValue,
+                 success: function(msg) {
+                     $('#autosavenotify').text(msg);
+                 }
+         })
+     });
+
+    $('#title').live('keyup',function () {
+        console.log("this is a test");
+        var itemValue = document.getElementById('title').innerHTML;
+        var postID = document.getElementById('post-id').innerHTML;
+        $.ajax({
+                 type: "POST",
+                 url: "/blog/edit/live-save-title/"+postID,
+                 data: "title="+itemValue,
+                 success: function(msg) {
+                     $('#autosavenotify').text(msg);
+                 }
+         })
+     });
 
 	//https://github.com/orthes/medium-editor-images-plugin
 	$('.editable').mediumImages();

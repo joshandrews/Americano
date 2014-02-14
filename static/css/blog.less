@@ -13,7 +13,7 @@
         width: 50em;
         .post-title {
             .ffstandard();
-            font-size: 30px;
+            font-size: 1.8em;
             font-style: normal;
             color: @text-color;
             text-decoration: none;
@@ -30,12 +30,22 @@
 }
 
 @media only screen and (min-width:320px) and (max-width:639px) {
-    .blog-post {
-		width: 90%;
-	}
+    #content-blog {
+        .blog-post {
+            width: 90%;
+            .post-title {
+                font-size: 1.4em;
+            }
+        }
+    }
 }
 @media only screen and (min-width : 640px) and (max-width : 1024px) {
-	.blog-post {
-		width: 85%;
-	}
+	#content-blog {
+        .blog-post {
+            width: 85%;
+            .post-title {
+                font-size: 1.6em;
+             }
+        }
+    }
 }

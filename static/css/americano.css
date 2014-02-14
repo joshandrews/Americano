@@ -75,6 +75,10 @@
   font-weight: 200;
   line-height: 1.3em;
 }
+#content .blog-post .post-body blockquote {
+  padding-left: 20px;
+  border-left: 6px solid #b13e32;
+}
 #content .blog-post .continue-reading {
   color: #444444;
   font-family: "Helvetica Neue", Sans-Serif;

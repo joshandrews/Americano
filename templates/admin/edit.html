@@ -15,6 +15,7 @@ $def with (head, offleft, post)
 		<script src="/static/scripts/edit.js"></script>
 	</head>
 	<body>
+        <div id="post-id" style="display: none;">$post.id</div>
 		<div id="st-container" class="st-container">
 			$:offleft
 			<div class="st-pusher">
@@ -48,7 +49,7 @@ $def with (head, offleft, post)
                             </button>
                         </div>
                         <div id="title" class="title editable">
-							<p>$post.title<p>
+							<p>$post.title<br></p>
 						</div>
 						<div id="body" class="body editable">
 							$:post.content

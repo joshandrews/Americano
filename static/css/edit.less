@@ -9,6 +9,9 @@
 		.ffstandard();
 		font-size: 1.5em;
 		border-bottom: 1px dashed #999;
+        span {
+            font-size: 1.5em;
+        }
 	}
 	.title {
 		.ffstandard();
@@ -26,6 +29,7 @@
             text-align: center;
             .ffstandard();
             font-size: 1.2em;
+
         }
     }
 
@@ -155,8 +159,14 @@
 
 @media only screen and (min-width:320px) and (max-width:639px) {
     #content {
-        .before-post {
+        .delete {
             display: none;
+        }
+        .title {
+            font-size: 3em;
+        }
+        .body {
+            font-size: 1.2em;
         }
     }
 }

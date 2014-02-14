@@ -22,7 +22,7 @@ $def with (head, offleft, posts)
 							<div class="blog-post">
 
 								<a class="post-title" href="/blog/$post.id/$post.title.lstrip().rstrip().replace(' ', '-').replace('!', '').replace(',','').lower()">
-									$post.title
+									$:post.title
 								</a>
 								<span>— $datestr(post.posted_on)</span>
 							</div>
