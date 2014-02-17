@@ -27,8 +27,8 @@ urls = (
     '/work/(.*)', "WorkPage",
     '/favicon.ico', "Favicon",
     '/upload/post-image/(\d+)', "Upload",
-    '/blog/edit/live-save-body/(\d+)', "LiveSaveBody",
-    '/blog/edit/live-save-title/(\d+)', "LiveSaveTitle"
+    '/blog/edit/live-save-body/(\d+)/(\d+)', "LiveSaveBody",
+    '/blog/edit/live-save-title/(\d+)/(\d+)', "LiveSaveTitle"
 )
 
 
@@ -250,12 +250,12 @@ class Edit:
             raise web.seeother('/americano')
 
 class LiveSaveBody:
-    def POST(self, id):
+    def POST(self, id, published):
         body = web.input().textarea
         blog.update_post_body(int(id), body)
 
 class LiveSaveTitle:
-    def POST(self, id):
+    def POST(self, id, published):
         title = web.input().title
         blog.update_post_title(int(id), title)
 

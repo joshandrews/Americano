@@ -16,13 +16,20 @@ $def with (head, offleft, post)
 	</head>
 	<body>
         <div id="post-id" style="display: none;">$post.id</div>
+        <div id="post-published" style="display: none;">$post.published</div>
 		<div id="st-container" class="st-container">
 			$:offleft
 			<div class="st-pusher">
 				<div class="st-content">
-					$:head
+                    $:head
+                    $if post.published == 1:
+                        <div class="published-post">
+                            This Post Is Published - Live Editing is Turned Off
+                        </div>
+                    $if post.published == 1 or post.published == 0:
+
 					<div id="content">
-						<div class="before-post">
+                        <div class="before-post">
                             <form action="/blog/delete/$post.id" method="post">
                                 <button class="submit delete" type="submit">
                                     <svg height="25" version="1.1" width="25" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative; left: -0.0166626px; top: -0.983337px;">

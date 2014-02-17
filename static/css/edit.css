@@ -117,6 +117,15 @@
   -o-transition: all 1s ease-in-out;
   transition: all 1s ease-in-out;
 }
+.published-post {
+  text-align: center;
+  padding: 2em;
+  font-family: Helvetica Neue;
+  font-weight: 200;
+  font-size: 1.5em;
+  background-color: #b13e32;
+  color: white;
+}
 .strikethrough {
   text-decoration: line-through;
   display: inline;

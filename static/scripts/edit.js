@@ -56,44 +56,50 @@ $( document ).ready(function() {
     });
 
     $('#body').live('keyup',function () {
-        console.log("this is a test");
         var itemValue = document.getElementById('body').innerHTML;
         var postID = document.getElementById('post-id').innerHTML;
-        $.ajax({
-                 type: "POST",
-                 url: "/blog/edit/live-save-body/"+postID,
-                 data: "textarea="+itemValue,
-                 success: function(msg) {
-                     $('#autosavenotify').text(msg);
-                 }
-         })
+        var postPublished = document.getElementById('post-published').innerHTML;
+        if (postPublished == 0) {
+            $.ajax({
+                     type: "POST",
+                     url: "/blog/edit/live-save-body/"+postID+"/"+postPublished,
+                     data: "textarea="+itemValue,
+                     success: function(msg) {
+                         $('#autosavenotify').text(msg);
+                     }
+             })
+        }
      });
     $('#body').live('mousedown',function () {
-        console.log("this is a test");
         var itemValue = document.getElementById('body').innerHTML;
         var postID = document.getElementById('post-id').innerHTML;
-        $.ajax({
-                 type: "POST",
-                 url: "/blog/edit/live-save-body/"+postID,
-                 data: "textarea="+itemValue,
-                 success: function(msg) {
-                     $('#autosavenotify').text(msg);
-                 }
-         })
+        var postPublished = document.getElementById('post-published').innerHTML;
+        if (postPublished == 0) {
+            $.ajax({
+                     type: "POST",
+                     url: "/blog/edit/live-save-body/"+postID+"/"+postPublished,
+                     data: "textarea="+itemValue,
+                     success: function(msg) {
+                         $('#autosavenotify').text(msg);
+                     }
+             })
+        }
      });
 
     $('#title').live('keyup',function () {
-        console.log("this is a test");
         var itemValue = document.getElementById('title').innerHTML;
         var postID = document.getElementById('post-id').innerHTML;
-        $.ajax({
-                 type: "POST",
-                 url: "/blog/edit/live-save-title/"+postID,
-                 data: "title="+itemValue,
-                 success: function(msg) {
-                     $('#autosavenotify').text(msg);
-                 }
-         })
+        var postPublished = document.getElementById('post-published').innerHTML;
+        if (postPublished == 0) {
+            $.ajax({
+                     type: "POST",
+                     url: "/blog/edit/live-save-title/"+postID+"/"+postPublished,
+                     data: "title="+itemValue,
+                     success: function(msg) {
+                         $('#autosavenotify').text(msg);
+                     }
+             })
+        }
      });
 
 	//https://github.com/orthes/medium-editor-images-plugin
