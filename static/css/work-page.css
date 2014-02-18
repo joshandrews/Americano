@@ -5,32 +5,44 @@
 #content img {
   width: 100%;
 }
+#content .expedia {
+  width: 30%;
+  margin-left: 35%;
+}
 #content h3 {
   font-size: 2em;
   color: #7eb12c;
   font-family: "Helvetica Neue", Sans-Serif;
   font-weight: 200;
 }
-#content div {
+#content p {
   margin: 2em 0 0 0;
   font-family: "Helvetica Neue", Sans-Serif;
   font-weight: 200;
   font-size: 1.2em;
 }
-#content div a {
+#content p a {
   color: #40938c;
   font-weight: 400;
 }
-#content div a:hover {
+#content p a:hover {
   color: #76c3bd;
 }
 @media only screen and (min-width: 320px) and (max-width: 639px) {
   #content {
     width: 90%;
   }
+  #content .expedia {
+    width: 60%;
+    margin-left: 20%;
+  }
 }
 @media only screen and (min-width: 640px) and (max-width: 1024px) {
   #content {
     width: 80%;
+  }
+  #content .expedia {
+    width: 50%;
+    margin-left: 25%;
   }
 }
