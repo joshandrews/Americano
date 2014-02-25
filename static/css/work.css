@@ -1,6 +1,6 @@
 #content-work {
   margin: 0 auto;
-  width: 50%;
+  width: 40%;
 }
 #content-work h4 {
   font-size: 1.4em;
@@ -8,13 +8,13 @@
   font-weight: 200;
 }
 #content-work h3 {
-  font-size: 2em;
+  font-size: 3em;
   color: #7eb12c;
-  font-family: "Helvetica Neue", Sans-Serif;
-  font-weight: 200;
+  font-family: "Helvetica Neue", "Arial", Sans-Serif;
+  font-weight: 100;
 }
 #content-work ul {
-  border-left: 1px solid #76c3bd;
+  border-left: 1px solid #893027;
   list-style-type: none;
 }
 #content-work ul li {
@@ -24,10 +24,13 @@
   font-weight: 200;
 }
 #content-work ul li a {
-  color: #111111;
+  color: #2b2b2b;
+  text-decoration: none;
+  border-bottom: 1px solid #444444;
 }
 #content-work ul li a:hover {
-  color: #aaaaaa;
+  color: #444444;
+  border-bottom: 1px solid #76c3bd;
 }
 #content-work ul li div a {
   color: #40938c;

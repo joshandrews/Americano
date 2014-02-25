@@ -4,6 +4,7 @@ CREATE TABLE entries (
   content text,
   posted_on datetime DEFAULT NULL,
   published int(11) NOT NULL DEFAULT '0',
+  trash int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (id)
 );
 

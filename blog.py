@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 
-import web, datetime, re
+import web, datetime, re, config
 
-db = web.database(dbn='mysql', db='blog', user='admin', pw='andre')
+con = config.Config()
+db = web.database(dbn='mysql', db=con.ConfigSectionMap("MySQL")["database"], user=con.ConfigSectionMap("MySQL")["username"], pw=con.ConfigSectionMap("MySQL")["password"])
 cache = True
 
 def get_posts():
