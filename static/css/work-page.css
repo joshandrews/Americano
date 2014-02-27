@@ -5,7 +5,7 @@
 #content img {
   width: 100%;
 }
-#content .expedia {
+#content .small-image {
   width: 30%;
   margin-left: 35%;
 }
@@ -32,7 +32,7 @@
   #content {
     width: 90%;
   }
-  #content .expedia {
+  #content .small-image {
     width: 60%;
     margin-left: 20%;
   }
@@ -41,7 +41,7 @@
   #content {
     width: 80%;
   }
-  #content .expedia {
+  #content .small-image {
     width: 50%;
     margin-left: 25%;
   }
