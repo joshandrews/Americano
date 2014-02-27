@@ -1,20 +1,16 @@
 Americano
 ===================
 
-Current Version: 0.4
------------------------
-	- [x] Background update edit page
-	- [x] Nice login page
-	- [x] Fewer 404s - correct redirects or landing pages
-	- [x] Reorg structure
-	- [x] Home page
-	- [x] Start an Install Script
-
-Next Version: 0.5
+Curent Version: 0.5
 ----------------------
-	- [ ] Separate Americano Entirely
-	- [ ] Finish Install Script
-	- [ ] Post Trash
+	- [x] Separate Americano Entirely
+	- [x] Finish Install Script
+	- [x] Post Trash
+
+Next Version: 0.6
+----------------------
+	- [ ] Write setup.py
+	- [ ] Add image uploading
 
 Release Version: 1.0
 ---------------------------
