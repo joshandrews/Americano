@@ -1,0 +1,68 @@
+#content {
+  margin: 0 auto;
+  width: 30%;
+}
+#content h2 {
+  text-align: center;
+  font-family: "Helvetica Neue", "Arial", Sans-Serif;
+  font-weight: 100;
+  font-size: 4em;
+  color: #76c3bd;
+  border-bottom: 1px solid #EEEEEE;
+}
+#content form {
+  margin: 0 auto;
+  text-align: center;
+}
+#content form .with-label {
+  float: right;
+}
+#content form p {
+  padding: 0;
+}
+#content form p label {
+  font-family: "Helvetica Neue", "Arial", Sans-Serif;
+  font-weight: 100;
+  padding-right: 1em;
+  font-size: 1.4em;
+}
+#content form p input {
+  font-family: "Helvetica Neue", Sans-Serif;
+  font-weight: 200;
+  font-size: 1.3em;
+  color: #444444;
+  border: 1px solid #AAAAAA;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  outline: none;
+  letter-spacing: .1em;
+  padding: .7em 1em;
+}
+#content form p input:focus {
+  -webkit-box-shadow: 0px 0px 2px 0px #76c3bd;
+  -moz-box-shadow: 0px 0px 2px 0px #76c3bd;
+  box-shadow: 0px 0px 2px 0px #76c3bd;
+  border: 1px solid #76c3bd;
+}
+#content form .submit {
+  font-family: "Helvetica Neue", Sans-Serif;
+  font-weight: 200;
+  color: #7eb12c;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  font-size: 1.7em;
+  cursor: pointer;
+  margin: .7em 0 0 0;
+}
+@media only screen and (min-width: 320px) and (max-width: 639px) {
+  #content {
+    width: 80%;
+  }
+}
+@media only screen and (min-width: 640px) and (max-width: 1024px) {
+  #content {
+    width: 50%;
+  }
+}

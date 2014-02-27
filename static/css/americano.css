@@ -11,16 +11,25 @@
   padding: 2em 0 2em 0;
   width: 90%;
 }
-#content .new-post {
+#content .americano-header {
   width: 100%;
   border-bottom: 1px dashed #DDD;
   padding: 1em 0 1em 0;
 }
-#content .new-post .new-post-link {
+#content .americano-header div {
+  width: 50%;
+  margin: 0 auto;
+  padding: .5em 0;
+  text-align: center;
+}
+#content .americano-header div .new-post-link {
   color: #444444;
 }
-#content .new-post .new-post-link:hover {
+#content .americano-header div .new-post-link:hover {
   color: #7EB12C;
+}
+#content .americano-header .not-bottom {
+  border-bottom: 1px solid #DDDDDD;
 }
 #content .published-posts {
   width: 48%;

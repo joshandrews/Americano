@@ -1,0 +1,38 @@
+$def with (head, offleft)
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="/static/css/site.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/sidebar.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/linkeffect.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/settings.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/skinny_header.css" />
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+		<script src="/static/scripts/classie.js"></script>
+		<script src="/static/scripts/modernizr.custom.js"></script>
+	</head>
+	<body>
+		<div id="st-container" class="st-container">
+			$:offleft
+			<div class="st-pusher">
+				<div class="st-content">
+					$:head
+					<div id="content">
+                        <h2>Confirm Password</h2>
+                        <form class="sett-form" method="POST" action="/settings-auth">
+                            <p>
+                                <input type="password" name="password" placeholder="Password" autocomplete="off">
+                            </p>
+                            <span>
+                                <input type="submit" value="Submit" class="submit">
+                            </span>
+                        </form>
+                    </div>
+					<div id="foot">
+					</div>
+				</div>
+			</div>
+			<script src="/static/scripts/sidebarEffects.js"></script>
+		</div>
+	</body>
+</html>

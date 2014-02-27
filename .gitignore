@@ -38,4 +38,6 @@ nosetests.xml
 .idea/
 
 static/images/uploads/
+templates/admin/header.html
+templates/common/header.html
 americano.ini

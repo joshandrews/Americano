@@ -35,16 +35,24 @@ urls = (
     '/upload/post-image/(\d+)', "Upload",
     '/blog/edit/live-save-body/(\d+)/(\d+)', "LiveSaveBody",
     '/blog/edit/live-save-title/(\d+)/(\d+)', "LiveSaveTitle",
-    '/install/step/(\d+)', "InstallSubmit"
+    '/install/step/(\d+)', "InstallSubmit",
+    '/settings', "Settings",
+    '/settings-auth', "SettingsAuth"
 )
 
 
 app = web.application(urls, globals())
-
-### Authentication 
+### Authentication
 store = web.session.DiskStore('sessions')
 session = web.session.Session(app, store, initializer={'login': 0, 'privilege': 0})
 
+
+class Auth:
+    def __init__(self):
+        self.val = False
+        self.onpage = False
+
+auth = Auth()
 
 ### Templates
 t_globals = {
@@ -122,7 +130,7 @@ class Login:
 
     def POST(self):
         username, passwd = web.input().user, web.input().passwd
-        ident = blog.get_user(username)[0]
+        ident = blog.get_user()[0]
         if hashlib.sha1(ident['salt']+passwd).hexdigest() == ident['passwd']:
             session.login = 1
             session.privilege = ident['privilege']
@@ -133,6 +141,69 @@ class Login:
             session.privilege = 0
             render = user.create_render(session)
             return render.login_error()
+
+class SettingsAuth:
+    def GET(self):
+        auth.val = False
+        auth.onpage = False
+        check_installed()
+        if user.logged(session):
+            settingsAuth = web.template.frender("templates/admin/settings-auth.html")
+            return settingsAuth(gen_head(), gen_offleft())
+        else:
+            raise web.seeother('/login')
+
+    def POST(self):
+        password = web.input().password
+        ident = blog.get_user()[0]
+        if hashlib.sha1(ident['salt']+password).hexdigest() == ident['passwd']:
+            auth.val = True
+            raise web.seeother('/settings')
+        else:
+            auth.val = False
+            raise web.seeother('/settings-auth')
+
+class Settings:
+    def GET(self):
+        check_installed()
+        if not auth.val:
+            raise web.seeother('/settings-auth')
+
+        if user.logged(session):
+            auth.val = False
+            auth.onpage = True
+            ident = blog.get_user()[0]
+            con = config.Config()
+            render = user.create_render(session)
+            return render.settings(gen_head(), gen_offleft(), con.ConfigSectionMap("Info")["name"], ident['user'], ident['email'])
+        else:
+            raise web.seeother('/login')
+
+    def POST(self):
+        print auth.onpage
+        if auth.onpage:
+            con = config.Config()
+            new_name = web.input().name
+            new_username = web.input().username
+            new_password = web.input().password
+            new_email = web.input().email
+            ident = blog.get_user()[0]
+            old_password = ident['passwd']
+            old_name = con.ConfigSectionMap("Info")["name"]
+            hash_password = hashlib.sha1(ident['salt']+new_password).hexdigest()
+            if hash_password is not ident['passwd'] and str(new_password) is not "" and new_password is not None:
+                old_password = hash_password
+
+            blog.update_user(new_username, old_password, new_email)
+
+            if new_name is not old_name:
+                con.setName(new_name)
+                espresso.generateHeader(new_name)
+            raise web.seeother('/americano')
+        else:
+            raise web.seeother('/settings-auth')
+
+
 
 class Install:
     def GET(self):

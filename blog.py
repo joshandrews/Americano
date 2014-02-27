@@ -58,6 +58,10 @@ def generateUser(username, password, email):
     pswd = hashlib.sha1(slt+password).hexdigest()
     return db.insert('users', user=username, passwd=pswd, email=email, privilege=2, salt=slt)
 
-def get_user(username):
+def get_user():
     db = web.database(dbn='mysql', db=con.ConfigSectionMap("MySQL")["database"], user=con.ConfigSectionMap("MySQL")["username"], pw=con.ConfigSectionMap("MySQL")["password"])
-    return db.select('users', where='user=$username', vars=locals())
+    return db.select('users', where='id=1', vars=locals())
+
+def update_user(username, password, email):
+    db = web.database(dbn='mysql', db=con.ConfigSectionMap("MySQL")["database"], user=con.ConfigSectionMap("MySQL")["username"], pw=con.ConfigSectionMap("MySQL")["password"])
+    db.update('users', where="id=1", vars=locals(), user=username, passwd=password, email=email)

@@ -1,0 +1,47 @@
+$def with (head, offleft, name, username, email)
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="/static/css/site.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/sidebar.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/linkeffect.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/settings.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/skinny_header.css" />
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+		<script src="/static/scripts/classie.js"></script>
+		<script src="/static/scripts/modernizr.custom.js"></script>
+	</head>
+	<body>
+		<div id="st-container" class="st-container">
+			$:offleft
+			<div class="st-pusher">
+				<div class="st-content">
+					$:head
+					<div id="content">
+                        <h2>Settings</h2>
+                        <form class="sett-form" method="POST" action="/settings">
+                            <p class="with-label">
+                                <label>Site Name</label><input type="text" name="name" value="$name" placeholder="Site Name" autocomplete="off">
+                            </p>
+                            <p class="with-label">
+                                <label>Username</label><input type="text" name="username" value="$username" placeholder="Username" autocomplete="off">
+                            </p>
+                            <p class="with-label">
+                                <label>Password</label><input type="password" name="password" placeholder="Password" autocomplete="off">
+                            </p>
+                            <p class="with-label">
+                                <label>Email</label><input type="text" name="email" value="$email" placeholder="Email" autocomplete="off">
+                            </p>
+                            <span>
+                                <input type="submit" value="Update" class="submit">
+                            </span>
+                        </form>
+                    </div>
+					<div id="foot">
+					</div>
+				</div>
+			</div>
+			<script src="/static/scripts/sidebarEffects.js"></script>
+		</div>
+	</body>
+</html>
