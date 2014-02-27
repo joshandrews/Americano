@@ -1,13 +1,7 @@
-Website of Josh Andrews
+Americano
 ===================
 
-Current Version: 0.3
----------------------------
-	- [x] WYSIWYG Editor
-	- [x] Authentication
-	- [x] Latte CMS
-
-Next Version: 0.4
+Current Version: 0.4
 -----------------------
 	- [x] Background update edit page
 	- [x] Nice login page
@@ -24,9 +18,8 @@ Next Version: 0.5
 
 Release Version: 1.0
 ---------------------------
-	- Polished blogging framework (Latte)
-	- Inline comments
-	- About page
+	- Polished blogging framework (Americano)
+	- Install Script
+	- Possible Work Pages
 	- Dynamic home page
-	- Opening blog post
 	
