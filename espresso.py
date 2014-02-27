@@ -1,4 +1,7 @@
-$def with ()
+#!/usr/bin/env python
+
+def generateHeader(name):
+    htmlStr = """$def with ()
     <div id="header">
         <div id="st-trigger-effects" class="column">
             <button class="nav-btn" data-effect="st-effect-4"></button>
@@ -6,7 +9,7 @@ $def with ()
         <div class="name">
             <a href="/" class="button">
                 <img src="/static/images/coffee.svg"/>
-    asdf
+    """+name+"""
             </a>
         </div>
         <ul class="nav cl-effect-1">
@@ -17,4 +20,10 @@ $def with ()
                 <a href="/work" class="button">Work</a>
             </li>
         </ul>
-    </div>
+    </div>"""
+    Html_file= open("templates/common/header.html","w")
+    Html_file.write(htmlStr)
+    Html_file.close()
+    Html_file= open("templates/admin/header.html","w")
+    Html_file.write(htmlStr)
+    Html_file.close()

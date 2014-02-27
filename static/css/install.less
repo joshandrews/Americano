@@ -1,0 +1,84 @@
+@import 'colors.less';
+@import 'fonts.less';
+
+#install-header {
+	height: 4em;
+	width: auto;
+	background-color: @white;
+	border-bottom: 1px dotted @border-color;
+	.name {
+		img {
+			float: left;
+			size: 1em;
+			margin: .4em .8em;
+		}
+		margin: 0px;
+        padding: .7em 0 0 0;
+        font-size: 1.5em;
+        text-transform: uppercase;
+		text-align: center;
+		.ffheader();
+		a{
+			color: @text-color;
+			text-decoration: none;
+		}
+	}
+}
+#content {
+    margin: 0 auto;
+    width: 30%;
+    h2 {
+        text-align: center;
+        .ffstandard-light();
+        font-size: 4em;
+        color: @blue;
+        border-bottom: 1px solid #EEEEEE;
+    }
+    h4 {
+        .ffstandard;
+        font-size: 1.5em;
+        color: @text-color;
+    }
+    form {
+        margin: 0 auto;
+        text-align: center;
+		p {
+            padding: 0;
+			input {
+				.ffstandard();
+				font-size: 1.3em;
+				color: @text-color;
+				border: 1px solid #AAAAAA;
+                -webkit-border-radius: 3px;
+                -moz-border-radius: 3px;
+                border-radius: 3px;
+				outline: none;
+				letter-spacing: .1em;
+                padding: .7em 1em;
+			}
+            input:focus {
+                -webkit-box-shadow: 0px 0px 2px 0px @blue;
+                -moz-box-shadow:    0px 0px 2px 0px @blue;
+                box-shadow:         0px 0px 2px 0px @blue;
+                border: 1px solid @blue;
+
+            }
+		}
+        .next {
+            .ffstandard();
+            color: @green;
+            padding: 0;
+            border:0;
+            background-color:transparent;
+            font-size: 1.7em;
+            cursor: pointer;
+            margin: .7em 0 0 0;
+		}
+	}
+    .done {
+        text-align: center;
+        .ffstandard-light();
+        font-size: 4em;
+        color: @green;
+    }
+}

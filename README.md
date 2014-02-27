@@ -9,14 +9,18 @@ Current Version: 0.3
 
 Next Version: 0.4
 -----------------------
-	- [ ] Background update edit page
-	- [ ] Post Trash
+	- [x] Background update edit page
 	- [x] Nice login page
-	- [ ] Fewer 404s - correct redirects or landing pages
-	- [ ] Reorg structure
-	- [ ] Separate Latte
+	- [x] Fewer 404s - correct redirects or landing pages
+	- [x] Reorg structure
 	- [x] Home page
-	- [ ] Configured for nginx
+	- [x] Start an Install Script
+
+Next Version: 0.5
+----------------------
+	- [ ] Separate Americano Entirely
+	- [ ] Finish Install Script
+	- [ ] Post Trash
 
 Release Version: 1.0
 ---------------------------

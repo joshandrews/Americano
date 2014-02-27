@@ -8,7 +8,12 @@ import os
 import shutil
 import htmltruncate
 import re
-
+import config
+import MySQLdb
+import random
+import string
+import espresso
+import install
 ### Url mappings
 
 web.config.debug = False
@@ -25,10 +30,12 @@ urls = (
     '/blog/delete/(\d+)', 'Delete',
     '/blog/edit/(\d+)', 'Edit',
     '/work/(.*)', "WorkPage",
+    '/install', 'Install',
     '/favicon.ico', "Favicon",
     '/upload/post-image/(\d+)', "Upload",
     '/blog/edit/live-save-body/(\d+)/(\d+)', "LiveSaveBody",
-    '/blog/edit/live-save-title/(\d+)/(\d+)', "LiveSaveTitle"
+    '/blog/edit/live-save-title/(\d+)/(\d+)', "LiveSaveTitle",
+    '/install/step/(\d+)', "InstallSubmit"
 )
 
 
@@ -109,8 +116,8 @@ class Login:
 
     def POST(self):
         username, passwd = web.input().user, web.input().passwd
-        ident = blog.db.select('users', where='user=$username', vars=locals())[0]
-        if hashlib.sha1(ident['salt']+passwd).hexdigest() == ident['pass']:
+        ident = blog.get_user(username)[0]
+        if hashlib.sha1(ident['salt']+passwd).hexdigest() == ident['passwd']:
             session.login = 1
             session.privilege = ident['privilege']
             render = user.create_render(session)
@@ -120,6 +127,35 @@ class Login:
             session.privilege = 0
             render = user.create_render(session)
             return render.login_error()
+
+class Install:
+    def GET(self):
+        con = config.Config()
+        render = web.template.render('templates/common', globals=t_globals)
+        return render.install(con.ConfigSectionMap("Info")["installed"])
+
+class InstallSubmit:
+    def POST(self, step):
+        con = config.Config()
+        if int(step) is 1:
+            name = web.input().name
+            username = web.input().username
+            password = web.input().password
+            con.setName(name)
+            genpass = ''.join(random.choice(string.ascii_uppercase + string.digits) for x in range(8))
+            con.setMySQLPassword(genpass)
+            con.setMySQLUsername("americano")
+            con.setMySQLDatabase("americano")
+            create_americano_database(username, password, genpass)
+            con.setInstalled("2")
+            espresso.generateHeader(name)
+        if int(step) is 2:
+            username = web.input().username
+            password = web.input().password
+            email = web.input().email
+            blog.generateUser(username, password, email)
+            con.setInstalled("3")
+
 
 class Americano:
     
@@ -239,7 +275,6 @@ class Edit:
         if user.logged(session):
             if session.privilege == 2:
                 post = blog.get_post(int(id))
-                print re.sub('<[^<]+?>', '', title) + "asdfasdfasdf"
                 if re.sub('<[^<]+?>', '', title) == "" or body == "<p><br></p>":
                     Delete.POST(self, int(id))
                 else:
@@ -258,6 +293,17 @@ class LiveSaveTitle:
     def POST(self, id, published):
         title = web.input().title
         blog.update_post_title(int(id), title)
+
+def create_americano_database(user, password, genpass):
+    dbs = MySQLdb.connect(user=user, passwd=password)
+    cur = dbs.cursor()
+    cur.execute('CREATE DATABASE americano;')
+    db = MySQLdb.connect(host="localhost", user=user, passwd=password, db="americano")
+    cur = db.cursor()
+    cur.execute("GRANT ALL PRIVILEGES ON americano.* To 'americano'@'localhost' IDENTIFIED BY '"+genpass+"';")
+    cur.execute("FLUSH PRIVILEGES;")
+    for line in open('schema.sql','r'):
+        cur.execute(line)
 
 if __name__ == '__main__':
     app.run()

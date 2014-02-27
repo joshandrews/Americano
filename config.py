@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import ConfigParser
 import os.path
 
@@ -12,7 +14,7 @@ class Config:
             self.config.add_section("Info")
             self.config.set("Preferences", "ExtraHeaderEnabled", "False")
             self.config.set("Preferences", "Colors", "Default")
-            self.config.set("Info", "Installed", "False")
+            self.config.set("Info", "Installed", "1")
             self.config.write(cfgfile)
             cfgfile.close()
         else:
@@ -33,6 +35,18 @@ class Config:
     def setMySQLDatabase(self, database):
         cfgfile = open("americano.ini",'w')
         self.config.set('MySQL','database',database)
+        self.config.write(cfgfile)
+        cfgfile.close()
+
+    def setName(self, name):
+        cfgfile = open("americano.ini",'w')
+        self.config.set('Info','name',name)
+        self.config.write(cfgfile)
+        cfgfile.close()
+
+    def setInstalled(self, val):
+        cfgfile = open("americano.ini",'w')
+        self.config.set('Info','installed',val)
         self.config.write(cfgfile)
         cfgfile.close()
 

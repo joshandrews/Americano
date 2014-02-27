@@ -1,0 +1,58 @@
+$def with (step)
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="/static/css/site.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/sidebar.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/linkeffect.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/install.css" />
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+		<script src="/static/scripts/classie.js"></script>
+		<script src="/static/scripts/install.js"></script>
+        <script src="/static/scripts/modernizr.custom.js"></script>
+	</head>
+	<body>
+        <div id="step" style="display: none;">$step</div>
+        <div id="install-header">
+            <div class="name">
+                <a href="/" class="button">
+                    Americano
+                </a>
+            </div>
+        </div>
+        <div id="content">
+            <h2>Install</h2>
+            <form id="step-1" style="display: none;" class="install-form" method="POST" action="/install/step/1">
+                <p>
+                    <input type="text" name="name" placeholder="Site Name" autocomplete="off">
+                </p>
+                <p>
+                    <input type="text" name="username" placeholder="MySQL Username" autocomplete="off" class="mysql">
+                </p>
+                <p>
+                    <input type="password" name="password" placeholder="MySQL Password" autocomplete="off" class="mysql">
+                </p>
+                <span>
+                    <input type="submit" value="Next" class="next">
+                </span>
+            </form>
+            <form id="step-2" style="display: none;" class="install-form" method="POST" action="/install/step/2">
+                <p>
+                    <input type="text" name="username" placeholder="Username" autocomplete="off">
+                </p>
+                <p>
+                    <input type="password" name="password" placeholder="Password" autocomplete="off">
+                </p>
+                <p>
+                    <input type="text" name="email" placeholder="Email" autocomplete="off">
+                </p>
+                <span>
+                    <input type="submit" value="Next" class="next">
+                </span>
+            </form>
+            <h1 id="step-3" class="done" style="display: none;">Done!</h1>
+        </div>
+        <div id="foot">
+        </div>
+	</body>
+</html>
