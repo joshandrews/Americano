@@ -51,6 +51,10 @@ t_globals = {
     'datestr': web.datestr,
 }
 render = web.template.render('templates/common', cache=blog.cache, globals=t_globals)
+def check_installed():
+    con = config.Config()
+    if int(con.ConfigSectionMap("Info")["installed"]) is not 3:
+        raise web.seeother('/install')
 
 def gen_head():
     if session.login==1:
@@ -83,8 +87,9 @@ class Favicon:
 
 class WorkPage:
      def GET(self, page):
-            workpage = web.template.frender('templates/common/work-pages/'+page+".html")
-            return workpage(gen_head(), gen_offleft())
+        check_installed()
+        workpage = web.template.frender('templates/common/work-pages/'+page+".html")
+        return workpage(gen_head(), gen_offleft())
 
 class Upload:
     def POST(self, id):
@@ -107,6 +112,7 @@ class Upload:
 class Login:
 
     def GET(self):
+        check_installed()
         if user.logged(session):
             render = user.create_render(session)
             raise web.seeother('/americano')
@@ -160,6 +166,7 @@ class InstallSubmit:
 class Americano:
     
     def GET(self):
+        check_installed()
         if user.logged(session):
             published_posts = blog.get_published_posts()
             unpublished_posts = blog.get_unpublished_posts()
@@ -171,6 +178,7 @@ class Americano:
 class Logout:
 
     def GET(self):
+        check_installed()
         session.login = 0
         session.kill()
         raise web.seeother('/blog')
@@ -179,6 +187,7 @@ class Logout:
 class Index:
     
     def GET(self):
+        check_installed()
         render = web.template.render('templates/common', globals=t_globals)
         return render.index(gen_head(), gen_offleft())
 
@@ -186,7 +195,7 @@ class Index:
 class Blog:
 
     def GET(self):
-        """ Show page """
+        check_installed()
         posts = blog.get_published_posts()
         render = web.template.render('templates/common', globals=t_globals)
         return render.blog(gen_head(), gen_offleft(), posts)
@@ -195,7 +204,7 @@ class Blog:
 class BlogPost:
 
     def GET(self, id, name):
-        """ View single post """
+        check_installed()
         post = blog.get_post(int(id))
         idname = post.title.lstrip().rstrip().replace(' ', '-').replace('!', '').replace(',','').lower()
         if idname != name:
@@ -220,6 +229,7 @@ class BlogPost:
 class New:
 
     def GET(self):
+        check_installed()
         render = user.create_render(session)
         return render.new(gen_head(), gen_offleft())
 
@@ -254,6 +264,7 @@ class Delete:
 class Work:
 
     def GET(self):
+        check_installed()
         render = web.template.render('templates/common', globals=t_globals)
         return render.work(gen_head(), gen_offleft())
 
@@ -261,6 +272,7 @@ class Work:
 class Edit:
 
     def GET(self, id):
+        check_installed()
         post = blog.get_post(int(id))
         if post is None:
             post_id = blog.new_post("<p><br></p>", "<p><br></p>", 0)
