@@ -17,11 +17,28 @@ def get_posts():
 
 def get_published_posts():
     db = web.database(dbn='mysql', db=con.ConfigSectionMap("MySQL")["database"], user=con.ConfigSectionMap("MySQL")["username"], pw=con.ConfigSectionMap("MySQL")["password"])
-    return db.select('entries', where='published=1', order='id DESC')
+    return db.select('entries', where='published=1 AND trash=0', order='id DESC')
 
 def get_unpublished_posts():
     db = web.database(dbn='mysql', db=con.ConfigSectionMap("MySQL")["database"], user=con.ConfigSectionMap("MySQL")["username"], pw=con.ConfigSectionMap("MySQL")["password"])
-    return db.select('entries', where='published=0', order='id DESC')
+    return db.select('entries', where='published=0 AND trash=0', order='id DESC')
+
+def get_trashed_posts():
+    db = web.database(dbn='mysql', db=con.ConfigSectionMap("MySQL")["database"], user=con.ConfigSectionMap("MySQL")["username"], pw=con.ConfigSectionMap("MySQL")["password"])
+    return db.select('entries', where='trash=1', order='id DESC')
+
+def throw_away(id):
+    db = web.database(dbn='mysql', db=con.ConfigSectionMap("MySQL")["database"], user=con.ConfigSectionMap("MySQL")["username"], pw=con.ConfigSectionMap("MySQL")["password"])
+    db.update('entries', where="id=$id", vars=locals(), trash=1)
+
+def empty_trash():
+    posts = get_trashed_posts()
+    for post in posts:
+        del_post(post.id)
+
+def put_back(id):
+    db = web.database(dbn='mysql', db=con.ConfigSectionMap("MySQL")["database"], user=con.ConfigSectionMap("MySQL")["username"], pw=con.ConfigSectionMap("MySQL")["password"])
+    db.update('entries', where="id=$id", vars=locals(), trash=0)
 
 def get_post(id):
     db = web.database(dbn='mysql', db=con.ConfigSectionMap("MySQL")["database"], user=con.ConfigSectionMap("MySQL")["username"], pw=con.ConfigSectionMap("MySQL")["password"])

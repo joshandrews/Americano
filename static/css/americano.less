@@ -3,9 +3,8 @@
 
 .section-header {
 	.ffstandard();
-	font-size: 28px;
+	font-size: 1.8em;
 	font-style: normal;
-	text-transform: uppercase;
 	text-decoration: none;
 }
 #content {
@@ -17,19 +16,20 @@
 		border-bottom: 1px dashed #DDD;
 		padding: 1em 0 1em 0;
         div {
-            width: 50%;
-            margin: 0 auto;
-            padding:.5em 0;
-            text-align: center;
+            display: inline;
+            padding:1em 2em 0 2em;
             .new-post-link {
 			    color: #444444;
             }
             .new-post-link:hover {
-                color: #7EB12C;
+                color: @green;
             }
         }
         .not-bottom {
-            border-bottom:1px solid #DDDDDD;
+            border-right: 1px solid #DDDDDD;
+        }
+        .first {
+            padding-left: 0;
         }
 	}
 	.published-posts {
@@ -114,6 +114,16 @@
 		margin: 0 auto;
 		padding: 2em 0 2em 0;
 		width: 90%;
+        .americano-header {
+            div {
+                text-align: center;
+                display: block;
+                padding-left: 0;
+            }
+            .not-bottom {
+                border-right: 0;
+            }
+        }
 		.published-posts {
 			width: 100%;
 			display: block;

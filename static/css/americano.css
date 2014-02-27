@@ -1,9 +1,8 @@
 .section-header {
   font-family: "Helvetica Neue", Sans-Serif;
   font-weight: 200;
-  font-size: 28px;
+  font-size: 1.8em;
   font-style: normal;
-  text-transform: uppercase;
   text-decoration: none;
 }
 #content {
@@ -17,19 +16,20 @@
   padding: 1em 0 1em 0;
 }
 #content .americano-header div {
-  width: 50%;
-  margin: 0 auto;
-  padding: .5em 0;
-  text-align: center;
+  display: inline;
+  padding: 1em 2em 0 2em;
 }
 #content .americano-header div .new-post-link {
   color: #444444;
 }
 #content .americano-header div .new-post-link:hover {
-  color: #7EB12C;
+  color: #7eb12c;
 }
 #content .americano-header .not-bottom {
-  border-bottom: 1px solid #DDDDDD;
+  border-right: 1px solid #DDDDDD;
+}
+#content .americano-header .first {
+  padding-left: 0;
 }
 #content .published-posts {
   width: 48%;
@@ -104,6 +104,14 @@
     margin: 0 auto;
     padding: 2em 0 2em 0;
     width: 90%;
+  }
+  #content .americano-header div {
+    text-align: center;
+    display: block;
+    padding-left: 0;
+  }
+  #content .americano-header .not-bottom {
+    border-right: 0;
   }
   #content .published-posts {
     width: 100%;

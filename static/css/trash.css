@@ -1,0 +1,114 @@
+.section-header {
+  font-family: "Helvetica Neue", "Arial", Sans-Serif;
+  font-weight: 100;
+  font-size: 3em;
+  font-style: normal;
+  text-decoration: none;
+  color: #893027;
+}
+#content {
+  margin: 0 auto;
+}
+#content .nothing-here {
+  font-family: "Helvetica Neue", "Arial", Sans-Serif;
+  font-weight: 100;
+  text-align: center;
+  color: #444444;
+  font-size: 2em;
+}
+#content .empty-trash-form {
+  border-top: 1px solid #DDDDDD;
+  border-bottom: 1px solid #DDDDDD;
+  width: 100%;
+  text-align: center;
+  padding: 1em 0;
+}
+#content .empty-trash-form button {
+  padding: 0;
+  margin: 0;
+  outline: none;
+  border: none;
+  background: none;
+  color: #893027;
+  font-family: "Helvetica Neue", Sans-Serif;
+  font-weight: 200;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1.4em;
+}
+#content .empty-trash-form button div {
+  display: inline;
+  margin-left: .1em;
+}
+#content .empty-trash-form button:hover {
+  color: #3a1410;
+}
+#content #posts {
+  margin: 0 auto;
+  width: 48%;
+}
+#content #posts .posts-head {
+  color: #76C3BD;
+}
+#content #posts .blog-post {
+  border-bottom: 1px solid #DDDDDD;
+  padding: 2em 0 0 0;
+}
+#content #posts .blog-post .svg-icon {
+  display: inline;
+  text-decoration: none;
+}
+#content #posts .blog-post .svg-icon svg {
+  zoom: 120%;
+}
+#content #posts .blog-post .edit svg:hover path {
+  fill: #7EB12C;
+}
+#content #posts .blog-post .delete svg:hover path {
+  fill: #893027;
+}
+#content #posts .blog-post .icons form button {
+  padding: 0;
+  margin: 0;
+  outline: none;
+  border: none;
+  background: none;
+  color: #76c3bd;
+  font-family: "Helvetica Neue", Sans-Serif;
+  font-weight: 200;
+  cursor: pointer;
+  font-size: 1.4em;
+}
+#content #posts .blog-post .icons form button img {
+  height: .7em;
+}
+#content #posts .blog-post .icons form button div {
+  display: inline;
+  margin-left: .1em;
+}
+#content #posts .blog-post .icons form button:hover {
+  color: #40938c;
+}
+#content #posts .blog-post .post-title {
+  font-family: "Helvetica Neue", Sans-Serif;
+  font-weight: 200;
+  font-size: 28px;
+  font-style: normal;
+  margin: 20px 0 20px 0;
+  color: #444444;
+  text-decoration: none;
+}
+#content #posts .blog-post .post-title:hover {
+  color: #999999;
+}
+#content #posts .blog-post .post-body {
+  font-size: 18px;
+  font-color: #444444;
+  font-family: "Helvetica Neue", Sans-Serif;
+  font-weight: 200;
+  line-height: 1.3em;
+}
+#content #posts .blog-post .post-body blockquote {
+  padding-left: 20px;
+  border-left: 6px solid #b13e32;
+}

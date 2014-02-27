@@ -1,0 +1,58 @@
+$def with (head, offleft, posts, htmltruncate)
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="/static/css/site.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/sidebar.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/linkeffect.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/trash.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/skinny_header.css" />
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+		<script src="/static/scripts/classie.js"></script>
+		<script src="/static/scripts/modernizr.custom.js"></script>
+	</head>
+	<body>
+		<div id="st-container" class="st-container">
+			$:offleft
+			<div class="st-pusher">
+				<div class="st-content">
+					$:head
+					<div id="content">
+                        <div id="posts">
+                            <h3 class="published-posts-head section-header">Trashed Posts</h3>
+                            $if len(posts) == 0:
+                                <div class="nothing-here">There's nothing here!</div>
+                            $else:
+                                <form action="/trash/empty" class="empty-trash-form" method="post">
+                                    <button class="submit delete" type="submit">
+                                        <div id="empty-trash">- Empty Trash</div>
+                                    </button>
+                                </form>
+                            $for post in posts:
+                                <div class="blog-post">
+                                    <a class="post-title" href="/blog/$post.id/$post.title.lstrip().rstrip().replace(' ', '-').replace('!', '').replace(',','').lower()">
+                                        $post.title
+                                    </a>
+                                    — $datestr(post.posted_on)
+                                    <div class="post-body">
+                                        $:htmltruncate.truncate_html_words(post.content, 200)
+                                    </div>
+                                    <div class="icons">
+                                        <form action="/blog/put-back/$post.id" method="post">
+                                            <button class="submit delete" type="submit">
+                                                <img src="static/images/arrow-back.svg"/>
+                                                <div id="delete-text">Put Back</div>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+					<div id="foot">
+					</div>
+				</div>
+			</div>
+			<script src="/static/scripts/sidebarEffects.js"></script>
+		</div>
+	</body>
+</html>

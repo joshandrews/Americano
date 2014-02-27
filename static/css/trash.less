@@ -1,0 +1,124 @@
+@import 'colors.less';
+@import 'fonts.less';
+
+.section-header {
+	.ffstandard-light();
+	font-size: 3em;
+	font-style: normal;
+	text-decoration: none;
+    color: @red;
+}
+
+#content {
+    margin: 0 auto;
+    .nothing-here {
+        .ffstandard-light();
+        text-align: center;
+        color: @text-color;
+        font-size: 2em;
+    }
+    .empty-trash-form {
+        border-top: 1px solid #DDDDDD;
+        border-bottom: 1px solid #DDDDDD;
+        width: 100%;
+        text-align: center;
+        padding: 1em 0;
+        button {
+            padding: 0;
+            margin: 0;
+            outline: none;
+            border: none;
+            background: none;
+            color: @red;
+            .ffstandard();
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1.4em;
+            div {
+                display: inline;
+                margin-left: .1em;
+            }
+        }
+        button:hover {
+            color: darken(@red, 20%);
+        }
+    }
+    #posts {
+        margin: 0 auto;
+        width: 48%;
+        .posts-head {
+            color: #76C3BD;
+        }
+        .blog-post {
+            border-bottom: 1px solid #DDDDDD;
+            padding: 2em 0 0 0;
+            .svg-icon {
+                display: inline;
+                text-decoration: none;
+                svg {
+                    zoom: 120%;
+                }
+            }
+            .edit {
+                svg:hover {
+                    path {
+                        fill: #7EB12C;
+                    }
+                }
+            }
+            .delete {
+                svg:hover {
+                    path {
+                        fill: #893027;
+                    }
+                }
+            }
+            .icons {
+                form {
+                    button {
+                        padding: 0;
+                        margin: 0;
+                        outline: none;
+                        border: none;
+                        background: none;
+                        color: @blue;
+                        .ffstandard();
+                        cursor: pointer;
+                        font-size: 1.4em;
+                        img {
+                            height: .7em;
+                        }
+                        div {
+                            display: inline;
+                            margin-left: .1em;
+                        }
+                    }
+                    button:hover {
+                        color: darken(@blue, 20%);
+                    }
+                }
+            }
+            .post-title {
+                .ffstandard();
+                font-size: 28px;
+                font-style: normal;
+                margin: 20px 0 20px 0;
+                color: #444444;
+                text-decoration: none;
+            }
+            .post-title:hover {
+                color: #999999;
+            }
+            .post-body {
+                font-size: 18px;
+                font-color: #444444;
+                .ffstandard();
+                line-height: 1.3em;
+                blockquote {
+                    padding-left: 20px;
+                    border-left: 6px solid lighten(@red, 10%);
+                }
+            }
+        }
+    }
+}

@@ -37,7 +37,10 @@ urls = (
     '/blog/edit/live-save-title/(\d+)/(\d+)', "LiveSaveTitle",
     '/install/step/(\d+)', "InstallSubmit",
     '/settings', "Settings",
-    '/settings-auth', "SettingsAuth"
+    '/settings-auth', "SettingsAuth",
+    '/trash', 'Trash',
+    '/blog/put-back/(\d+)', 'PutBack',
+    '/trash/empty', 'EmptyTrash'
 )
 
 
@@ -208,30 +211,34 @@ class Settings:
 class Install:
     def GET(self):
         con = config.Config()
-        render = web.template.render('templates/common', globals=t_globals)
-        return render.install(con.ConfigSectionMap("Info")["installed"])
+        if int(con.ConfigSectionMap("Info")["installed"]) is not 3:
+            render = web.template.render('templates/common', globals=t_globals)
+            return render.install(con.ConfigSectionMap("Info")["installed"])
+        else:
+            raise web.seeother('/')
 
 class InstallSubmit:
     def POST(self, step):
         con = config.Config()
-        if int(step) is 1:
-            name = web.input().name
-            username = web.input().username
-            password = web.input().password
-            con.setName(name)
-            genpass = ''.join(random.choice(string.ascii_uppercase + string.digits) for x in range(8))
-            con.setMySQLPassword(genpass)
-            con.setMySQLUsername("americano")
-            con.setMySQLDatabase("americano")
-            create_americano_database(username, password, genpass)
-            con.setInstalled("2")
-            espresso.generateHeader(name)
-        if int(step) is 2:
-            username = web.input().username
-            password = web.input().password
-            email = web.input().email
-            blog.generateUser(username, password, email)
-            con.setInstalled("3")
+        if int(con.ConfigSectionMap("Info")["installed"]) is not 3:
+            if int(step) is 1:
+                name = web.input().name
+                username = web.input().username
+                password = web.input().password
+                con.setName(name)
+                genpass = ''.join(random.choice(string.ascii_uppercase + string.digits) for x in range(8))
+                con.setMySQLPassword(genpass)
+                con.setMySQLUsername("americano")
+                con.setMySQLDatabase("americano")
+                create_americano_database(username, password, genpass)
+                con.setInstalled("2")
+                espresso.generateHeader(name)
+            if int(step) is 2:
+                username = web.input().username
+                password = web.input().password
+                email = web.input().email
+                blog.generateUser(username, password, email)
+                con.setInstalled("3")
 
 
 class Americano:
@@ -323,15 +330,21 @@ class Delete:
     def POST(self, id):
         if user.logged(session):
             if session.privilege == 2:
-                blog.del_post(int(id))
+                blog.throw_away(int(id))
         raise web.seeother('/americano')
 
     def GET(self, id):
         if user.logged(session):
             if session.privilege == 2:
-                blog.del_post(int(id))
+                blog.throw_away(int(id))
         raise web.seeother('/americano')
 
+class PutBack:
+    def POST(self, id):
+        if user.logged(session):
+            if session.privilege == 2:
+                blog.put_back(int(id))
+        raise web.seeother('/trash')
 class Work:
 
     def GET(self):
@@ -366,6 +379,26 @@ class Edit:
             raise web.seeother('/blog')
         else:
             raise web.seeother('/americano')
+
+class Trash:
+    def GET(self):
+        check_installed()
+        if user.logged(session):
+            trashed_posts = blog.get_trashed_posts()
+            render = user.create_render(session)
+            return render.trash(gen_head(), gen_offleft(), trashed_posts, htmltruncate)
+        else:
+            raise web.seeother('/login')
+
+class EmptyTrash:
+
+    def POST(self):
+        check_installed()
+        if user.logged(session):
+            blog.empty_trash()
+            raise web.seeother('/trash')
+        else:
+            raise web.seeother('/login')
 
 class LiveSaveBody:
     def POST(self, id, published):
