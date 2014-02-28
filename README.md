@@ -10,7 +10,8 @@ Curent Version: 0.5
 Next Version: 0.6
 ----------------------
 	- [ ] Write setup.py
-	- [ ] Add image uploading
+	- [ ] Add image uploading inside posts
+	- [ ] Add multiple types of post
 
 Release Version: 1.0
 ---------------------------
