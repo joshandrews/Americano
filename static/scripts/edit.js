@@ -3,7 +3,7 @@
 $( document ).ready(function() {
 	//https://github.com/daviferreira/medium-editor
     var title = new MediumEditor('.editable');
-    var epicbody = $('#epiceditor').text();
+    var epicbody = $('#epiceditor').html();
     var opts = {
       container: 'epiceditor',
       basePath: window.location.origin,

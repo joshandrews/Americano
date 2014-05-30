@@ -35,6 +35,7 @@
 #content .welcome a {
   color: #76c3bd;
   font-weight: 400;
+  text-decoration: none;
 }
 #content .welcome a:hover {
   color: #bde2df;
