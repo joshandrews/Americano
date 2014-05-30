@@ -30,9 +30,9 @@ $def with (head, offleft, published_posts, unpublished_posts, htmltruncate)
 									<a class="post-title" href="/blog/$post.id/$post.title.lstrip().rstrip().replace(' ', '-').replace('!', '').replace(',','').lower()">
 										$post.title
 									</a>
-									— $datestr(post.posted_on) 
+									— $datestr(post.posted_on)
 									<div class="post-body">
-										$:htmltruncate.truncate_html_words(post.content, 200)
+										$:htmltruncate.truncate_html_words(post.html, 200)
 									</div>
 									<!--<a class="continue-reading" href="/blog/$post.id">Continue Reading &#65515;</a>-->
 									<div class="icons">
@@ -69,7 +69,7 @@ $def with (head, offleft, published_posts, unpublished_posts, htmltruncate)
 									</a>
 									— $datestr(post.posted_on) 
 									<div class="post-body">
-										$:htmltruncate.truncate_html_words(post.content, 200)
+										$:htmltruncate.truncate_html_words(post.html, 200)
 									</div>
 									<!--<a class="continue-reading" href="/blog/$post.id">Continue Reading &#65515;</a>-->
 									<div class="icons">

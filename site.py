@@ -14,6 +14,7 @@ import random
 import string
 import espresso
 import install
+import markdown
 ### Url mappings
 
 web.config.debug = False
@@ -359,7 +360,7 @@ class Edit:
         check_installed()
         post = blog.get_post(int(id))
         if post is None:
-            post_id = blog.new_post("<p><br></p>", "<p><br></p>", 0)
+            post_id = blog.new_post("<p><br></p>", 0)
             print post_id
             raise web.seeother("/blog/edit/"+str(post_id))
         render = user.create_render(session)
@@ -374,7 +375,7 @@ class Edit:
                 if re.sub('<[^<]+?>', '', title) == "" or body == "<p><br></p>":
                     Delete.POST(self, int(id))
                 else:
-                    blog.update_post(int(id), title, body, published)
+                    blog.update_post(int(id), title, body, markdown.markdown(body), published)
         if published == 1:
             raise web.seeother('/blog')
         else:
@@ -403,7 +404,7 @@ class EmptyTrash:
 class LiveSaveBody:
     def POST(self, id, published):
         body = web.input().textarea
-        blog.update_post_body(int(id), body)
+        blog.update_post_body(int(id), body, markdown.markdown(body))
 
 class LiveSaveTitle:
     def POST(self, id, published):

@@ -2,14 +2,52 @@
 
 $( document ).ready(function() {
 	//https://github.com/daviferreira/medium-editor
-	var editor = new MediumEditor('.editable');
+    var title = new MediumEditor('.editable');
+    var epicbody = $('#epiceditor').text();
+    var opts = {
+      container: 'epiceditor',
+      basePath: window.location.origin,
+      clientSideStorage: true,
+      localStorageName: 'epiceditor',
+      useNativeFullscreen: false,
+      parser: marked,
+      file: {
+        name: 'epiceditor',
+        defaultContent: '',
+        autoSave: 100
+      },
+      theme: {
+        base: '/static/epicEditor/themes/base/epiceditor.css',
+        preview: '/static/epicEditor/themes/preview/preview-dark.css',
+        editor: '/static/epicEditor/themes/editor/epic-dark.css'
+      },
+      button: {
+        preview: true,
+        fullscreen: true,
+        bar: "auto"
+      },
+      focusOnLoad: true,
+      shortcut: {
+        modifier: 18,
+        fullscreen: 70,
+        preview: 80
+      },
+      string: {
+        togglePreview: 'Toggle Preview Mode',
+        toggleEdit: 'Toggle Edit Mode',
+        toggleFullscreen: 'Enter Fullscreen'
+      },
+      autogrow: true
+    }
+    var editor = new EpicEditor(opts).load();
+    editor.importFile('epiceditor', epicbody);
     var prog;
     $('#publish').click(function () {
         var title = $('#title').html();
         title = title.replace(/<\/?[^>]+(>|$)/g, "");
         $('#title-input').val(title);
         var body = $('#body').html();
-        $('#body-input').val(body);
+        $('#body-input').val(JSON.parse(localStorage['epiceditor'])['epiceditor']['content']);
         $('#published-input').val("1");
     });
     $('#draft').click(function () {
@@ -17,7 +55,7 @@ $( document ).ready(function() {
         title = title.replace(/<\/?[^>]+(>|$)/g, "");
         $('#title-input').val(title);
         var body = $('#body').html();
-        $('#body-input').val(body);
+        $('#body-input').val(JSON.parse(localStorage['epiceditor'])['epiceditor']['content']);
         $('#published-input').val("0");
     });
 
@@ -55,23 +93,8 @@ $( document ).ready(function() {
 
     });
 
-    $('#body').live('keyup',function () {
-        var itemValue = document.getElementById('body').innerHTML;
-        var postID = document.getElementById('post-id').innerHTML;
-        var postPublished = document.getElementById('post-published').innerHTML;
-        if (postPublished == 0) {
-            $.ajax({
-                     type: "POST",
-                     url: "/blog/edit/live-save-body/"+postID+"/"+postPublished,
-                     data: "textarea="+itemValue,
-                     success: function(msg) {
-                         $('#autosavenotify').text(msg);
-                     }
-             })
-        }
-     });
-    $('#body').live('mousedown',function () {
-        var itemValue = document.getElementById('body').innerHTML;
+    editor.on('autosave',function () {
+        var itemValue = JSON.parse(localStorage['epiceditor'])['epiceditor']['content'];
         var postID = document.getElementById('post-id').innerHTML;
         var postPublished = document.getElementById('post-published').innerHTML;
         if (postPublished == 0) {

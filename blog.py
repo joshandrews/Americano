@@ -47,23 +47,23 @@ def get_post(id):
     except IndexError:
         return None
 
-def new_post(title, text, published):
+def new_post(title, published):
     db = web.database(dbn='mysql', db=con.ConfigSectionMap("MySQL")["database"], user=con.ConfigSectionMap("MySQL")["username"], pw=con.ConfigSectionMap("MySQL")["password"])
     dt = datetime.datetime.utcnow()
-    return db.insert('entries', title=re.sub('<[^<]+?>', '', title), content=text, posted_on=dt, published=published)
+    return db.insert('entries', title=re.sub('<[^<]+?>', '', title), posted_on=dt, published=published)
 
 def del_post(id):
     db = web.database(dbn='mysql', db=con.ConfigSectionMap("MySQL")["database"], user=con.ConfigSectionMap("MySQL")["username"], pw=con.ConfigSectionMap("MySQL")["password"])
     db.delete('entries', where="id=$id", vars=locals())
 
-def update_post(id, title, text, published):
+def update_post(id, title, md, mu, published):
     db = web.database(dbn='mysql', db=con.ConfigSectionMap("MySQL")["database"], user=con.ConfigSectionMap("MySQL")["username"], pw=con.ConfigSectionMap("MySQL")["password"])
     db.update('entries', where="id=$id", vars=locals(),
-        title=re.sub('<[^<]+?>', '', title), content=text, published=published)
+        title=re.sub('<[^<]+?>', '', title), markdown=md, html=mu, published=published)
 
-def update_post_body(id, text):
+def update_post_body(id, md, mu):
     db = web.database(dbn='mysql', db=con.ConfigSectionMap("MySQL")["database"], user=con.ConfigSectionMap("MySQL")["username"], pw=con.ConfigSectionMap("MySQL")["password"])
-    db.update('entries', where="id=$id", vars=locals(), content=text)
+    db.update('entries', where="id=$id", vars=locals(), markdown=md, html=mu)
 
 def update_post_title(id, title):
     db = web.database(dbn='mysql', db=con.ConfigSectionMap("MySQL")["database"], user=con.ConfigSectionMap("MySQL")["username"], pw=con.ConfigSectionMap("MySQL")["password"])
