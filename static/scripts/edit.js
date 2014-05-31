@@ -47,7 +47,7 @@ $( document ).ready(function() {
         title = title.replace(/<\/?[^>]+(>|$)/g, "");
         $('#title-input').val(title);
         var body = $('#body').html();
-        $('#body-input').val(JSON.parse(localStorage['epiceditor'])['epiceditor']['content']);
+        $('#body-input').val(JSON.parse(localStorage['epiceditor'])['epiceditor']['content'].replace(/\+/g, "%2b"));
         $('#published-input').val("1");
     });
     $('#draft').click(function () {
@@ -55,7 +55,7 @@ $( document ).ready(function() {
         title = title.replace(/<\/?[^>]+(>|$)/g, "");
         $('#title-input').val(title);
         var body = $('#body').html();
-        $('#body-input').val(JSON.parse(localStorage['epiceditor'])['epiceditor']['content']);
+        $('#body-input').val(JSON.parse(localStorage['epiceditor'])['epiceditor']['content'].replace(/\+/g, "%2b"));
         $('#published-input').val("0");
     });
 
@@ -95,6 +95,7 @@ $( document ).ready(function() {
 
     editor.on('autosave',function () {
         var itemValue = JSON.parse(localStorage['epiceditor'])['epiceditor']['content'];
+        itemValue = itemValue.replace(/\+/g, "%2b");
         var postID = document.getElementById('post-id').innerHTML;
         var postPublished = document.getElementById('post-published').innerHTML;
         if (postPublished == 0) {

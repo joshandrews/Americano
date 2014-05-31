@@ -1,4 +1,4 @@
-$def with (head, offleft, post)
+$def with (head, offleft, post, escaped_body)
 <html>
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -58,7 +58,7 @@ $def with (head, offleft, post)
                         <div id="title" class="title editable">
 							<p>$post.title<br></p>
 						</div>
-						<div id="epiceditor" class="body">$:post.markdown</div>
+						<div id="epiceditor" class="body">$:escaped_body</div>
 						<div class="submit-form">
 							<form action="" method="post">
 								<input type="hidden" name="title" id="title-input"></input>

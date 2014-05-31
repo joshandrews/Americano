@@ -364,7 +364,8 @@ class Edit:
             print post_id
             raise web.seeother("/blog/edit/"+str(post_id))
         render = user.create_render(session)
-        return render.edit(gen_head(), gen_offleft(), post)
+        print post.markdown.encode('utf8').decode('utf8').encode("latin-1","ignore")
+        return render.edit(gen_head(), gen_offleft(), post, post.markdown)
 
 
     def POST(self, id):
@@ -375,7 +376,7 @@ class Edit:
                 if re.sub('<[^<]+?>', '', title) == "" or body == "<p><br></p>":
                     Delete.POST(self, int(id))
                 else:
-                    blog.update_post(int(id), title, body, markdown.markdown(body), published)
+                    blog.update_post(int(id), title, body.replace('%2b', '+'), markdown.markdown(body.replace('%2b', '+')), published)
         if published == 1:
             raise web.seeother('/blog')
         else:
@@ -404,7 +405,8 @@ class EmptyTrash:
 class LiveSaveBody:
     def POST(self, id, published):
         body = web.input().textarea
-        blog.update_post_body(int(id), body, markdown.markdown(body))
+        print body
+        blog.update_post_body(int(id), body.replace('%2b', '+'), markdown.markdown(body.replace('%2b', '+')))
 
 class LiveSaveTitle:
     def POST(self, id, published):
