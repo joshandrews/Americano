@@ -15,7 +15,7 @@
 #hero div {
   font-family: "Helvetica Neue", Sans-Serif;
   font-weight: 200;
-  font-size: 5em;
+  font-size: 4em;
   position: absolute;
   color: #FFFFFF;
   width: 100%;
@@ -31,7 +31,7 @@
   bottom: 50px;
   left: 50%;
   margin-left: -10px;
-  border: 2px solid rgba(255, 255, 255, 0.35);
+  border: 2px solid #ffffff;
   background: rgba(0, 0, 0, 0);
   border-left: 0;
   border-top: 0;
