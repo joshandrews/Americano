@@ -35,7 +35,7 @@ $def with (head, offleft, posts, htmltruncate)
                                     </a>
                                     — $datestr(post.posted_on)
                                     <div class="post-body">
-                                        $:htmltruncate.truncate_html_words(post.content, 200)
+                                        $:htmltruncate.truncate_html_words(post.html, 200)
                                     </div>
                                     <div class="icons">
                                         <form action="/blog/put-back/$post.id" method="post">
