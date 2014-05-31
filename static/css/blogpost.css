@@ -57,6 +57,22 @@
   padding-left: 20px;
   border-left: 6px solid #b13e32;
 }
+#post-content article a {
+  color: #40938c;
+  text-decoration: none;
+}
+#post-content article a:visited {
+  color: #40938c;
+}
+#post-content article img {
+  width: 100%;
+  margin-bottom: 0px;
+}
+#post-content article figcaption {
+  color: #6a6a6a;
+  font-size: .8em;
+  text-align: center;
+}
 @media only screen and (min-width: 320px) and (max-width: 639px) {
   #hero {
     background: url(../images/winter-dusting.jpg) no-repeat center center scroll;
