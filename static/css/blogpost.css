@@ -64,6 +64,9 @@
 #post-content article a:visited {
   color: #40938c;
 }
+#post-content article a:hover {
+  color: #76c3bd;
+}
 #post-content article img {
   width: 100%;
   margin-bottom: 0px;
