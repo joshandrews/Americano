@@ -15,6 +15,7 @@ import string
 import espresso
 import install
 import markdown
+import sys
 ### Url mappings
 
 web.config.debug = False
@@ -426,4 +427,10 @@ def create_americano_database(user, password, genpass):
         cur.execute(line)
 
 if __name__ == '__main__':
+    if not len(sys.argv) is 3:
+        web.wsgi.runwsgi = lambda func, addr=None: web.wsgi.runfcgi(func, addr)
+    elif sys.argv[2] == "--dev" or sys.argv[2] == "--d" or sys.argv[2] == "-d":
+        print "Starting americano on port "+sys.argv[1]+" in development mode"
+    else:
+        print "Invalid argument"
     app.run()
