@@ -4,6 +4,7 @@ $( document ).ready(function() {
 	//https://github.com/daviferreira/medium-editor
     var title = new MediumEditor('.editable');
     var epicbody = $('#epiceditor').html();
+    $('#epiceditor').empty();
     var opts = {
       container: 'epiceditor',
       basePath: window.location.origin,
@@ -17,9 +18,9 @@ $( document ).ready(function() {
         autoSave: 100
       },
       theme: {
-        base: '/static/epicEditor/themes/base/epiceditor.css',
-        preview: '/static/epicEditor/themes/preview/preview-dark.css',
-        editor: '/static/epicEditor/themes/editor/epic-dark.css'
+        base: '/static/epicEditor/epiceditor/themes/base/epiceditor.css',
+        preview: '/static/epicEditor/epiceditor/themes/preview/preview-dark.css',
+        editor: '/static/epicEditor/epiceditor/themes/editor/epic-dark.css'
       },
       button: {
         preview: true,
