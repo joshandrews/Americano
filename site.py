@@ -373,7 +373,8 @@ class Edit:
         if user.logged(session):
             if session.privilege == 2:
                 post = blog.get_post(int(id))
-                if re.sub('<[^<]+?>', '', title) == "" or body == "<p><br></p>":
+                print body
+                if re.sub('<[^<]+?>', '', title) == "" or body == "":
                     Delete.POST(self, int(id))
                 else:
                     blog.update_post(int(id), title, body.replace('%2b', '+'), markdown.markdown(body.replace('%2b', '+')), published)

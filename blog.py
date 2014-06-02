@@ -50,7 +50,7 @@ def get_post(id):
 def new_post(title, published):
     db = web.database(dbn='mysql', db=con.ConfigSectionMap("MySQL")["database"], user=con.ConfigSectionMap("MySQL")["username"], pw=con.ConfigSectionMap("MySQL")["password"])
     dt = datetime.datetime.utcnow()
-    return db.insert('entries', title=re.sub('<[^<]+?>', '', title), posted_on=dt, published=published)
+    return db.insert('entries', title=re.sub('<[^<]+?>', '', title), markdown=" ", html=" ", posted_on=dt, published=published)
 
 def del_post(id):
     db = web.database(dbn='mysql', db=con.ConfigSectionMap("MySQL")["database"], user=con.ConfigSectionMap("MySQL")["username"], pw=con.ConfigSectionMap("MySQL")["password"])
