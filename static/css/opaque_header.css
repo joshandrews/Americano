@@ -3,6 +3,7 @@
   height: 4em;
   position: fixed;
   width: 100%;
+  z-index: 9999999;
 }
 #header .name {
   margin: 0px;
