@@ -7,7 +7,7 @@
   font-family: "Helvetica Neue", "Arial", Sans-Serif;
   font-weight: 100;
   font-size: 4em;
-  color: #76c3bd;
+  color: #67e1ff;
   border-bottom: 1px solid #EEEEEE;
 }
 #content form {
@@ -31,10 +31,10 @@
   padding: .7em 1em;
 }
 #content form p input:focus {
-  -webkit-box-shadow: 0px 0px 2px 0px #76c3bd;
-  -moz-box-shadow: 0px 0px 2px 0px #76c3bd;
-  box-shadow: 0px 0px 2px 0px #76c3bd;
-  border: 1px solid #76c3bd;
+  -webkit-box-shadow: 0px 0px 2px 0px #67e1ff;
+  -moz-box-shadow: 0px 0px 2px 0px #67e1ff;
+  box-shadow: 0px 0px 2px 0px #67e1ff;
+  border: 1px solid #67e1ff;
 }
 #content form .login {
   font-family: "Helvetica Neue", Sans-Serif;

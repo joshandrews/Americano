@@ -73,7 +73,7 @@
   outline: none;
   border: none;
   background: none;
-  color: #76c3bd;
+  color: #67e1ff;
   font-family: "Helvetica Neue", Sans-Serif;
   font-weight: 200;
   cursor: pointer;
@@ -87,7 +87,7 @@
   margin-left: .1em;
 }
 #content #posts .blog-post .icons form button:hover {
-  color: #40938c;
+  color: #01cdff;
 }
 #content #posts .blog-post .post-title {
   font-family: "Helvetica Neue", Sans-Serif;

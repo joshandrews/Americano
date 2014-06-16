@@ -17,10 +17,12 @@
 }
 #content .welcome h4 {
   font-size: 2em;
-  color: #7eb12c;
+  color: #67e1ff;
   margin: 0px;
   padding-top: .5em;
   padding-bottom: .5em;
+  font-weight: 100;
+  letter-spacing: 2;
 }
 #content .welcome div {
   font-size: 1.2em;
@@ -30,15 +32,18 @@
   padding-bottom: 1em;
 }
 #content .welcome .fmlink {
-  padding: 5px 0px 5px 0px;
+  padding: .7em;
 }
 #content .welcome a {
-  color: #76c3bd;
+  color: #67e1ff;
   font-weight: 400;
   text-decoration: none;
 }
+#content .welcome a svg:hover path {
+  fill: #67e1ff;
+}
 #content .welcome a:hover {
-  color: #bde2df;
+  color: #cdf5ff;
 }
 @media only screen and (min-width: 320px) and (max-width: 639px) {
   #content {

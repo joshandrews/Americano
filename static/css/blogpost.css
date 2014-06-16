@@ -58,14 +58,14 @@
   border-left: 6px solid #b13e32;
 }
 #post-content article a {
-  color: #40938c;
+  color: #01cdff;
   text-decoration: none;
 }
 #post-content article a:visited {
-  color: #40938c;
+  color: #01cdff;
 }
 #post-content article a:hover {
-  color: #76c3bd;
+  color: #67e1ff;
 }
 #post-content article img {
   width: 100%;

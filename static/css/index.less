@@ -17,10 +17,12 @@
         line-height: 1.8em;
         h4 {
             font-size: 2em;
-            color: @green;
+            color: @blue;
             margin: 0px;
             padding-top: .5em;
             padding-bottom: .5em;
+	        font-weight: 100;
+	        letter-spacing: 2;
         }
         div {
             font-size: 1.2em;
@@ -31,10 +33,15 @@
         }
 
         .fmlink {
-            padding: 5px 0px 5px 0px;
+            padding: .7em;
         }
 
         a {
+	        svg:hover {
+				path {
+					fill: @blue;
+				}
+			}
             color: @blue;
             font-weight: 400;
 	        text-decoration: none;
