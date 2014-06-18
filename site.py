@@ -16,6 +16,8 @@ import espresso
 import install
 import markdown
 import sys
+from PIL import Image
+
 ### Url mappings
 
 web.config.debug = False
@@ -106,6 +108,7 @@ class WorkPage:
 
 class Upload:
     def POST(self, id):
+        size = 128, 128
         x = web.input(myfile={})
         filedir = 'static/images/uploads/'+id+"/" # change this to the directory you want to store the file in.
 
@@ -118,9 +121,17 @@ class Upload:
 
             os.makedirs(filedir)
 
-            fout = open(filedir +'/'+ filename,'w') # creates the file where the uploaded file should be stored
+            fout = open(filedir + filename,'w') # creates the file where the uploaded file should be stored
             fout.write(x.myfile.file.read()) # writes the uploaded file to the newly created file.
             fout.close() # closes the file, upload complete.
+
+            size = 512, 512
+
+            im = Image.open(filedir + filename)
+            im.thumbnail(size)
+            im.save(filedir + filename.split(',')[0]+"-thumb.jpg")
+            blog.update_thumb_for_post(id, "/"+filedir + filename.split(',')[0]+"-thumb.jpg")
+
 
 class Login:
 
@@ -294,7 +305,7 @@ class BlogPost:
         heroURL = '/static/images/winter-dusting.jpg'
         if os.path.exists(filedir):
             for file in os.listdir(filedir):
-                if file.endswith(".jpg") or file.endswith(".jpeg") or file.endswith(".gif") or file.endswith(".png"):
+                if file.endswith(".jpg") or file.endswith(".jpeg") or file.endswith(".gif") or file.endswith(".png") and not file.contains("thumb"):
                     heroURL = "/"+filedir+file
                     break
         print heroURL

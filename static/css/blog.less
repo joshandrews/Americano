@@ -8,9 +8,31 @@
 	text-align: left;
     padding: 0;
     .blog-post {
-        padding: 2em 0 2em 0;
-        margin: 0 auto;
-        width: 50em;
+        padding: 1em 0 0 0;
+        margin: 1em auto;
+        width: 45em;
+	    .absolute {
+		    position: absolute;
+	    }
+	    .front {
+		    border: 5px solid rgba(0, 0, 0, 0.0);
+	    }
+	    .post-img {
+		    width: 3em;
+			height: 3em;
+			border-radius: 1.5em;
+			-webkit-border-radius: 1.5em;
+			-moz-border-radius: 1.5em;
+		    position: absolute;
+		    -webkit-transition: .15s ease;
+		    -moz-transition: .15s ease;
+		    -o-transition: .15s ease;
+		    transition: .15s ease;
+	    }
+		.back {
+		    border: 0px solid @white;
+
+		}
         .post-title {
             .ffstandard();
             font-size: 1.8em;
@@ -18,13 +40,27 @@
             color: @text-color;
             text-decoration: none;
             border-bottom: 4px solid @white;
+	        margin: 2em 0 2em 1em;
+	        padding-top: 2em;
+	        p {
+		        margin-left: 5em;
+		        span {
+	                .ffstandard-light();
+		            font-size: .6em;
+	            }
+	        }
+
         }
         .post-title:hover {
-            color: darken(@text-color, 20%);
-            border-bottom: 4px solid @blue;
-        }
-        span {
-            .ffstandard-light();
+            color: darken(@blue, 25%);
+	        .front {
+	            border: 1.5em solid rgba(103, 225, 255, 0.5);
+	        }
+	        .back {
+		        -webkit-transform: rotate(360deg);
+				-moz-transform: rotate(360deg);
+				transform: rotate(360deg);
+	        }
         }
     }
 }
@@ -42,7 +78,7 @@
 @media only screen and (min-width : 640px) and (max-width : 1024px) {
 	#content-blog {
         .blog-post {
-            width: 85%;
+            width: 65%;
             .post-title {
                 font-size: 1.6em;
              }
