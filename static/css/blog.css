@@ -13,7 +13,11 @@
   position: absolute;
 }
 #content-blog .blog-post .front {
-  border: 5px solid rgba(0, 0, 0, 0);
+  border: 0px solid rgba(0, 0, 0, 0);
+  -webkit-transition: .12s ease;
+  -moz-transition: .12s ease;
+  -o-transition: .12s ease;
+  transition: .12s ease;
 }
 #content-blog .blog-post .post-img {
   width: 3em;
@@ -22,13 +26,16 @@
   -webkit-border-radius: 1.5em;
   -moz-border-radius: 1.5em;
   position: absolute;
-  -webkit-transition: .15s ease;
-  -moz-transition: .15s ease;
-  -o-transition: .15s ease;
-  transition: .15s ease;
 }
 #content-blog .blog-post .back {
   border: 0px solid #ffffff;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  transform: rotate(180deg);
+  -webkit-transition: .2s ease;
+  -moz-transition: .2s ease;
+  -o-transition: .2s ease;
+  transition: .2s ease;
 }
 #content-blog .blog-post .post-title {
   font-family: "Helvetica Neue", Sans-Serif;
