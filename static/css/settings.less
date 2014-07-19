@@ -3,7 +3,7 @@
 
 #content {
     margin: 0 auto;
-    width: 30%;
+    width: 50%;
     h2 {
         text-align: center;
         .ffstandard-light();
@@ -12,10 +12,11 @@
         border-bottom: 1px solid #EEEEEE;
     }
     form {
+	    width: 24em;
         margin: 0 auto;
         text-align: center;
 	    .with-label {
-            float: right;
+			text-align: right;
         }
         p {
             padding: 0;
@@ -44,22 +45,61 @@
 
             }
 		}
-        .submit {
-            .ffstandard();
-            color: @green;
-            padding: 0;
-            border:0;
-            background-color:transparent;
-            font-size: 1.7em;
-            cursor: pointer;
-            margin: .7em 0 0 0;
-		}
+	    .sub-container {
+		    width: 100%;
+		    float: right;
+	        .submit {
+	            .ffstandard();
+	            color: @green;
+	            padding: 0;
+	            border:0;
+	            background-color:transparent;
+	            font-size: 1.7em;
+	            cursor: pointer;
+	            margin: .7em 0 0 0;
+			}
+	    }
 	}
 }
 
 @media only screen and (min-width:320px) and (max-width:639px) {
     #content {
         width: 80%;
+	    form {
+		    width: 21em;
+	        margin: 0 auto;
+	        text-align: center;
+		    .with-label {
+				text-align: right;
+	        }
+	        p {
+	            padding: 0;
+				label {
+	                .ffstandard-light();
+	                padding-right: 1em;
+	                font-size: 1.2em;
+	            }
+	            input {
+					.ffstandard();
+					font-size: 1.1em;
+					color: @text-color;
+					border: 1px solid #AAAAAA;
+	                -webkit-border-radius: 3px;
+	                -moz-border-radius: 3px;
+	                border-radius: 3px;
+					outline: none;
+					letter-spacing: .1em;
+	                padding: .7em 1em;
+				}
+	            input:focus {
+	                -webkit-box-shadow: 0px 0px 2px 0px @blue;
+	                -moz-box-shadow:    0px 0px 2px 0px @blue;
+	                box-shadow:         0px 0px 2px 0px @blue;
+	                border: 1px solid @blue;
+
+	            }
+			}
+	    }
     }
 }
 @media only screen and (min-width : 640px) and (max-width : 1024px) {

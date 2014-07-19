@@ -1,6 +1,6 @@
 #content {
   margin: 0 auto;
-  width: 30%;
+  width: 50%;
 }
 #content h2 {
   text-align: center;
@@ -11,11 +11,12 @@
   border-bottom: 1px solid #EEEEEE;
 }
 #content form {
+  width: 24em;
   margin: 0 auto;
   text-align: center;
 }
 #content form .with-label {
-  float: right;
+  text-align: right;
 }
 #content form p {
   padding: 0;
@@ -45,7 +46,11 @@
   box-shadow: 0px 0px 2px 0px #67e1ff;
   border: 1px solid #67e1ff;
 }
-#content form .submit {
+#content form .sub-container {
+  width: 100%;
+  float: right;
+}
+#content form .sub-container .submit {
   font-family: "Helvetica Neue", Sans-Serif;
   font-weight: 200;
   color: #7eb12c;
@@ -59,6 +64,42 @@
 @media only screen and (min-width: 320px) and (max-width: 639px) {
   #content {
     width: 80%;
+  }
+  #content form {
+    width: 21em;
+    margin: 0 auto;
+    text-align: center;
+  }
+  #content form .with-label {
+    text-align: right;
+  }
+  #content form p {
+    padding: 0;
+  }
+  #content form p label {
+    font-family: "Helvetica Neue", "Arial", Sans-Serif;
+    font-weight: 100;
+    padding-right: 1em;
+    font-size: 1.2em;
+  }
+  #content form p input {
+    font-family: "Helvetica Neue", Sans-Serif;
+    font-weight: 200;
+    font-size: 1.1em;
+    color: #444444;
+    border: 1px solid #AAAAAA;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    outline: none;
+    letter-spacing: .1em;
+    padding: .7em 1em;
+  }
+  #content form p input:focus {
+    -webkit-box-shadow: 0px 0px 2px 0px #67e1ff;
+    -moz-box-shadow: 0px 0px 2px 0px #67e1ff;
+    box-shadow: 0px 0px 2px 0px #67e1ff;
+    border: 1px solid #67e1ff;
   }
 }
 @media only screen and (min-width: 640px) and (max-width: 1024px) {
