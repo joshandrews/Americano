@@ -28,15 +28,15 @@
             }
             a:hover {
                 color: @text-color;
-                border-bottom: 1px solid @blue;
+                border-bottom: 1px solid @link-color;
             }
             div {
                 a {
-                    color: darken(@blue, 20%);
+					color: @link-color;
                     font-weight: 400;
                 }
                 a:hover {
-                    color: @blue;
+                    color: lighten(@link-color, 20%);
                 }
             }
         }

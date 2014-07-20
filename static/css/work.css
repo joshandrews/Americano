@@ -30,14 +30,14 @@
 }
 #content-work ul li a:hover {
   color: #444444;
-  border-bottom: 1px solid #67e1ff;
+  border-bottom: 1px solid #3ac4df;
 }
 #content-work ul li div a {
-  color: #01cdff;
+  color: #3ac4df;
   font-weight: 400;
 }
 #content-work ul li div a:hover {
-  color: #67e1ff;
+  color: #92deed;
 }
 @media only screen and (min-width: 320px) and (max-width: 639px) {
   #content-work {

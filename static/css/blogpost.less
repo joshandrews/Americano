@@ -48,9 +48,8 @@
 }
 #post-content {
 	width: 50%;
-	font-size: 20px;
-	color: #444444;
-	.ffstandard();
+	color: #000000;
+	.ffblogpost();
 	padding-top: 20px;
 	margin: 0 auto;
 	line-height: 1.5em;
@@ -60,14 +59,14 @@
             border-left: 6px solid lighten(@red, 10%);
         }
 	    a {
-		    color: darken(@blue, 20%);
+		    color: @link-color;
 		    text-decoration: none;
 	    }
 	    a:visited {
-		    color: darken(@blue, 20%);
+		    color: @link-color;
 	    }
 	    a:hover {
-		    color: @blue;
+		    color: lighten(@link-color, 20%);
 	    }
 	    img {
 		    width: 100%;
