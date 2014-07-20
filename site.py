@@ -305,7 +305,7 @@ class BlogPost:
         heroURL = '/static/images/winter-dusting.jpg'
         if os.path.exists(filedir):
             for file in os.listdir(filedir):
-                if file.endswith(".jpg") or file.endswith(".jpeg") or file.endswith(".gif") or file.endswith(".png") and not file.contains("thumb"):
+                if (file.endswith(".jpg") or file.endswith(".jpeg") or file.endswith(".gif") or file.endswith(".png")) and not file.contains("thumb"):
                     heroURL = "/"+filedir+file
                     break
         print heroURL
