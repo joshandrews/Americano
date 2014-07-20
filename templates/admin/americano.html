@@ -62,7 +62,7 @@ $def with (head, offleft, published_posts, unpublished_posts, htmltruncate)
 								</div>
 						</div>
 						<div class="unpublished-posts">
-							<h3 class="unpublished-posts-head section-header">Unublished Posts</h3>
+							<h3 class="unpublished-posts-head section-header">Unpublished Posts</h3>
 							$for post in unpublished_posts:
 								<div class="blog-post">
 									<a class="post-title" href="/blog/$post.id/$post.title.lstrip().rstrip().replace(' ', '-').replace('!', '').replace(',','').lower()">
