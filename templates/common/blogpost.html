@@ -8,6 +8,8 @@ $def with (head, offleft, post, heroURL)
 		<link rel="stylesheet" type="text/css" href="/static/css/linkeffect.css" />
 		<link rel="stylesheet" type="text/css" href="/static/css/blogpost.css" />
 		<link rel="stylesheet" type="text/css" href="/static/css/opaque_header.css" />
+        <link rel="stylesheet" type="text/css" href="/static/css/codehighlighter.min.css">
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 		<script src="/static/scripts/classie.js"></script>
 		<script src="/static/scripts/modernizr.custom.js"></script>
@@ -37,6 +39,7 @@ $def with (head, offleft, post, heroURL)
 				</div>
 			</div>
 			<script src="/static/scripts/sidebarEffects.js"></script>
+            <script>hljs.initHighlightingOnLoad();</script>
 		</div>
 	</body>
 </html>

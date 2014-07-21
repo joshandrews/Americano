@@ -386,7 +386,30 @@ class Edit:
                 if re.sub('<[^<]+?>', '', title) == "" or body == "":
                     Delete.POST(self, int(id))
                 else:
-                    blog.update_post(int(id), title, body.replace('%2b', '+'), markdown.markdown(body.replace('%2b', '+')), published)
+                    if "<code>" in body and "</code>" in body:
+                        # Need to render the code block in safe mode
+                        start = re.search('(.*?)<code>', body, re.DOTALL)
+                        if start:
+                            start = start.group(1)
+                        else:
+                            start = ""
+                        codeBlock = re.search('<code>(.*?)</code>', body, re.DOTALL)
+                        if codeBlock:
+                            codeBlock = codeBlock.group(1)
+                        else:
+                            codeBlock = ""
+                        end = re.search('</code>(.*)', body, re.DOTALL)
+                        if end:
+                            end = end.group(1).replace('<code>', "").replace("</code>", "")
+                        else:
+                            end = ""
+                        markedStart = markdown.markdown(start.replace('%2b', '+'))
+                        md = markdown.Markdown(safe_mode='escape')
+                        markedCodeBlock = md.convert(codeBlock.replace('%2b', '+'))
+                        markedEnd = markdown.markdown(end.replace('%2b', '+'))
+                        blog.update_post(int(id), title, body.replace('%2b', '+'), markedStart+"<code>"+markedCodeBlock+"</code>"+markedEnd, published)
+                    else:
+                        blog.update_post(int(id), title, body.replace('%2b', '+'), markdown.markdown(body.replace('%2b', '+')), published)
         if published == 1:
             raise web.seeother('/blog')
         else:

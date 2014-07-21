@@ -67,6 +67,14 @@
 #post-content article a:hover {
   color: #92deed;
 }
+#post-content article pre {
+  white-space: pre-wrap;
+  font-size: 14px;
+  border: 1px solid #efefef;
+  padding: 0em 1em;
+  margin-top: 0em;
+  padding-top: 0em;
+}
 #post-content article img {
   width: 100%;
   margin-bottom: 0px;
