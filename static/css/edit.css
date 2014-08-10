@@ -110,6 +110,16 @@
   float: right;
 }
 #content .delete svg {
+  -ms-transform: rotate(45deg);
+  /* IE 9 */
+
+  -webkit-transform: rotate(45deg);
+  /* Chrome, Safari, Opera */
+
+  transform: rotate(45deg);
+  transition-property: all;
+  transition-duration: .5s;
+  transition-timing-function: cubic-bezier(0.12, 0.59, 0.25, 0.94);
   margin-top: 5px;
   float: left;
   zoom: 200%;
@@ -123,7 +133,7 @@
   max-width: 0;
   float: left;
   margin-top: .31em;
-  transition: max-width 0.1s ease-out 0.1s, opacity 0.1s ease-out 0.1s, color;
+  transition: max-width 0.2s ease-out 0.2s, opacity 0.2s ease-out 0.2s, color;
 }
 #content .delete div div {
   float: left;
@@ -131,8 +141,17 @@
 #content .delete:hover div {
   opacity: 1;
   max-width: 300px;
-  transition: max-width 0.1s ease-out 0.1s, opacity 0.1s ease-out 0.1s;
+  transition: max-width 0.2s ease-out 0.2s, opacity 0.01s ease-out 0.01s;
   color: #893027;
+}
+#content .delete:hover svg {
+  -ms-transform: rotate(0deg);
+  /* IE 9 */
+
+  -webkit-transform: rotate(0deg);
+  /* Chrome, Safari, Opera */
+
+  transform: rotate(0deg);
 }
 #content .delete:hover svg path {
   fill: #893027;

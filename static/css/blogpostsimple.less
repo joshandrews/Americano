@@ -1,0 +1,85 @@
+@import 'fonts.less';
+@import 'colors.less';
+
+#title {
+	.ffstandard();
+    font-size: 2em;
+    color: #444;
+    text-align: center;
+	border-bottom: 1px solid #efefef;
+	margin: 0 auto;
+	width: 60%;
+	padding-bottom: 1em;
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+.headroom {
+	padding: 5em 0 0 0;
+}
+
+#post-content {
+	width: 50%;
+	color: #000000;
+	.ffblogpost();
+	padding-top: 20px;
+	margin: 0 auto;
+	line-height: 1.5em;
+    article {
+        blockquote {
+            padding-left: 20px;
+            border-left: 6px solid lighten(@red, 10%);
+        }
+	    a {
+		    color: @link-color;
+		    text-decoration: none;
+	    }
+	    a:visited {
+		    color: @link-color;
+	    }
+	    a:hover {
+		    color: lighten(@link-color, 20%);
+	    }
+	    pre {
+		    white-space: pre-wrap;
+			font-size: 14px;
+			border: 1px solid #efefef;
+			padding: 0em 1em;
+			margin-top: 0em;
+			padding-top: 0em;
+	    }
+	    img {
+		    width: 100%;
+		    margin-bottom:0px;
+	    }
+	    figcaption {
+		    color: lighten(@text-color, 15%);
+			font-size: .8em;
+			text-align: center;
+	    }
+    }
+}
+
+@media only screen and (min-width:320px) and (max-width:639px) {
+	#title {
+		width: 90%;
+		padding-left: .3em;
+		padding-right: .3em;
+
+	}
+	#post-content {
+		width: 85%;
+	}
+    .st-menu {
+        position: fixed;
+    }
+}
+@media only screen and (min-width : 640px) and (max-width : 1024px) {
+	#title {
+		width: 85%;
+	}
+
+	#post-content {
+		width: 80%;
+	}
+}

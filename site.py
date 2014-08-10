@@ -50,6 +50,7 @@ urls = (
 
 
 app = web.application(urls, globals())
+
 ### Authentication
 store = web.session.DiskStore('sessions')
 session = web.session.Session(app, store, initializer={'login': 0, 'privilege': 0})
@@ -303,7 +304,7 @@ class BlogPost:
             web.seeother("/blog/"+id+"/"+idname)
         render = web.template.render('templates/common', globals=t_globals)
         filedir = 'static/images/uploads/'+id+"/" # change this to the directory you want to store the file in.
-        heroURL = '/static/images/winter-dusting.jpg'
+        heroURL = ''
         if os.path.exists(filedir):
             for file in os.listdir(filedir):
                 if (file.endswith(".jpg") or file.endswith(".jpeg") or file.endswith(".gif") or file.endswith(".png")) and not "thumb" in file:
@@ -312,9 +313,15 @@ class BlogPost:
         if post.published == 0:
             if user.logged(session):
                 if session.privilege == 2:
-                    return render.blogpost(gen_head(), gen_offleft(), post, heroURL)
+                    if heroURL == '':
+                        return render.blogpostsimple(gen_head(), gen_offleft(), post)
+                    else:
+                        return render.blogpost(gen_head(), gen_offleft(), post, heroURL)
         else:
-            return render.blogpost(gen_head(), gen_offleft(), post, heroURL)
+            if heroURL == '':
+                return render.blogpostsimple(gen_head(), gen_offleft(), post)
+            else:
+                return render.blogpost(gen_head(), gen_offleft(), post, heroURL)
 
 
 class New:
@@ -383,7 +390,7 @@ class Edit:
         check_installed()
         post = blog.get_post(int(id))
         if post is None:
-            post_id = blog.new_post("<p><br></p>", 0)
+            post_id = blog.new_post("", 0)
             raise web.seeother("/blog/edit/"+str(post_id))
         render = user.create_render(session)
         return render.edit(gen_head(), gen_offleft(), post, post.markdown)
@@ -397,30 +404,7 @@ class Edit:
                 if re.sub('<[^<]+?>', '', title) == "" or body == "":
                     Delete.POST(self, int(id))
                 else:
-                    if "<code>" in body and "</code>" in body:
-                        # Need to render the code block in safe mode
-                        start = re.search('(.*?)<code>', body, re.DOTALL)
-                        if start:
-                            start = start.group(1)
-                        else:
-                            start = ""
-                        codeBlock = re.search('<code>(.*?)</code>', body, re.DOTALL)
-                        if codeBlock:
-                            codeBlock = codeBlock.group(1)
-                        else:
-                            codeBlock = ""
-                        end = re.search('</code>(.*)', body, re.DOTALL)
-                        if end:
-                            end = end.group(1).replace('<code>', "").replace("</code>", "")
-                        else:
-                            end = ""
-                        markedStart = markdown.markdown(start.replace('%2b', '+'))
-                        md = markdown.Markdown(safe_mode='escape')
-                        markedCodeBlock = md.convert(codeBlock.replace('%2b', '+'))
-                        markedEnd = markdown.markdown(end.replace('%2b', '+'))
-                        blog.update_post(int(id), title, body.replace('%2b', '+'), markedStart+"<code>"+markedCodeBlock+"</code>"+markedEnd, published)
-                    else:
-                        blog.update_post(int(id), title, body.replace('%2b', '+'), markdown.markdown(body.replace('%2b', '+')), published)
+                    update_blog_post_in_correct_format(id, title, body, published)
         if published == 1:
             raise web.seeother('/blog')
         else:
@@ -449,7 +433,7 @@ class EmptyTrash:
 class LiveSaveBody:
     def POST(self, id, published):
         body = web.input().textarea
-        blog.update_post_body(int(id), body.replace('%2b', '+'), markdown.markdown(body.replace('%2b', '+')))
+        update_blog_post_in_correct_format(id, None, body, published)
 
 class LiveSaveTitle:
     def POST(self, id, published):
@@ -466,6 +450,38 @@ def create_americano_database(user, password, genpass):
     cur.execute("FLUSH PRIVILEGES;")
     for line in open('schema.sql','r'):
         cur.execute(line)
+
+def update_blog_post_in_correct_format(id, title, body, published):
+    if "<code>" in body and "</code>" in body:
+        # Need to render the code block in safe mode
+        start = re.search('(.*?)<code>', body, re.DOTALL)
+        if start:
+            start = start.group(1)
+        else:
+            start = ""
+        codeBlock = re.search('<code>(.*?)</code>', body, re.DOTALL)
+        if codeBlock:
+            codeBlock = codeBlock.group(1)
+        else:
+            codeBlock = ""
+        end = re.search('</code>(.*)', body, re.DOTALL)
+        if end:
+            end = end.group(1).replace('<code>', "").replace("</code>", "")
+        else:
+            end = ""
+        markedStart = markdown.markdown(start.replace('%2b', '+'))
+        md = markdown.Markdown(safe_mode='escape')
+        markedCodeBlock = md.convert(codeBlock.replace('%2b', '+'))
+        markedEnd = markdown.markdown(end.replace('%2b', '+'))
+        if title != None:
+            blog.update_post(int(id), title, body.replace('%2b', '+'), markedStart+"<code>"+markedCodeBlock+"</code>"+markedEnd, published)
+        else:
+            blog.update_post_body(int(id), body.replace('%2b', '+'), markedStart+"<code>"+markedCodeBlock+"</code>"+markedEnd, published)
+    else:
+        if title != None:
+            blog.update_post(int(id), title, body.replace('%2b', '+'), markdown.markdown(body.replace('%2b', '+')), published)
+        else:
+            blog.update_post_body(int(id), body.replace('%2b', '+'), markdown.markdown(body.replace('%2b', '+')), published)
 
 if __name__ == '__main__':
     if not len(sys.argv) is 3:

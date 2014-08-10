@@ -36,6 +36,7 @@
   -moz-transition: .2s ease;
   -o-transition: .2s ease;
   transition: .2s ease;
+  background-color: #005367;
 }
 #content-blog .blog-post .post-title {
   font-family: "Helvetica Neue", Sans-Serif;
