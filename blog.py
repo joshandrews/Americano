@@ -64,7 +64,6 @@ def update_post(id, title, md, mu, published):
 def update_thumb_for_post(id, url):
     db = web.database(dbn='mysql', db=con.ConfigSectionMap("MySQL")["database"], user=con.ConfigSectionMap("MySQL")["username"], pw=con.ConfigSectionMap("MySQL")["password"])
     db.update('entries', where="id=$id", vars=locals(), thumb_url=url)
-    print id + " and " + url
 
 def update_post_body(id, md, mu):
     db = web.database(dbn='mysql', db=con.ConfigSectionMap("MySQL")["database"], user=con.ConfigSectionMap("MySQL")["username"], pw=con.ConfigSectionMap("MySQL")["password"])

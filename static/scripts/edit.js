@@ -83,6 +83,9 @@ $( document ).ready(function() {
             xhr.upload.onprogress = function(e) {
                 var done = e.position || e.loaded, total = e.totalSize || e.total;
                 prog = Math.round(parseInt((done/total * 100)));
+                if (prog == 100) {
+                    $('.clear-image').removeClass("no-height");
+                }
             };
         }
 
@@ -92,6 +95,17 @@ $( document ).ready(function() {
         var fd = new FormData( form );
         xhr.send( fd );
 
+    });
+
+    $('.clear-image').click( function(){
+        var postID = document.getElementById('post-id').innerHTML;
+        $.ajax({
+             type: "POST",
+             url: "/blog/edit/clear-image/"+postID,
+             success: function(msg) {
+                $('.clear-image').addClass("no-height");
+             }
+         })
     });
 
     editor.on('autosave',function () {

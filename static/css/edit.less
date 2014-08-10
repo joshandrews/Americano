@@ -18,6 +18,9 @@
 		font-size: 5em;
 		color: #76c3bd;
 	}
+	#upload-submit {
+		margin: 0;
+	}
     #image-upload {
         position: relative;
         margin: 2em 2em 1em 2em;
@@ -32,6 +35,30 @@
 
         }
     }
+
+	.clear-image {
+		.ffstandard();
+		font-size: 1em;
+		text-decoration: none;
+		display: block;
+		color: white;
+		background-color: #FF6464;
+		padding: .4em;
+		text-align: center;
+
+		overflow-y: hidden;
+		width: 8em; /* approximate max height */
+		max-height: 1.8em;
+
+		transition-property: all;
+		transition-duration: .5s;
+		transition-timing-function: cubic-bezier(1,-0.49,.95,.62);
+	}
+
+	.no-height {
+		max-height: 0em;
+		padding: 0em;
+	}
 
 	h1 {
 	    font-size: 60px;

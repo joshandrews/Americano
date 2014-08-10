@@ -33,6 +33,7 @@ urls = (
     '/blog/new', 'New',
     '/blog/delete/(\d+)', 'Delete',
     '/blog/edit/(\d+)', 'Edit',
+    '/blog/edit/clear-image/(\d+)', "ClearImage",
     '/work/(.*)', "WorkPage",
     '/install', 'Install',
     '/favicon.ico', "Favicon",
@@ -308,7 +309,6 @@ class BlogPost:
                 if (file.endswith(".jpg") or file.endswith(".jpeg") or file.endswith(".gif") or file.endswith(".png")) and not "thumb" in file:
                     heroURL = "/"+filedir+file
                     break
-        print heroURL
         if post.published == 0:
             if user.logged(session):
                 if session.privilege == 2:
@@ -358,6 +358,17 @@ class PutBack:
             if session.privilege == 2:
                 blog.put_back(int(id))
         raise web.seeother('/trash')
+
+class ClearImage:
+    def POST(self, id):
+        if user.logged(session):
+            if session.privilege == 2:
+                filedir = 'static/images/uploads/'+id+"/" # change this to the directory you want to store the file in.
+                blog.update_thumb_for_post(id, None)
+
+                if os.path.exists(filedir):
+                    shutil.rmtree(filedir)
+
 class Work:
 
     def GET(self):

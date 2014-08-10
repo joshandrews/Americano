@@ -18,6 +18,9 @@
   font-size: 5em;
   color: #76c3bd;
 }
+#content #upload-submit {
+  margin: 0;
+}
 #content #image-upload {
   position: relative;
   margin: 2em 2em 1em 2em;
@@ -31,6 +34,29 @@
   font-family: "Helvetica Neue", Sans-Serif;
   font-weight: 200;
   font-size: 1.2em;
+}
+#content .clear-image {
+  font-family: "Helvetica Neue", Sans-Serif;
+  font-weight: 200;
+  font-size: 1em;
+  text-decoration: none;
+  display: block;
+  color: white;
+  background-color: #FF6464;
+  padding: .4em;
+  text-align: center;
+  overflow-y: hidden;
+  width: 8em;
+  /* approximate max height */
+
+  max-height: 1.8em;
+  transition-property: all;
+  transition-duration: .5s;
+  transition-timing-function: cubic-bezier(1, -0.49, 0.95, 0.62);
+}
+#content .no-height {
+  max-height: 0em;
+  padding: 0em;
 }
 #content h1 {
   font-size: 60px;

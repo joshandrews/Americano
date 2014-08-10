@@ -55,6 +55,10 @@ $def with (head, offleft, post, escaped_body)
                                     <span class="progress-inner"></span>
                                 </span>
                             </button>
+                            $if post.thumb_url != None:
+                                <a href="#" class="clear-image">Clear Image</a>
+                            $else:
+                                <a href="#" class="clear-image no-height">Clear Image</a>
                         </div>
                         <div id="title" class="title editable">
 							<p>$post.title<br></p>
