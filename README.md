@@ -13,13 +13,14 @@ After that you should be up and ready to go.  Enjoy!
 
 - - -
 
-Curent Version: 0.6
+
+Current Version: 0.7
 ----------------------
 
-- [x] Add markdown live editor
+- [x] Add multiple types of post
 
-Next Version: 0.7
-----------------------
+Next Version: 0.8
+-----------------
 
-- [ ] Add multiple types of post
+- [ ] Clean up, bug fixes
 	
