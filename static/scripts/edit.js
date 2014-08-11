@@ -19,8 +19,8 @@ $( document ).ready(function() {
       },
       theme: {
         base: '/static/epicEditor/epiceditor/themes/base/epiceditor.css',
-        preview: '/static/epicEditor/epiceditor/themes/preview/preview-dark.css',
-        editor: '/static/epicEditor/epiceditor/themes/editor/epic-dark.css'
+        preview: '/static/epicEditor/epiceditor/themes/preview/github.css',
+        editor: '/static/epicEditor/epiceditor/themes/editor/epic-light.css'
       },
       button: {
         preview: true,

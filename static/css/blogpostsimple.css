@@ -4,7 +4,7 @@
   font-size: 2em;
   color: #444;
   text-align: center;
-  border-bottom: 1px solid #efefef;
+  border-bottom: 1px solid #ededed;
   margin: 0 auto;
   width: 60%;
   padding-bottom: 1em;
@@ -16,7 +16,7 @@
 }
 #post-content {
   width: 50%;
-  color: #000000;
+  color: #111111;
   font-family: "Helvetica", Sans-Serif;
   font-weight: 200;
   font-size: 18px;

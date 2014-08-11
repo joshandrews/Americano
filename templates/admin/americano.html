@@ -28,7 +28,7 @@ $def with (head, offleft, published_posts, unpublished_posts, htmltruncate)
 							<h3 class="published-posts-head section-header">Published Posts</h3>
 							$for post in published_posts:
 								<div class="blog-post">
-									<a class="post-title" href="/blog/$post.id/$post.title.lstrip().rstrip().replace(' ', '-').replace('!', '').replace(',','').lower()">
+									<a class="post-title" href="/blog/$post.id/$url(post.title)">
 										$post.title
 									</a>
 									— $datestr(post.posted_on)
@@ -65,7 +65,7 @@ $def with (head, offleft, published_posts, unpublished_posts, htmltruncate)
 							<h3 class="unpublished-posts-head section-header">Unpublished Posts</h3>
 							$for post in unpublished_posts:
 								<div class="blog-post">
-									<a class="post-title" href="/blog/$post.id/$post.title.lstrip().rstrip().replace(' ', '-').replace('!', '').replace(',','').lower()">
+									<a class="post-title" href="/blog/$post.id/$url(post.title)">
 										$post.title
 									</a>
 									— $datestr(post.posted_on) 

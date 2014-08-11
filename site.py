@@ -16,6 +16,7 @@ import espresso
 import install
 import markdown
 import sys
+import blogutils
 from PIL import Image
 
 ### Url mappings
@@ -66,6 +67,7 @@ auth = Auth()
 ### Templates
 t_globals = {
     'datestr': web.datestr,
+    'url': blogutils.title_to_url,
 }
 render = web.template.render('templates/common', cache=blog.cache, globals=t_globals)
 def check_installed():
@@ -299,7 +301,7 @@ class BlogPost:
     def GET(self, id, name):
         check_installed()
         post = blog.get_post(int(id))
-        idname = post.title.lstrip().rstrip().replace(' ', '-').replace('!', '').replace(',','').lower()
+        idname = blogutils.title_to_url(post.title)
         if idname != name:
             web.seeother("/blog/"+id+"/"+idname)
         render = web.template.render('templates/common', globals=t_globals)
@@ -348,16 +350,18 @@ class New:
 class Delete:
 
     def POST(self, id):
-        if user.logged(session):
-            if session.privilege == 2:
-                blog.throw_away(int(id))
-        raise web.seeother('/americano')
+        self.do_delete(id)
 
     def GET(self, id):
+        self.do_delete(id)
+
+    def do_delete(self, id):
         if user.logged(session):
             if session.privilege == 2:
                 blog.throw_away(int(id))
+                ClearImage.POST(ClearImage(), int(id))
         raise web.seeother('/americano')
+
 
 class PutBack:
     def POST(self, id):
@@ -370,7 +374,7 @@ class ClearImage:
     def POST(self, id):
         if user.logged(session):
             if session.privilege == 2:
-                filedir = 'static/images/uploads/'+id+"/" # change this to the directory you want to store the file in.
+                filedir = 'static/images/uploads/'+str(id)+"/" # change this to the directory you want to store the file in.
                 blog.update_thumb_for_post(id, None)
 
                 if os.path.exists(filedir):
@@ -401,7 +405,7 @@ class Edit:
         if user.logged(session):
             if session.privilege == 2:
                 post = blog.get_post(int(id))
-                if re.sub('<[^<]+?>', '', title) == "" or body == "":
+                if re.sub('<[^<]+?>', '', title) == "" or body == "" or title is None or body is None:
                     Delete.POST(self, int(id))
                 else:
                     update_blog_post_in_correct_format(id, title, body, published)
@@ -482,6 +486,7 @@ def update_blog_post_in_correct_format(id, title, body, published):
             blog.update_post(int(id), title, body.replace('%2b', '+'), markdown.markdown(body.replace('%2b', '+')), published)
         else:
             blog.update_post_body(int(id), body.replace('%2b', '+'), markdown.markdown(body.replace('%2b', '+')), published)
+
 
 if __name__ == '__main__':
     if not len(sys.argv) is 3:

@@ -17,11 +17,11 @@ def get_posts():
 
 def get_published_posts():
     db = web.database(dbn='mysql', db=con.ConfigSectionMap("MySQL")["database"], user=con.ConfigSectionMap("MySQL")["username"], pw=con.ConfigSectionMap("MySQL")["password"])
-    return db.select('entries', where='published=1 AND trash=0', order='id DESC')
+    return db.select('entries', where='published=1 AND trash=0', order='posted_on DESC')
 
 def get_unpublished_posts():
     db = web.database(dbn='mysql', db=con.ConfigSectionMap("MySQL")["database"], user=con.ConfigSectionMap("MySQL")["username"], pw=con.ConfigSectionMap("MySQL")["password"])
-    return db.select('entries', where='published=0 AND trash=0', order='id DESC')
+    return db.select('entries', where='published=0 AND trash=0', order='posted_on DESC')
 
 def get_trashed_posts():
     db = web.database(dbn='mysql', db=con.ConfigSectionMap("MySQL")["database"], user=con.ConfigSectionMap("MySQL")["username"], pw=con.ConfigSectionMap("MySQL")["password"])
@@ -58,8 +58,13 @@ def del_post(id):
 
 def update_post(id, title, md, mu, published):
     db = web.database(dbn='mysql', db=con.ConfigSectionMap("MySQL")["database"], user=con.ConfigSectionMap("MySQL")["username"], pw=con.ConfigSectionMap("MySQL")["password"])
-    db.update('entries', where="id=$id", vars=locals(),
-        title=re.sub('<[^<]+?>', '', title), markdown=md, html=mu, published=published)
+    dt = datetime.datetime.utcnow()
+    if published == 1 and get_post(id).published == 0:
+        db.update('entries', where="id=$id", vars=locals(),
+            title=re.sub('<[^<]+?>', '', title), markdown=md, html=mu, posted_on=dt, published=published)
+    else:
+        db.update('entries', where="id=$id", vars=locals(),
+            title=re.sub('<[^<]+?>', '', title), markdown=md, html=mu, published=published)
 
 def update_thumb_for_post(id, url):
     db = web.database(dbn='mysql', db=con.ConfigSectionMap("MySQL")["database"], user=con.ConfigSectionMap("MySQL")["username"], pw=con.ConfigSectionMap("MySQL")["password"])

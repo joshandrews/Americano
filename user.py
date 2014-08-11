@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 
 import web
+import blogutils
 
 t_globals = {
-    'datestr': web.datestr
+    'datestr': web.datestr,
+    'url' : blogutils.title_to_url
 }
 
 def logged(session):
