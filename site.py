@@ -328,11 +328,6 @@ class BlogPost:
 
 class New:
 
-    def GET(self):
-        check_installed()
-        render = user.create_render(session)
-        return render.new(gen_head(), gen_offleft())
-
     def POST(self):
         title, body, published = web.input().title, web.input().body, int(web.input().published)
         if user.logged(session):
