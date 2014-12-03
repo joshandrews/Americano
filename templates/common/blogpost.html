@@ -22,14 +22,17 @@ $def with (head, offleft, post, heroURL)
 			<div class="st-pusher">
 				<div class="st-content">
 					$:head
-                    <section id="hero" style="background-image: url($:heroURL);">
+					<div id="hero-wrapper">
+                    	<img id="hero" src="$:heroURL">
                         <div id="title" class="as">$post.title</div>
                         <span class="arrow"></span>
-                    </section>
-					<div id="post-content">
-						<article>
-							$:post.html
-						</article>
+                    </div>
+					<div id="content">
+						<div id="post-content">
+							<article>
+								$:post.html
+							</article>
+						</div>
 					</div>
 					<div id="foot">
 						<div id="foot-message">

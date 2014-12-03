@@ -1,19 +1,24 @@
 @import 'fonts.less';
 @import 'colors.less';
 
-#hero {
-    background: 50% 0 no-repeat fixed;
-    height: 100%;
-    margin: 0 auto;
-    width: 100%;
-    position: block;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    min-height: 100%;
-    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/vancouver-skyline.jpg',sizingMethod='scale');
-    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/vancouver-skyline.jpg', sizingMethod='scale')";
+#hero-wrapper {
+    height: 150vh;
+    position: relative;
+    background-color: #000;
+    overflow: hidden;
+    #hero {
+        margin: 0 auto;
+        position: fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        display: block;
+        opacity: 0.8;
+        min-height: 100%;
+        min-width: 100%;
+        max-height: 120%;
+    }
 
     div {
         .ffstandard();
@@ -23,14 +28,14 @@
         width: 100%;
         text-align: center;
         text-shadow: rgba(0,0,0,.4) 0px 0px 8px;
-        bottom: 40%;
+        bottom: 90vh;
     }
     .arrow {
         display: block;
         width: 20px;
         height: 20px;
         position: absolute;
-        bottom: 50px;
+        bottom: 60vh;
         left: 50%;
         margin-left: -10px;
         border: 2px solid rgba(255,255,255,1);
@@ -46,85 +51,95 @@
         cursor: pointer;
     }
 }
-#post-content {
-	width: 50%;
-	color: #000000;
-	.ffblogpost();
-	padding-top: 20px;
-	margin: 0 auto;
-	line-height: 1.5em;
-    article {
-        blockquote {
-            padding-left: 20px;
-            border-left: 6px solid lighten(@red, 10%);
+#content {
+    position: relative;
+    width: 100%;
+    background-color: #FFF;
+    padding-bottom: 4em;
+    #post-content {
+        width: 50%;
+        color: #000000;
+        .ffblogpost();
+        padding-top: 20px;
+        margin: 0 auto;
+        line-height: 1.5em;
+        background-color: #fff;
+        article {
+            blockquote {
+                padding-left: 20px;
+                border-left: 6px solid lighten(@red, 10%);
+            }
+            a {
+                color: @link-color;
+                text-decoration: none;
+            }
+            a:visited {
+                color: @link-color;
+            }
+            a:hover {
+                color: lighten(@link-color, 20%);
+            }
+            pre {
+                white-space: pre-wrap;
+                font-size: 14px;
+                border: 1px solid #efefef;
+                padding: 0em 1em;
+                margin-top: 0em;
+                padding-top: 0em;
+            }
+            img {
+                width: 100%;
+                margin-bottom:0px;
+            }
+            figcaption {
+                color: lighten(@text-color, 15%);
+                font-size: .8em;
+                text-align: center;
+            }
         }
-	    a {
-		    color: @link-color;
-		    text-decoration: none;
-	    }
-	    a:visited {
-		    color: @link-color;
-	    }
-	    a:hover {
-		    color: lighten(@link-color, 20%);
-	    }
-	    pre {
-		    white-space: pre-wrap;
-			font-size: 14px;
-			border: 1px solid #efefef;
-			padding: 0em 1em;
-			margin-top: 0em;
-			padding-top: 0em;
-	    }
-	    img {
-		    width: 100%;
-		    margin-bottom:0px;
-	    }
-	    figcaption {
-		    color: lighten(@text-color, 15%);
-			font-size: .8em;
-			text-align: center;
-	    }
-    }
+}
 }
 
 @media only screen and (min-width:320px) and (max-width:639px) {
-	#hero {
-        background: url(../images/winter-dusting.jpg) no-repeat center center scroll;
-        width: 100%;
-        height: 100%;
-        background-size: cover;
-        div {
-            margin: auto;
-            padding: 5px;
-			font-size: 2em;
-            font-weight: 200;
-            color: @white;
+	#hero-wrapper {
+        height: 100vh;
+        #hero {
             position: relative;
-            width: 80%;
-            text-align: center;
-            text-shadow: 0px 0px 5px rgba(0, 0, 0, 1);
-            top: 45%;
-		}
-	}
-	#post-content {
-		width: 85%;
-	}
+        }
+        div {
+            font-size: 2em;
+            bottom: 40vh;
+        }
+        .arrow {
+            bottom: 10vh;
+        }
+    }
+	#content {
+        #post-content {
+            width: 85%;
+        }
+    }
     .st-menu {
         position: fixed;
     }
 }
 @media only screen and (min-width : 640px) and (max-width : 1024px) {
-	#hero {
-        background: url(../images/winter-dusting.jpg) no-repeat center center scroll;
-        width: 100%;
-        height: 100%;
-        background-size: cover;
-		div {
-			font-size: 3em;
-		}
-	}
-	#post-content {
-		width: 80%;
-	}
+	#hero-wrapper {
+        height: 100vh;
+        #hero {
+            position: relative;
+        }
+        div {
+            font-size: 3em;
+            bottom: 40vh;
+        }
+        .arrow {
+            bottom: 10vh;
+        }
+    }
+    #content {
+        #post-content {
+            width: 80%;
+        }
+    }
 }
